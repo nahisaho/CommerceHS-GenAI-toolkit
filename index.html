@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商業高校教員向け 生成AI利活用ツールキット</title>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 3rem 2rem;
+        }
+        
+        .quick-access {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .access-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .access-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+        
+        .access-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+        
+        .access-card p {
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+        }
+        
+        .btn-secondary:hover {
+            box-shadow: 0 10px 20px rgba(149, 165, 166, 0.3);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .feature {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .feature strong {
+            color: #2c3e50;
+        }
+        
+        .stats-section {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .stats-section h2 {
+            color: #2c3e50;
+            margin-bottom: 2rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .stat-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .emoji {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .github-info {
+            background: linear-gradient(135deg, #24292e, #1f2428);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .github-info h3 {
+            margin-bottom: 1rem;
+        }
+        
+        .github-info a {
+            color: #79b8ff;
+            text-decoration: none;
+        }
+        
+        .github-info a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .quick-access {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>商業高校教員向け<br>生成AI利活用ツールキット</h1>
+            <p>プロンプトエンジニアリングの基礎から実践まで</p>
+        </div>
+        
+        <div class="content">
+            <div class="quick-access">
+                <div class="access-card">
+                    <span class="emoji">🎯</span>
+                    <h3>プレゼンテーション資料</h3>
+                    <p>セミナー用プレゼンテーション資料<br>4種類のフォーマットから選択可能</p>
+                    <div class="features">
+                        <div class="feature"><strong>90分構成:</strong> 基礎から実践まで</div>
+                        <div class="feature"><strong>インタラクティブ:</strong> 演習・体験コーナー</div>
+                        <div class="feature"><strong>レスポンシブ:</strong> 全デバイス対応</div>
+                    </div>
+                    <a href="presentation/" class="btn">プレゼンテーションを見る</a>
+                </div>
+                
+                <div class="access-card">
+                    <span class="emoji">📚</span>
+                    <h3>講義資料・テンプレート</h3>
+                    <p>詳細な講義資料とプロンプト作成テンプレート</p>
+                    <div class="features">
+                        <div class="feature"><strong>詳細資料:</strong> 90分完全対応</div>
+                        <div class="feature"><strong>テンプレート:</strong> 5W1H+構造化</div>
+                        <div class="feature"><strong>チェックリスト:</strong> 品質確保</div>
+                    </div>
+                    <a href="detailed_lecture_materials.md" class="btn">詳細資料を見る</a>
+                    <a href="templates/" class="btn btn-secondary">テンプレート集</a>
+                </div>
+                
+                <div class="access-card">
+                    <span class="emoji">💡</span>
+                    <h3>プロンプト事例集</h3>
+                    <p>商業教育4分野の実践的プロンプト事例</p>
+                    <div class="features">
+                        <div class="feature"><strong>簿記・会計:</strong> 15事例</div>
+                        <div class="feature"><strong>マーケティング:</strong> 10事例</div>
+                        <div class="feature"><strong>情報処理:</strong> 8事例</div>
+                        <div class="feature"><strong>ビジネス基礎:</strong> 7事例</div>
+                    </div>
+                    <a href="examples/" class="btn">事例集を見る</a>
+                    <a href="prompt_collection.md" class="btn btn-secondary">全事例一覧</a>
+                </div>
+                
+                <div class="access-card">
+                    <span class="emoji">🛠️</span>
+                    <h3>実践ツール</h3>
+                    <p>継続的な改善をサポートするツール集</p>
+                    <div class="features">
+                        <div class="feature"><strong>評価:</strong> チェックリスト</div>
+                        <div class="feature"><strong>記録:</strong> 実践記録シート</div>
+                        <div class="feature"><strong>改善:</strong> アクションプラン</div>
+                    </div>
+                    <a href="tools/" class="btn">ツール集を見る</a>
+                </div>
+            </div>
+            
+            <div class="stats-section">
+                <h2>📈 ツールキット統計</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">プロンプト事例数</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">4</div>
+                        <div class="stat-label">商業教育分野</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">4</div>
+                        <div class="stat-label">プレゼンテーション形式</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">90</div>
+                        <div class="stat-label">セミナー時間（分）</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">7</div>
+                        <div class="stat-label">実践ツール数</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">オープンソース</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="github-info">
+                <h3>🔗 GitHub リポジトリ</h3>
+                <p>
+                    すべての資料はGitHubで管理されています。<br>
+                    <a href="https://github.com/nahisaho/CommerceHS-GenAI-toolkit" target="_blank">
+                        https://github.com/nahisaho/CommerceHS-GenAI-toolkit
+                    </a>
+                </p>
+                <p style="margin-top: 1rem; font-size: 0.9rem;">
+                    ⭐ Star をつけていただけると励みになります！<br>
+                    📝 Issues や Pull Request もお待ちしています
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
