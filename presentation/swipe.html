@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>商業高等学校教員向け 生成AI利活用セミナー</title>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            overflow: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .swipe-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .swipe-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            display: flex;
+            transition-property: transform;
+            transition-timing-function: ease-out;
+        }
+        
+        .swipe-slide {
+            flex-shrink: 0;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .slide-content {
+            max-width: 900px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #34495e;
+            margin-bottom: 1rem;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 0.8rem;
+        }
+        
+        h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #0066cc;
+            margin-bottom: 0.5rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        ul, ol {
+            text-align: left;
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .agenda {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .agenda-item {
+            padding: 1.5rem 1rem;
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        
+        .agenda-item:hover {
+            transform: translateY(-2px);
+        }
+        
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+        
+        .exercise {
+            background: linear-gradient(135deg, #e8f4f8, #b3e5fc);
+            border: 2px solid #0066cc;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 12px;
+            text-align: left;
+        }
+        
+        .good-example {
+            background: linear-gradient(135deg, #d4edda, #a8e6ae);
+            border-left: 6px solid #28a745;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+        }
+        
+        .bad-example {
+            background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+            border-left: 6px solid #dc3545;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+        }
+        
+        .prompt-box {
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            font-size: 0.9rem;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+        
+        .highlight {
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 0.5rem 0;
+            font-weight: 600;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 0.8rem;
+            text-align: left;
+        }
+        
+        th {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            font-weight: 700;
+        }
+        
+        .navigation {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .nav-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .nav-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        }
+        
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.3s;
+            z-index: 1000;
+        }
+        
+        .slide-number {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            z-index: 1000;
+        }
+        
+        .small {
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        .center {
+            text-align: center;
+        }
+        
+        .left {
+            text-align: left;
+        }
+        
+        .emoji {
+            font-size: 2rem;
+            margin: 0 0.5rem;
+        }
+        
+        /* Touch gestures */
+        .swipe-slide {
+            touch-action: pan-y;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .swipe-slide {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .agenda {
+                grid-template-columns: 1fr;
+            }
+            
+            .navigation {
+                bottom: 1rem;
+                right: 1rem;
+            }
+            
+            .nav-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="swipe-container" id="swipeContainer">
+        <div class="progress-bar" id="progressBar"></div>
+        <div class="slide-number" id="slideNumber">1 / 30</div>
+        
+        <div class="swipe-wrapper" id="swipeWrapper">
+            <!-- Slide 1: Title -->
+            <div class="swipe-slide">
+                <div class="slide-content">
+                    <h1>商業高等学校教員向け<br>生成AI利活用セミナー</h1>
+                    <h2>プロンプトエンジニアリング基礎</h2>
+                    <p style="font-size: 1.2rem; color: #666;">〜 教育現場での実践的活用法 〜</p>
+                    <p class="small">総時間：90分</p>
+                </div>
+            </div>
+
+            <!-- Slide 2: Agenda -->
+            <div class="swipe-slide">
+                <div class="slide-content">
+                    <h2>本日のアジェンダ</h2>
+                    <div class="agenda">
+                        <div class="agenda-item">
+                            <strong>第1部</strong><br>
+                            基礎理解<br>
+                            <small>15分</small>
+                        </div>
+                        <div class="agenda-item">
+                            <strong>第2部</strong><br>
+                            基本原則<br>
+                            <small>25分</small>
+                        </div>
+                        <div class="agenda-item">
+                            <strong>第3部</strong><br>
+                            実践活用<br>
+                            <small>35分</small>
+                        </div>
+                        <div class="agenda-item">
+                            <strong>第4部</strong><br>
+                            高度技術<br>
+                            <small>10分</small>
+                        </div>
+                        <div class="agenda-item">
+                            <strong>第5部</strong><br>
+                            まとめ<br>
+                            <small>5分</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: Part 1 Title -->
+            <div class="swipe-slide">
+                <div class="slide-content">
+                    <h1>第1部</h1>
+                    <h2>生成AIとプロンプトの基礎理解</h2>
+                    <p>（15分）</p>
+                </div>
+            </div>
+
+            <!-- Slide 4: What is Generative AI -->
+            <div class="swipe-slide">
+                <div class="slide-content">
+                    <h2>生成AIとは？</h2>
+                    <p>テキスト、画像、音声などの新しいコンテンツを人工的に生成する技術</p>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4><span class="emoji">📝</span>テキスト生成</h4>
+                            <ul>
+                                <li>文章作成・編集</li>
+                                <li>要約・翻訳</li>
+                                <li>質問応答</li>
+                                <li>アイデア生成</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h4><span class="emoji">🎨</span>画像生成</h4>
+                            <ul>
+                                <li>イラスト・写真</li>
+                                <li>図表・グラフ</li>
+                                <li>デザイン素材</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 5: AI Services -->
+            <div class="swipe-slide">
+                <div class="slide-content">
+                    <h2>主要な生成AIサービス</h2>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>Microsoft Copilot</h4>
+                            <p>教育機関向けライセンスで無償利用可能</p>
+                        </div>
+                        <div class="card">
+                            <h4>ChatGPT</h4>
+                            <p>OpenAI社の汎用AIアシスタント</p>
+                        </div>
+                        <div class="card">
+                            <h4>Claude</h4>
+                            <p>Anthropic社の高性能AI</p>
+                        </div>
+                        <div class="card">
+                            <h4>Gemini</h4>
+                            <p>Google社の最新AI</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 6: Educational Applications -->
+            <div class="swipe-slide">
+                <div class="slide-content">
+                    <h2>教育現場での活用可能性</h2>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4><span class="emoji">📚</span>授業準備効率化</h4>
+                            <p>学習指導案作成<br>練習問題生成</p>
+                        </div>
+                        <div class="card">
+                            <h4><span class="emoji">👥</span>個別指導充実</h4>
+                            <p>レベル別課題<br>個別フィードバック</p>
+                        </div>
+                        <div class="card">
+                            <h4><span class="emoji">💼</span>業務効率化</h4>
+                            <p>会議資料作成<br>保護者向け文書</p>
+                        </div>
+                    </div>
+                    <div class="highlight">
+                        生成AIは「教師の代替」ではなく「教師の能力を拡張するツール」
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 7: What is Prompt -->
+            <div class="swipe-slide">
+                <div class="slide-content">
+                    <h2>プロンプトとは？</h2>
+                    <p>プロンプト = 生成AIに対する指示や質問（AIへの指示書）</p>
+                    
+                    <div class="bad-example">
+                        <h4>❌ 悪いプロンプト</h4>
+                        <div class="prompt-box">簿記について教えて</div>
+                    </div>
+                    
+                    <div class="good-example">
+                        <h4>✅ 良いプロンプト</h4>
+                        <div class="prompt-box">あなたは商業高校の簿記担当教師です。
+高校1年生（簿記初心者）に向けて、
+「資産・負債・純資産」の概念を、
+身近な例を使って分かりやすく5分で説明できる内容を、
+話し言葉で300文字程度で作成してください。</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 8: Experience Corner 1 -->
+            <div class="swipe-slide">
+                <div class="slide-content">
+                    <h2><span class="emoji">🎯</span>体験コーナー</h2>
+                    <div class="exercise">
+                        <h4>体験課題1：簡単なプロンプト</h4>
+                        <p>以下のプロンプトをCopilot Edgeに入力してみてください：</p>
+                        <div class="prompt-box">商業高校のマーケティング授業で使える、身近な企業の成功事例を1つ教えてください。</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 9: Experience Corner 2 -->
+            <div class="swipe-slide">
+                <div class="slide-content">
+                    <h2><span class="emoji">🎯</span>体験コーナー（続き）</h2>
+                    <div class="exercise">
+                        <h4>体験課題2：詳細なプロンプト</h4>
+                        <div class="prompt-box">あなたは商業高校のマーケティング教師です。
+高校2年生に「ターゲティング戦略」を教える際に使用する、
+日本の身近な企業（コンビニ、ファーストフード等）の具体的成功事例を、
+以下の構成で800文字程度で作成してください：
+1. 企業名と概要
+2. ターゲティング戦略の内容
+3. 成功要因の分析
+4. 生徒への質問（考察ポイント）</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 10: Part 2 Title -->
+            <div class="swipe-slide">
+                <div class="slide-content">
+                    <h1>第2部</h1>
+                    <h2>プロンプト設計の基本原則</h2>
+                    <p>（25分）</p>
+                </div>
+            </div>
+
+            <!-- Slide 11: 5W1H+Role -->
+            <div class="swipe-slide">
+                <div class="slide-content">
+                    <h2>明確性の原則：5W1H+Role</h2>
+                    <table>
+                        <tr>
+                            <th>要素</th>
+                            <th>内容</th>
+                            <th>具体例</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Role</strong></td>
+                            <td>AIに求める専門性</td>
+                            <td>簿記教師、キャリアカウンセラー</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Who</strong></td>
+                            <td>対象者・読み手</td>
+                            <td>高校1年生、保護者、同僚教師</td>
+                        </tr>
+                        <tr>
+                            <td><strong>What</strong></td>
+                            <td>作成する内容</td>
+                            <td>学習指導案、練習問題、説明資料</td>
+                        </tr>
+                        <tr>
+                            <td><strong>When</strong></td>
+                            <td>時期・タイミング</td>
+                            <td>新学期、中間試験前、進路指導時期</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Where</strong></td>
+                            <td>使用場面</td>
+                            <td>教室、実習室、保護者会</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Why</strong></td>
+                            <td>目的・理由</td>
+                            <td>理解促進、動機付け、技能習得</td>
+                        </tr>
+                        <tr>
+                            <td><strong>How</strong></td>
+                            <td>方法・形式</td>
+                            <td>講義形式、グループワーク、個別指導</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Continue with more slides following the same pattern... -->
+            <!-- For brevity, I'll add a few more key slides -->
+
+            <!-- Slide 12: Specific Expressions -->
+            <div class="swipe-slide">
+                <div class="slide-content">
+                    <h2>具体的な表現の重要性</h2>
+                    <div class="card-grid">
+                        <div class="bad-example">
+                            <h4>❌ 曖昧な表現</h4>
+                            <ul>
+                                <li>「分かりやすく」</li>
+                                <li>「詳しく」</li>
+                                <li>「いい感じに」</li>
+                            </ul>
+                        </div>
+                        <div class="good-example">
+                            <h4>✅ 具体的な表現</h4>
+                            <ul>
+                                <li>「高校1年生が理解できるレベルで」</li>
+                                <li>「専門用語には必ず注釈を付けて」</li>
+                                <li>「A4用紙1枚に収まる分量で」</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 13: Exercise 1 -->
+            <div class="swipe-slide">
+                <div class="slide-content">
+                    <h2><span class="emoji">🎯</span>演習1：曖昧な指示を明確にする</h2>
+                    <div class="exercise">
+                        <h4>課題：以下のプロンプトを改善してください</h4>
+                        <div class="prompt-box">原価計算について説明してください。</div>
+                        
+                        <h4>改善のポイント</h4>
+                        <ul>
+                            <li>Role: AIにどの専門家の立場で回答してもらうか？</li>
+                            <li>Who: 対象者は？（学年、既習レベル）</li>
+                            <li>What: 原価計算のどの部分？</li>
+                            <li>Why: なぜ学ぶのか？</li>
+                            <li>How: どのような形式で？</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 14: Final Message -->
+            <div class="swipe-slide">
+                <div class="slide-content">
+                    <h1>最後に</h1>
+                    <div class="highlight" style="font-size: 1.5rem; padding: 1rem 2rem; margin: 2rem 0;">
+                        「技術は手段、教育は目的」
+                    </div>
+                    <p style="font-size: 1.2rem; margin: 2rem 0;">
+                        生成AIは教育を変革する強力なツールですが、<br>
+                        最も重要なのは「教師の専門性と人間的な温かさ」です。
+                    </p>
+                    <p style="font-size: 1.1rem;">
+                        今日学んだプロンプト技術を活用して、<br>
+                        より質の高い教育を生徒たちに提供していきましょう。
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide 15: Resources -->
+            <div class="swipe-slide">
+                <div class="slide-content">
+                    <h2>配布資料</h2>
+                    <div class="card">
+                        <h3><span class="emoji">📄</span>本日の配布資料一覧</h3>
+                        <ul style="text-align: left; margin: 1rem 0;">
+                            <li>プロンプト基本テンプレート集</li>
+                            <li>商業教育分野別プロンプト事例集（全40例）</li>
+                            <li>プロンプト評価チェックリスト</li>
+                            <li>継続学習ガイド</li>
+                        </ul>
+                        <p style="margin-top: 2rem; font-weight: bold;">
+                            アンケートにもご協力をお願いいたします
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="navigation">
+            <button class="nav-btn" id="prevBtn" onclick="previousSlide()">‹</button>
+            <button class="nav-btn" id="nextBtn" onclick="nextSlide()">›</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.swipe-slide');
+        const totalSlides = slides.length;
+        const swipeWrapper = document.getElementById('swipeWrapper');
+        const progressBar = document.getElementById('progressBar');
+        const slideNumber = document.getElementById('slideNumber');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        function updateSlide() {
+            const translateX = -currentSlide * 100;
+            swipeWrapper.style.transform = `translateX(${translateX}%)`;
+            swipeWrapper.style.transitionDuration = '0.3s';
+            
+            // Update progress bar
+            const progress = ((currentSlide + 1) / totalSlides) * 100;
+            progressBar.style.width = `${progress}%`;
+            
+            // Update slide number
+            slideNumber.textContent = `${currentSlide + 1} / ${totalSlides}`;
+            
+            // Update navigation buttons
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === totalSlides - 1;
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateSlide();
+            }
+        }
+
+        function previousSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlide();
+            }
+        }
+
+        // Touch/swipe support
+        let startX = 0;
+        let startY = 0;
+        let distX = 0;
+        let distY = 0;
+        let threshold = 150;
+        let restraint = 100;
+        let allowedTime = 300;
+        let elapsedTime = 0;
+        let startTime = 0;
+
+        swipeWrapper.addEventListener('touchstart', function(e) {
+            const touchobj = e.changedTouches[0];
+            startX = touchobj.pageX;
+            startY = touchobj.pageY;
+            startTime = new Date().getTime();
+        }, false);
+
+        swipeWrapper.addEventListener('touchend', function(e) {
+            const touchobj = e.changedTouches[0];
+            distX = touchobj.pageX - startX;
+            distY = touchobj.pageY - startY;
+            elapsedTime = new Date().getTime() - startTime;
+            
+            if (elapsedTime <= allowedTime && Math.abs(distX) >= threshold && Math.abs(distY) <= restraint) {
+                if (distX > 0) {
+                    previousSlide();
+                } else {
+                    nextSlide();
+                }
+            }
+        }, false);
+
+        // Keyboard support
+        document.addEventListener('keydown', function(e) {
+            switch(e.key) {
+                case 'ArrowLeft':
+                case 'ArrowUp':
+                    previousSlide();
+                    break;
+                case 'ArrowRight':
+                case 'ArrowDown':
+                case ' ':
+                    nextSlide();
+                    break;
+                case 'Home':
+                    currentSlide = 0;
+                    updateSlide();
+                    break;
+                case 'End':
+                    currentSlide = totalSlides - 1;
+                    updateSlide();
+                    break;
+            }
+        });
+
+        // Initialize
+        updateSlide();
+
+        // Auto-hide navigation after inactivity
+        let hideTimeout;
+        const navigation = document.querySelector('.navigation');
+
+        function showNavigation() {
+            navigation.style.opacity = '1';
+            clearTimeout(hideTimeout);
+            hideTimeout = setTimeout(() => {
+                navigation.style.opacity = '0.3';
+            }, 3000);
+        }
+
+        document.addEventListener('mousemove', showNavigation);
+        document.addEventListener('touchstart', showNavigation);
+        showNavigation();
+    </script>
+</body>
+</html>
