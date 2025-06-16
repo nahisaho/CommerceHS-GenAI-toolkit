@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>実践ツール集 - 商業高校教員向け 生成AI利活用ツールキット</title>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 2rem;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            padding: 0.5rem 1rem;
+            background: #f8f9fa;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .back-link:hover {
+            background: #e9ecef;
+        }
+        
+        .tools-grid {
+            display: grid;
+            gap: 2rem;
+        }
+        
+        .tool-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+        
+        .tool-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+        
+        .tool-card p {
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+        }
+        
+        .emoji {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .feature-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-list li {
+            padding: 0.3rem 0;
+            color: #666;
+        }
+        
+        .feature-list li:before {
+            content: "⭐ ";
+            margin-right: 0.5rem;
+        }
+        
+        .usage-flow {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .flow-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .flow-step {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .step-number {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .step-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .step-desc {
+            font-size: 0.9rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛠️ 実践ツール集</h1>
+            <p>継続的な改善をサポートするツール集</p>
+        </div>
+        
+        <div class="content">
+            <a href="../" class="back-link">← ホームに戻る</a>
+            
+            <div class="usage-flow">
+                <h2>🔄 継続的改善のフロー</h2>
+                <div class="flow-steps">
+                    <div class="flow-step">
+                        <div class="step-number">1</div>
+                        <div class="step-title">評価</div>
+                        <div class="step-desc">チェックリストで品質確認</div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-number">2</div>
+                        <div class="step-title">記録</div>
+                        <div class="step-desc">実践記録シートで蓄積</div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-number">3</div>
+                        <div class="step-title">改善</div>
+                        <div class="step-desc">アクションプランで向上</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <span class="emoji">✅</span>
+                    <h3>プロンプト評価チェックリスト</h3>
+                    <p>質の高いプロンプト作成のための確認項目。明確性・構造化・教育的配慮の3つの観点から体系的に評価できます。</p>
+                    <ul class="feature-list">
+                        <li>明確性チェック（5項目）</li>
+                        <li>構造化チェック（4項目）</li>
+                        <li>教育的配慮チェック（6項目）</li>
+                        <li>総合評価スコア</li>
+                        <li>改善ポイント特定</li>
+                    </ul>
+                    <a href="prompt_evaluation_checklist.html" class="btn">チェックリストを見る</a>
+                </div>
+                
+                <div class="tool-card">
+                    <span class="emoji">📝</span>
+                    <h3>実践記録シート</h3>
+                    <p>プロンプト活用の継続的改善のための記録ツール。使用したプロンプト、結果、気づきを体系的に記録し、ノウハウを蓄積します。</p>
+                    <ul class="feature-list">
+                        <li>プロンプト内容記録</li>
+                        <li>実施日時・対象記録</li>
+                        <li>結果・効果測定</li>
+                        <li>改善点・気づき</li>
+                        <li>次回への活用提案</li>
+                    </ul>
+                    <a href="practice_record_sheet.html" class="btn">記録シートを見る</a>
+                </div>
+                
+                <div class="tool-card">
+                    <span class="emoji">🎯</span>
+                    <h3>改善アクションプラン</h3>
+                    <p>スキル向上のための体系的計画ツール。現状分析から目標設定、具体的なアクションまでを段階的に計画できます。</p>
+                    <ul class="feature-list">
+                        <li>現状スキル分析</li>
+                        <li>目標設定（短期・長期）</li>
+                        <li>具体的アクション計画</li>
+                        <li>実行スケジュール</li>
+                        <li>進捗管理・評価</li>
+                    </ul>
+                    <a href="improvement_action_plan.html" class="btn">アクションプランを見る</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

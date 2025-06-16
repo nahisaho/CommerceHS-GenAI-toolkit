@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プロンプト基本テンプレート集 - 商業高校教員向け 生成AI利活用ツールキット</title>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 2rem;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            padding: 0.5rem 1rem;
+            background: #f8f9fa;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .back-link:hover {
+            background: #e9ecef;
+        }
+        
+        .template-grid {
+            display: grid;
+            gap: 2rem;
+        }
+        
+        .template-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .template-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+        
+        .template-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+        
+        .template-card p {
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-right: 1rem;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+        }
+        
+        .emoji {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .feature-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-list li {
+            padding: 0.3rem 0;
+            color: #666;
+        }
+        
+        .feature-list li:before {
+            content: "✓ ";
+            color: #28a745;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📋 プロンプト基本テンプレート集</h1>
+            <p>効果的なプロンプト作成のための基本テンプレート</p>
+        </div>
+        
+        <div class="content">
+            <a href="../" class="back-link">← ホームに戻る</a>
+            
+            <div class="template-grid">
+                <div class="template-card">
+                    <span class="emoji">📝</span>
+                    <h3>5W1H確認シート</h3>
+                    <p>プロンプト作成前のチェックリスト。Role + 5W1Hの要素を整理して、明確で具体的なプロンプトを作成するためのガイドです。</p>
+                    <ul class="feature-list">
+                        <li>役割（Role）設定ガイド</li>
+                        <li>5W1H要素の具体化</li>
+                        <li>チェックポイント一覧</li>
+                        <li>改善のヒント</li>
+                    </ul>
+                    <a href="5W1H_confirmation_sheet.html" class="btn">シートを見る</a>
+                </div>
+                
+                <div class="template-card">
+                    <span class="emoji">🏗️</span>
+                    <h3>4要素構造テンプレート</h3>
+                    <p>効果的なプロンプト設計の基本構造テンプレート。役割設定、タスク指示、条件・制約、出力形式の4つの要素を体系的に整理します。</p>
+                    <ul class="feature-list">
+                        <li>4つの構造要素テンプレート</li>
+                        <li>記入例とサンプル</li>
+                        <li>よくある間違いと対策</li>
+                        <li>応用パターン</li>
+                    </ul>
+                    <a href="4_elements_structure_template.html" class="btn">テンプレートを見る</a>
+                </div>
+                
+                <div class="template-card">
+                    <span class="emoji">📚</span>
+                    <h3>科目別基本プロンプト</h3>
+                    <p>商業教育各分野（簿記・会計、マーケティング、情報処理、ビジネス基礎）の基本プロンプトテンプレート集です。</p>
+                    <ul class="feature-list">
+                        <li>分野別カスタマイズ済み</li>
+                        <li>すぐに使える基本形</li>
+                        <li>応用展開のガイド</li>
+                        <li>レベル別調整方法</li>
+                    </ul>
+                    <a href="subject_basic_prompts.html" class="btn">プロンプト集を見る</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
