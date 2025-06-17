@@ -284,6 +284,51 @@
             font-size: 2rem;
             margin: 0 0.5rem;
         }
+
+        /* Mermaid図のスタイル */
+        .mermaid-container {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border: 1px solid #e0e0e0;
+        }
+
+        /* プロセス図のスタイル */
+        .process-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 2rem 0;
+        }
+
+        .process-step {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+        }
+
+        .process-arrow {
+            font-size: 1.5em;
+            color: #667eea;
+            margin: 0 10px;
+        }
+
+        /* チェックリスト */
+        .checklist {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .checklist li:before {
+            content: "☐ ";
+            font-size: 1.2em;
+            margin-right: 10px;
+        }
         
         /* Touch gestures */
         .swipe-slide {
@@ -328,67 +373,101 @@
 <body>
     <div class="swipe-container" id="swipeContainer">
         <div class="progress-bar" id="progressBar"></div>
-        <div class="slide-number" id="slideNumber">1 / 30</div>
+        <div class="slide-number" id="slideNumber">1 / 35</div>
         
         <div class="swipe-wrapper" id="swipeWrapper">
             <!-- Slide 1: Title -->
             <div class="swipe-slide">
                 <div class="slide-content">
                     <h1>商業高等学校教員向け<br>生成AI利活用セミナー</h1>
-                    <h2>プロンプトエンジニアリング基礎</h2>
-                    <p style="font-size: 1.2rem; color: #666;">〜 教育現場での実践的活用法 〜</p>
+                    <h2>プロンプトエンジニアリングの基礎から実践まで</h2>
                     <p class="small">総時間：90分</p>
                 </div>
             </div>
 
-            <!-- Slide 2: Agenda -->
+            <!-- Slide 2: セミナーの目的 -->
             <div class="swipe-slide">
                 <div class="slide-content">
-                    <h2>本日のアジェンダ</h2>
+                    <h2>セミナーの目的</h2>
+                    <h3>生成AIを教育現場で効果的に活用</h3>
+                    <ul style="font-size: 1.2rem;">
+                        <li><strong>プロンプトエンジニアリング</strong>の基礎習得</li>
+                        <li>日々の教育活動の<strong>効率化</strong></li>
+                        <li>教育の<strong>質向上</strong></li>
+                    </ul>
+                    
+                    <h3>対象者</h3>
+                    <ul>
+                        <li>商業高等学校の教員（初心者大歓迎）</li>
+                        <li>簿記、会計、マーケティング、情報処理、ビジネス基礎担当</li>
+                        <li>ICT活用教育に興味のある先生方</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 3: Agenda -->
+            <div class="swipe-slide">
+                <div class="slide-content">
+                    <h2>セミナータイムライン（90分）</h2>
                     <div class="agenda">
                         <div class="agenda-item">
-                            <strong>第1部</strong><br>
-                            基礎理解<br>
-                            <small>15分</small>
+                            <strong>0-15分</strong><br>
+                            第1部：基礎理解<br>
+                            <small>生成AI概要・プロンプト基本概念</small>
                         </div>
                         <div class="agenda-item">
-                            <strong>第2部</strong><br>
-                            基本原則<br>
-                            <small>25分</small>
+                            <strong>15-40分</strong><br>
+                            第2部：基本原則<br>
+                            <small>明確性・構造化・文脈提供</small>
                         </div>
                         <div class="agenda-item">
-                            <strong>第3部</strong><br>
-                            実践活用<br>
-                            <small>35分</small>
+                            <strong>40-75分</strong><br>
+                            第3部：実践活用<br>
+                            <small>授業設計・教材作成・学生サポート</small>
                         </div>
                         <div class="agenda-item">
-                            <strong>第4部</strong><br>
-                            高度技術<br>
-                            <small>10分</small>
+                            <strong>75-85分</strong><br>
+                            第4部：高度技術<br>
+                            <small>高度プロンプト技術</small>
                         </div>
                         <div class="agenda-item">
-                            <strong>第5部</strong><br>
-                            まとめ<br>
-                            <small>5分</small>
+                            <strong>85-90分</strong><br>
+                            第5部：まとめ<br>
+                            <small>実践・まとめ</small>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 3: Part 1 Title -->
+            <!-- Slide 4: Part 1 Title -->
             <div class="swipe-slide">
                 <div class="slide-content">
-                    <h1>第1部</h1>
-                    <h2>生成AIとプロンプトの基礎理解</h2>
+                    <h1>第1部：生成AIとプロンプトの基礎理解</h1>
                     <p>（15分）</p>
                 </div>
             </div>
 
-            <!-- Slide 4: What is Generative AI -->
+            <!-- Slide 5: 生成AIとは何か？ -->
             <div class="swipe-slide">
                 <div class="slide-content">
-                    <h2>生成AIとは？</h2>
-                    <p>テキスト、画像、音声などの新しいコンテンツを人工的に生成する技術</p>
+                    <h2>生成AIとは何か？</h2>
+                    <h3>定義</h3>
+                    <p><strong>生成AI（Generative AI）</strong>とは、テキスト、画像、音声などの新しいコンテンツを人工的に生成する技術</p>
+                    
+                    <h3>主要サービス</h3>
+                    <ul style="font-size: 1.2rem;">
+                        <li><strong>Microsoft Copilot</strong> (Microsoft)</li>
+                        <li><strong>ChatGPT</strong> (OpenAI)</li>
+                        <li><strong>Claude</strong> (Anthropic)</li>
+                        <li><strong>Gemini</strong> (Google)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 6: 生成AIの種類と機能 -->
+            <div class="swipe-slide">
+                <div class="slide-content">
+                    <h2>生成AIの種類と機能</h2>
                     <div class="card-grid">
                         <div class="card">
                             <h4><span class="emoji">📝</span>テキスト生成</h4>
@@ -407,72 +486,84 @@
                                 <li>デザイン素材</li>
                             </ul>
                         </div>
+                        <div class="card">
+                            <h4><span class="emoji">🔊</span>音声生成</h4>
+                            <ul>
+                                <li>音声合成</li>
+                                <li>音楽生成</li>
+                                <li>効果音作成</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h4><span class="emoji">🎬</span>動画生成</h4>
+                            <ul>
+                                <li>動画編集</li>
+                                <li>アニメーション</li>
+                                <li>プレゼン動画</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 5: AI Services -->
+            <!-- Slide 7: 教育現場での活用例 -->
             <div class="swipe-slide">
                 <div class="slide-content">
-                    <h2>主要な生成AIサービス</h2>
+                    <h2>教育現場での活用例</h2>
                     <div class="card-grid">
                         <div class="card">
-                            <h4>Microsoft Copilot</h4>
-                            <p>教育機関向けライセンスで無償利用可能</p>
+                            <h4><span class="emoji">📝</span>テキスト生成活用</h4>
+                            <ul>
+                                <li>学習指導案作成</li>
+                                <li>練習問題生成</li>
+                                <li>説明文作成</li>
+                                <li>レポート添削</li>
+                            </ul>
                         </div>
                         <div class="card">
-                            <h4>ChatGPT</h4>
-                            <p>OpenAI社の汎用AIアシスタント</p>
+                            <h4><span class="emoji">🎨</span>画像生成活用</h4>
+                            <ul>
+                                <li>教材イラスト</li>
+                                <li>説明図作成</li>
+                                <li>プレゼン素材</li>
+                                <li>掲示物デザイン</li>
+                            </ul>
                         </div>
                         <div class="card">
-                            <h4>Claude</h4>
-                            <p>Anthropic社の高性能AI</p>
+                            <h4><span class="emoji">🔊</span>音声生成活用</h4>
+                            <ul>
+                                <li>聞き取り教材</li>
+                                <li>発音練習</li>
+                                <li>動画ナレーション</li>
+                                <li>BGM作成</li>
+                            </ul>
                         </div>
                         <div class="card">
-                            <h4>Gemini</h4>
-                            <p>Google社の最新AI</p>
+                            <h4><span class="emoji">🎬</span>動画生成活用</h4>
+                            <ul>
+                                <li>説明動画作成</li>
+                                <li>授業録画編集</li>
+                                <li>教材動画</li>
+                                <li>生徒作品支援</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 6: Educational Applications -->
-            <div class="swipe-slide">
-                <div class="slide-content">
-                    <h2>教育現場での活用可能性</h2>
-                    <div class="card-grid">
-                        <div class="card">
-                            <h4><span class="emoji">📚</span>授業準備効率化</h4>
-                            <p>学習指導案作成<br>練習問題生成</p>
-                        </div>
-                        <div class="card">
-                            <h4><span class="emoji">👥</span>個別指導充実</h4>
-                            <p>レベル別課題<br>個別フィードバック</p>
-                        </div>
-                        <div class="card">
-                            <h4><span class="emoji">💼</span>業務効率化</h4>
-                            <p>会議資料作成<br>保護者向け文書</p>
-                        </div>
-                    </div>
-                    <div class="highlight">
-                        生成AIは「教師の代替」ではなく「教師の能力を拡張するツール」
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 7: What is Prompt -->
+            <!-- Slide 8: プロンプトとは？ -->
             <div class="swipe-slide">
                 <div class="slide-content">
                     <h2>プロンプトとは？</h2>
-                    <p>プロンプト = 生成AIに対する指示や質問（AIへの指示書）</p>
+                    <h3>プロンプト = AIへの指示書</h3>
                     
                     <div class="bad-example">
-                        <h4>❌ 悪いプロンプト</h4>
+                        <h4>❌ 悪いプロンプト例</h4>
                         <div class="prompt-box">簿記について教えて</div>
                     </div>
                     
                     <div class="good-example">
-                        <h4>✅ 良いプロンプト</h4>
+                        <h4>✅ 良いプロンプト例</h4>
                         <div class="prompt-box">あなたは商業高校の簿記担当教師です。
 高校1年生（簿記初心者）に向けて、
 「資産・負債・純資産」の概念を、
@@ -482,24 +573,46 @@
                 </div>
             </div>
 
-            <!-- Slide 8: Experience Corner 1 -->
+            <!-- Slide 9: プロンプトの品質による結果の違い -->
             <div class="swipe-slide">
                 <div class="slide-content">
-                    <h2><span class="emoji">🎯</span>体験コーナー</h2>
-                    <div class="exercise">
-                        <h4>体験課題1：簡単なプロンプト</h4>
-                        <p>以下のプロンプトをCopilot Edgeに入力してみてください：</p>
-                        <div class="prompt-box">商業高校のマーケティング授業で使える、身近な企業の成功事例を1つ教えてください。</div>
+                    <h2>プロンプトの品質による結果の違い</h2>
+                    <table>
+                        <tr>
+                            <th>プロンプトの種類</th>
+                            <th>入力例</th>
+                            <th>出力の特徴</th>
+                            <th>実用性</th>
+                        </tr>
+                        <tr>
+                            <td>❌ <strong>曖昧なプロンプト</strong></td>
+                            <td>簿記について教えて</td>
+                            <td>基本的な説明のみ<br/>すぐには使えない</td>
+                            <td><strong>低</strong></td>
+                        </tr>
+                        <tr>
+                            <td>✅ <strong>具体的なプロンプト</strong></td>
+                            <td>高校1年生向け<br/>5分で説明可能<br/>身近な例を使用<br/>300文字程度</td>
+                            <td>授業ですぐ使える<br/>具体的な内容<br/>適切な分量</td>
+                            <td><strong>高</strong></td>
+                        </tr>
+                    </table>
+                    <div class="highlight">
+                        <strong>重要</strong>: プロンプトの書き方によって出力の質が大きく変わります
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 9: Experience Corner 2 -->
+            <!-- Slide 10: 体験コーナー -->
             <div class="swipe-slide">
                 <div class="slide-content">
-                    <h2><span class="emoji">🎯</span>体験コーナー（続き）</h2>
+                    <h2><span class="emoji">🎯</span>体験コーナー</h2>
                     <div class="exercise">
-                        <h4>体験課題2：詳細なプロンプト</h4>
+                        <h4>演習1: 基本的なプロンプト</h4>
+                        <div class="prompt-box">商業高校のマーケティング授業で使える、
+身近な企業の成功事例を1つ教えてください。</div>
+                        
+                        <h4>演習2: 詳細なプロンプト</h4>
                         <div class="prompt-box">あなたは商業高校のマーケティング教師です。
 高校2年生に「ターゲティング戦略」を教える際に使用する、
 日本の身近な企業（コンビニ、ファーストフード等）の具体的成功事例を、
@@ -512,57 +625,57 @@
                 </div>
             </div>
 
-            <!-- Slide 10: Part 2 Title -->
+            <!-- Slide 11: Part 2 Title -->
             <div class="swipe-slide">
                 <div class="slide-content">
-                    <h1>第2部</h1>
-                    <h2>プロンプト設計の基本原則</h2>
+                    <h1>第2部：プロンプト設計の基本原則</h1>
                     <p>（25分）</p>
                 </div>
             </div>
 
-            <!-- Slide 11: 5W1H+Role -->
+            <!-- Slide 12: 明確性の原則 -->
             <div class="swipe-slide">
                 <div class="slide-content">
-                    <h2>明確性の原則：5W1H+Role</h2>
-                    <table>
+                    <h2>明確性の原則</h2>
+                    <h3>Role+5W1H を意識した指示</h3>
+                    <table style="font-size: 0.8rem;">
                         <tr>
                             <th>要素</th>
                             <th>内容</th>
                             <th>具体例</th>
                         </tr>
                         <tr>
-                            <td><strong>Role</strong></td>
-                            <td>AIに求める専門性</td>
-                            <td>簿記教師、キャリアカウンセラー</td>
+                            <td><strong>Role</strong>（役割）</td>
+                            <td>AIに求める専門性・立場</td>
+                            <td>簿記教師、キャリアカウンセラー、企業経営者</td>
                         </tr>
                         <tr>
-                            <td><strong>Who</strong></td>
+                            <td><strong>Who</strong>（誰が）</td>
                             <td>対象者・読み手</td>
                             <td>高校1年生、保護者、同僚教師</td>
                         </tr>
                         <tr>
-                            <td><strong>What</strong></td>
+                            <td><strong>What</strong>（何を）</td>
                             <td>作成する内容</td>
                             <td>学習指導案、練習問題、説明資料</td>
                         </tr>
                         <tr>
-                            <td><strong>When</strong></td>
+                            <td><strong>When</strong>（いつ）</td>
                             <td>時期・タイミング</td>
                             <td>新学期、中間試験前、進路指導時期</td>
                         </tr>
                         <tr>
-                            <td><strong>Where</strong></td>
-                            <td>使用場面</td>
+                            <td><strong>Where</strong>（どこで）</td>
+                            <td>使用場面・環境</td>
                             <td>教室、実習室、保護者会</td>
                         </tr>
                         <tr>
-                            <td><strong>Why</strong></td>
+                            <td><strong>Why</strong>（なぜ）</td>
                             <td>目的・理由</td>
                             <td>理解促進、動機付け、技能習得</td>
                         </tr>
                         <tr>
-                            <td><strong>How</strong></td>
+                            <td><strong>How</strong>（どのように）</td>
                             <td>方法・形式</td>
                             <td>講義形式、グループワーク、個別指導</td>
                         </tr>
@@ -570,87 +683,608 @@
                 </div>
             </div>
 
-            <!-- Continue with more slides following the same pattern... -->
-            <!-- For brevity, I'll add a few more key slides -->
-
-            <!-- Slide 12: Specific Expressions -->
+            <!-- Slide 13: 構造化の原則 -->
             <div class="swipe-slide">
                 <div class="slide-content">
-                    <h2>具体的な表現の重要性</h2>
+                    <h2>構造化の原則</h2>
+                    <h3>効果的なプロンプトの4つの構造要素</h3>
+                    
                     <div class="card-grid">
-                        <div class="bad-example">
-                            <h4>❌ 曖昧な表現</h4>
+                        <div class="card">
+                            <h4>🎯 1. 役割設定</h4>
                             <ul>
-                                <li>「分かりやすく」</li>
-                                <li>「詳しく」</li>
-                                <li>「いい感じに」</li>
+                                <li>あなたは○○の専門家です</li>
+                                <li>専門的視点の付与</li>
+                                <li>適切な回答レベル設定</li>
                             </ul>
                         </div>
-                        <div class="good-example">
-                            <h4>✅ 具体的な表現</h4>
+                        <div class="card">
+                            <h4>📋 2. タスク指示</h4>
                             <ul>
-                                <li>「高校1年生が理解できるレベルで」</li>
-                                <li>「専門用語には必ず注釈を付けて」</li>
-                                <li>「A4用紙1枚に収まる分量で」</li>
+                                <li>××について△△してください</li>
+                                <li>具体的な動作指示</li>
+                                <li>明確な成果物の指定</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h4>⚙️ 3. 条件・制約</h4>
+                            <ul>
+                                <li>対象者・レベル</li>
+                                <li>時間・分量制約</li>
+                                <li>使用場面・目的</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h4>📄 4. 出力形式</h4>
+                            <ul>
+                                <li>文字数・構成</li>
+                                <li>出力フォーマット</li>
+                                <li>必要項目の指定</li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 13: Exercise 1 -->
+            <!-- Slide 14: 演習：曖昧な指示を明確にする -->
             <div class="swipe-slide">
                 <div class="slide-content">
-                    <h2><span class="emoji">🎯</span>演習1：曖昧な指示を明確にする</h2>
+                    <h2><span class="emoji">🎯</span>演習：曖昧な指示を明確にする</h2>
                     <div class="exercise">
-                        <h4>課題：以下のプロンプトを改善してください</h4>
+                        <h4>課題: 次の曖昧なプロンプトを改善してください</h4>
                         <div class="prompt-box">原価計算について説明してください。</div>
                         
                         <h4>改善のポイント</h4>
                         <ul>
-                            <li>Role: AIにどの専門家の立場で回答してもらうか？</li>
-                            <li>Who: 対象者は？（学年、既習レベル）</li>
-                            <li>What: 原価計算のどの部分？</li>
-                            <li>Why: なぜ学ぶのか？</li>
-                            <li>How: どのような形式で？</li>
+                            <li><strong>Role</strong>: AIにどの専門家の立場で回答してもらうか？</li>
+                            <li><strong>Who</strong>: 対象者は？（学年、既習レベル）</li>
+                            <li><strong>What</strong>: 原価計算のどの部分？</li>
+                            <li><strong>Why</strong>: なぜ学ぶのか？</li>
+                            <li><strong>How</strong>: どのような形式で？</li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 14: Final Message -->
+            <!-- Slide 15: 改善例 -->
             <div class="swipe-slide">
                 <div class="slide-content">
-                    <h1>最後に</h1>
-                    <div class="highlight" style="font-size: 1.5rem; padding: 1rem 2rem; margin: 2rem 0;">
-                        「技術は手段、教育は目的」
+                    <h2>改善例</h2>
+                    <div class="good-example">
+                        <div class="prompt-box">あなたは商業高校の原価計算担当教師です。
+
+高校3年生〈簿記2級を学習済み〉に向けて、オーダーメイド家具製造を例に
+「個別原価計算」の基本的な流れを10分で説明できる原稿を作成してください。
+
+- 話し言葉で約600文字
+- 工程ごとの原価集計 → 仕掛品勘定への振替 → 製品完成までを順序立てて解説
+- 専門用語は平易に補足
+- 終わりに「ここまでで疑問はある？」など理解確認の問いかけを1行入れる</div>
                     </div>
-                    <p style="font-size: 1.2rem; margin: 2rem 0;">
-                        生成AIは教育を変革する強力なツールですが、<br>
-                        最も重要なのは「教師の専門性と人間的な温かさ」です。
-                    </p>
-                    <p style="font-size: 1.1rem;">
-                        今日学んだプロンプト技術を活用して、<br>
-                        より質の高い教育を生徒たちに提供していきましょう。
-                    </p>
                 </div>
             </div>
 
-            <!-- Slide 15: Resources -->
+            <!-- Slide 16: Part 3 Title -->
+            <div class="swipe-slide">
+                <div class="slide-content">
+                    <h1>第3部：商業教育での実践的活用</h1>
+                    <p>（35分）</p>
+                </div>
+            </div>
+
+            <!-- Slide 17: 商業教育でのAI活用 -->
+            <div class="swipe-slide">
+                <div class="slide-content">
+                    <h2>商業教育でのAI活用 - 4つの実践領域</h2>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>🎓 授業設計支援</h4>
+                            <ul>
+                                <li>学習指導案作成</li>
+                                <li>評価基準設定</li>
+                                <li>教材開発アイデア</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h4>📚 教材作成支援</h4>
+                            <ul>
+                                <li>練習問題生成</li>
+                                <li>事例研究作成</li>
+                                <li>説明文作成</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h4>👨‍🎓 学生サポート</h4>
+                            <ul>
+                                <li>個別フィードバック</li>
+                                <li>進路指導資料</li>
+                                <li>保護者向け資料</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h4>⚡ 業務効率化</h4>
+                            <ul>
+                                <li>会議資料作成</li>
+                                <li>報告書下書き</li>
+                                <li>メール文面作成</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 18: 学習指導案の作成補助 -->
+            <div class="swipe-slide">
+                <div class="slide-content">
+                    <h2>学習指導案の作成補助</h2>
+                    <h3>学習指導案作成プロセス</h3>
+                    <div class="process-flow">
+                        <span class="process-step">👨‍🏫 教師の準備作業</span>
+                        <span class="process-arrow">→</span>
+                        <span class="process-step">📝 生成AI活用</span>
+                        <span class="process-arrow">→</span>
+                        <span class="process-step">📋 指導案下書き生成</span>
+                        <span class="process-arrow">→</span>
+                        <span class="process-step">✏️ 教師による調整・改善</span>
+                        <span class="process-arrow">→</span>
+                        <span class="process-step">🎓 授業実施準備完了</span>
+                    </div>
+                    
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>AI活用で設定する要素</h4>
+                            <ul>
+                                <li>🎯 学習目標設定</li>
+                                <li>⏰ 時間配分計画</li>
+                                <li>👥 生徒活動設計</li>
+                                <li>📊 評価方法設定</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h4>活用場面</h4>
+                            <ul>
+                                <li>新単元導入指導案</li>
+                                <li>実習授業手順書</li>
+                                <li>グループワーク進行台本</li>
+                                <li>評価活動設計</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 19: 教材開発のアイデア出し -->
+            <div class="swipe-slide">
+                <div class="slide-content">
+                    <h2>教材開発のアイデア出し</h2>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>🌍 身近な事例収集</h4>
+                            <ul>
+                                <li>コンビニ経営分析</li>
+                                <li>地元企業見学</li>
+                                <li>SNSマーケティング事例</li>
+                                <li>キャッシュレス決済普及</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h4>📰 時事問題関連付け</h4>
+                            <ul>
+                                <li>経済ニュース活用</li>
+                                <li>企業不祥事分析</li>
+                                <li>新商品発売事例</li>
+                                <li>働き方改革影響</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h4>🔗 他分野統合学習</h4>
+                            <ul>
+                                <li>数学×簿記計算</li>
+                                <li>英語×国際ビジネス</li>
+                                <li>情報×データ分析</li>
+                                <li>社会×企業社会責任</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h4>🏢 地域企業連携</h4>
+                            <ul>
+                                <li>インターンシップ設計</li>
+                                <li>ゲストスピーカー招聘</li>
+                                <li>職場見学企画</li>
+                                <li>産学連携プロジェクト</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 20: 評価基準の設定支援 -->
+            <div class="swipe-slide">
+                <div class="slide-content">
+                    <h2>評価基準の設定支援</h2>
+                    <div class="process-flow">
+                        <span class="process-step">📋 評価が必要な活動・課題</span>
+                        <span class="process-arrow">→</span>
+                        <span class="process-step">🤖 生成AI活用</span>
+                        <span class="process-arrow">→</span>
+                        <span class="process-step">✅ 教師による調整・確認</span>
+                        <span class="process-arrow">→</span>
+                        <span class="process-step">📊 実用的評価基準完成</span>
+                    </div>
+                    
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>📝 ルーブリック作成</h4>
+                            <ul>
+                                <li>評価観点の整理</li>
+                                <li>レベル別基準設定</li>
+                                <li>記述子の具体化</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h4>🎯 パフォーマンス評価設計</h4>
+                            <ul>
+                                <li>行動目標の明確化</li>
+                                <li>観察ポイント設定</li>
+                                <li>評価方法の選定</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h4>👥 自己・相互評価項目</h4>
+                            <ul>
+                                <li>自己省察項目</li>
+                                <li>相互フィードバック観点</li>
+                                <li>成長目標設定</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 21: 教育理論との融合のメリット -->
+            <div class="swipe-slide">
+                <div class="slide-content">
+                    <h2>教育理論との融合のメリット</h2>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>📚 理論的根拠の明確化</h4>
+                            <ul>
+                                <li>指導選択の根拠明示</li>
+                                <li>教育哲学の具現化</li>
+                                <li>教育効果の予測可能性</li>
+                                <li>同僚への説明責任</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h4>🔬 科学的アプローチ</h4>
+                            <ul>
+                                <li>経験則からの脱却</li>
+                                <li>エビデンスベース教育</li>
+                                <li>再現可能な指導法</li>
+                                <li>個人差の標準化</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h4>🎯 効果的指導法選択</h4>
+                            <ul>
+                                <li>生徒特性に応じた選択</li>
+                                <li>学習内容に最適化</li>
+                                <li>複数理論の統合活用</li>
+                                <li>目標達成の効率化</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h4>📊 客観的評価基準</h4>
+                            <ul>
+                                <li>学習成果の測定</li>
+                                <li>指導改善の指針</li>
+                                <li>研究的実践の促進</li>
+                                <li>知見の蓄積・共有</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 22: 演習：簿記授業の指導案作成 -->
+            <div class="swipe-slide">
+                <div class="slide-content">
+                    <h2><span class="emoji">🎯</span>演習：簿記授業の指導案作成</h2>
+                    <div class="exercise">
+                        <h4>課題</h4>
+                        <p>「現金・預金」の授業（50分）の指導案作成プロンプトを作成してください</p>
+                        
+                        <h4>条件設定</h4>
+                        <ul>
+                            <li><strong>対象</strong>: 高校1年生（簿記初学者）</li>
+                            <li><strong>単元</strong>: 3級簿記「現金・預金の記帳」</li>
+                            <li><strong>目標</strong>: 現金出納帳と当座預金出納帳の記入ができる</li>
+                            <li><strong>使用教材</strong>: 検定試験の過去問題を活用</li>
+                        </ul>
+                        
+                        <h4>プロンプト作成のヒント</h4>
+                        <ol>
+                            <li>役割設定：商業高校の簿記担当教師</li>
+                            <li>具体的指示：50分授業の指導案作成</li>
+                            <li>条件・制約：初学者対象、実習中心、評価場面含む</li>
+                            <li>出力形式：時間配分表、指導のポイント、準備物</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 23: Part 4 Title -->
+            <div class="swipe-slide">
+                <div class="slide-content">
+                    <h1>第4部：高度なプロンプト技術</h1>
+                    <p>（10分）</p>
+                </div>
+            </div>
+
+            <!-- Slide 24: チェーン・オブ・ソート -->
+            <div class="swipe-slide">
+                <div class="slide-content">
+                    <h2>チェーン・オブ・ソート（思考の連鎖）</h2>
+                    <h3>段階的思考を促す技術</h3>
+                    <div class="process-flow">
+                        <span class="process-step">🔴 複雑な問題</span>
+                        <span class="process-arrow">⬇️</span>
+                        <span class="process-step">🔷 ステップ1: 現状分析</span>
+                        <span class="process-arrow">⬇️</span>
+                        <span class="process-step">🔷 ステップ2: 原因特定</span>
+                        <span class="process-arrow">⬇️</span>
+                        <span class="process-step">🔷 ステップ3: 解決策検討</span>
+                        <span class="process-arrow">⬇️</span>
+                        <span class="process-step">🔷 ステップ4: 最適解選択</span>
+                        <span class="process-arrow">⬇️</span>
+                        <span class="process-step">🔷 ステップ5: 実行計画</span>
+                        <span class="process-arrow">⬇️</span>
+                        <span class="process-step">🟢 論理的で体系的な回答</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 25: ロールプレイング技術 -->
+            <div class="swipe-slide">
+                <div class="slide-content">
+                    <h2>ロールプレイング技術</h2>
+                    <h3>多角的視点の例</h3>
+                    <h4>🎯 <strong>課題</strong>: インターンシップ導入</h4>
+                    
+                    <table>
+                        <tr>
+                            <th>立場</th>
+                            <th>視点</th>
+                            <th>主な関心事</th>
+                        </tr>
+                        <tr>
+                            <td>👨‍🏫 <strong>教師</strong></td>
+                            <td>教育効果<br/>指導負担<br/>安全管理</td>
+                            <td>具体的な教育成果を上げられるか</td>
+                        </tr>
+                        <tr>
+                            <td>🏢 <strong>企業</strong></td>
+                            <td>人材確保<br/>指導コスト<br/>企業責任</td>
+                            <td>将来の採用につながるか</td>
+                        </tr>
+                        <tr>
+                            <td>👨‍🎓 <strong>生徒</strong></td>
+                            <td>学習機会<br/>就職準備<br/>負担感</td>
+                            <td>実際の仕事体験ができるか</td>
+                        </tr>
+                        <tr>
+                            <td>👪 <strong>保護者</strong></td>
+                            <td>子どもの成長<br/>安全性<br/>進路への影響</td>
+                            <td>子どもにとってプラスになるか</td>
+                        </tr>
+                    </table>
+                    
+                    <div class="highlight">
+                        <strong>🔄 結果</strong>: 統合的判断でバランスの取れた解決策を導出
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 26: 制約条件の活用 -->
+            <div class="swipe-slide">
+                <div class="slide-content">
+                    <h2>制約条件の活用</h2>
+                    <h3>文字数制限、形式指定</h3>
+                    
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>制約の種類</h4>
+                            <ul>
+                                <li><strong>分量制約</strong>: 「300文字以内」「A4用紙1枚」</li>
+                                <li><strong>時間制約</strong>: 「5分で説明可能」「50分授業用」</li>
+                                <li><strong>形式制約</strong>: 「箇条書きで」「表形式で」「会話形式で」</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h4>対象者レベルの調整</h4>
+                            <ul>
+                                <li>「中学生でも理解できるレベルで」</li>
+                                <li>「検定2級レベルの知識を前提として」</li>
+                                <li>「大学進学希望者向けの発展的内容で」</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 27: Part 5 Title -->
+            <div class="swipe-slide">
+                <div class="slide-content">
+                    <h1>第5部：実践とまとめ</h1>
+                    <p>（5分）</p>
+                </div>
+            </div>
+
+            <!-- Slide 28: 継続的改善のサイクル -->
+            <div class="swipe-slide">
+                <div class="slide-content">
+                    <h2>継続的改善のサイクル</h2>
+                    <h3>🔄 <strong>実践 → 評価 → 改善 → 実践</strong></h3>
+                    
+                    <div class="process-flow">
+                        <span class="process-step">🌱 実践</span>
+                        <span class="process-arrow">→</span>
+                        <span class="process-step">📈 評価</span>
+                        <span class="process-arrow">→</span>
+                        <span class="process-step">⚙️ 改善</span>
+                        <span class="process-arrow">→</span>
+                        <span class="process-step">🌱 実践</span>
+                    </div>
+                    
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>🌱 実践</h4>
+                            <ul>
+                                <li>プロンプト使用</li>
+                                <li>結果確認</li>
+                                <li>日常的な活用で経験を積む</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h4>📈 評価</h4>
+                            <ul>
+                                <li>効果測定</li>
+                                <li>課題特定</li>
+                                <li>何がうまくいき、何が改善が必要かを分析</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h4>⚙️ 改善</h4>
+                            <ul>
+                                <li>プロンプト修正</li>
+                                <li>新技術導入</li>
+                                <li>学んだことを次の実践に活かす</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h4>📚 <strong>サポートリソース</strong></h4>
+                    <ul>
+                        <li><strong>プロンプトライブラリ</strong>: 効果的なプロンプトを積む</li>
+                        <li><strong>最新技術情報</strong>: AIの進化に対応する</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 29: 今後の学習指針 -->
+            <div class="swipe-slide">
+                <div class="slide-content">
+                    <h2>今後の学習指針</h2>
+                    
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>即座に取り組めること（今日から1週間）</h4>
+                            <ul class="checklist">
+                                <li>自分の担当科目で1つのプロンプトを作成・試用</li>
+                                <li>配布されたプロンプト集から3つを実践</li>
+                                <li>同僚1名と今日の学習内容を共有</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h4>1ヶ月以内の目標</h4>
+                            <ul class="checklist">
+                                <li>5つ以上のプロンプトを授業で活用</li>
+                                <li>効果的だったプロンプトを記録・整理</li>
+                                <li>教科内でプロンプト活用事例を共有</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h4>3ヶ月以内の目標</h4>
+                            <ul class="checklist">
+                                <li>オリジナルプロンプト集（10個以上）を作成</li>
+                                <li>他の教員にプロンプト技術を指導</li>
+                                <li>学校全体でのAI活用推進に貢献</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 30: 核心理念 -->
+            <div class="swipe-slide">
+                <div class="slide-content">
+                    <h2>核心理念</h2>
+                    <div class="center">
+                        <h3>🛠️ <strong>技術は手段</strong> ➕ 🎓 <strong>教育は目的</strong> = 🌱 <strong>より良い教育</strong> → 🎆 <strong>生徒の成長と成功</strong></h3>
+                    </div>
+                    
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>🔧 <strong>技術は手段</strong></h4>
+                            <ul>
+                                <li>効率化ツール</li>
+                                <li>アイデア生成支援</li>
+                                <li>作業負担軽減</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h4>🎯 <strong>教育は目的</strong></h4>
+                            <ul>
+                                <li>生徒の成長</li>
+                                <li>学習効果向上</li>
+                                <li>人間性の育成</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h4>🎓 <strong>教師の専門性</strong></h4>
+                            <ul>
+                                <li>教育経験</li>
+                                <li>教科専門知識</li>
+                                <li>生徒理解力</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h4>❤️ <strong>人間的温かさ</strong></h4>
+                            <ul>
+                                <li>共感力</li>
+                                <li>コミュニケーション力</li>
+                                <li>個別配慮</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 31: 最終メッセージ -->
+            <div class="swipe-slide">
+                <div class="slide-content">
+                    <h1>「技術は手段、教育は目的」</h1>
+                    <div class="center">
+                        <p style="font-size: 1.2rem; margin: 2rem 0;">
+                            生成AIは教育を変革する強力なツールですが、最も重要なのは「教師の専門性と人間的な温かさ」です
+                        </p>
+                        <p style="font-size: 1.1rem;">
+                            今日学んだプロンプト技術を活用して、より質の高い教育を生徒たちに提供していただけることを期待しています。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 32: 配布資料 -->
             <div class="swipe-slide">
                 <div class="slide-content">
                     <h2>配布資料</h2>
                     <div class="card">
-                        <h3><span class="emoji">📄</span>本日の配布資料一覧</h3>
+                        <h3>📚 配布資料</h3>
                         <ul style="text-align: left; margin: 1rem 0;">
                             <li>プロンプト基本テンプレート集</li>
-                            <li>商業教育分野別プロンプト事例集（全40例）</li>
-                            <li>プロンプト評価チェックリスト</li>
+                            <li>商業教育分野別プロンプト事例集（40+事例）</li>
+                            <li>評価チェックリスト</li>
                             <li>継続学習ガイド</li>
                         </ul>
-                        <p style="margin-top: 2rem; font-weight: bold;">
-                            アンケートにもご協力をお願いいたします
-                        </p>
+                        
+                        <h3>🔗 GitHub リポジトリ</h3>
+                        <p><strong>https://github.com/nahisaho/CommerceHS-GenAI-toolkit</strong></p>
+                        
+                        <h3>📝 フィードバック</h3>
+                        <p><strong>セミナー終了後のアンケート</strong>にもご協力をお願いいたします</p>
+                        
+                        <p class="center">⭐ Star をつけていただけると励みになります！</p>
                     </div>
                 </div>
             </div>

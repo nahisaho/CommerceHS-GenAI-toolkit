@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>商業高等学校教員向け 生成AI利活用セミナー</title>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yu+Gothic:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Yu Gothic', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0078d4 0%, #106ebe 25%, #005a9e 50%, #004578 75%, #003f69 100%);
+            color: #ffffff;
+            font-weight: 300;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        /* Fluent Design System - Acrylic Material */
+        .swipe-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            backdrop-filter: blur(30px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .swipe-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .swipe-slide {
+            flex-shrink: 0;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 3rem;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Typography - Presentation Zen inspired */
+        .slide-content {
+            max-width: 900px;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+        
+        /* Title Slide */
+        .title-slide h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .title-slide .subtitle {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 3rem;
+            letter-spacing: 0.01em;
+        }
+        
+        .title-slide .metadata {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 300;
+        }
+        
+        /* Section Headers */
+        .section-header h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 300;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #e6f3ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .section-header .part-number {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 400;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        /* Power Phrase */
+        .power-phrase {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 500;
+            text-align: center;
+            color: #ffffff;
+            margin: 2rem 0;
+            line-height: 1.3;
+            letter-spacing: -0.01em;
+            position: relative;
+        }
+        
+        .power-phrase::before,
+        .power-phrase::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+            transform: translateY(-50%);
+        }
+        
+        .power-phrase::before {
+            left: -80px;
+        }
+        
+        .power-phrase::after {
+            right: -80px;
+        }
+        
+        /* Content Typography */
+        .content-slide h3 {
+            font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+            font-weight: 400;
+            margin-bottom: 2rem;
+            color: #ffffff;
+            letter-spacing: -0.01em;
+        }
+        
+        .content-slide p {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+        
+        .content-slide ul {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+        
+        .content-slide li {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+            font-weight: 300;
+        }
+        
+        .content-slide li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 400;
+        }
+        
+        /* Highlight Elements */
+        .highlight {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.3rem 0.8rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-weight: 400;
+        }
+        
+        /* Large Number Display */
+        .big-number {
+            font-size: clamp(4rem, 10vw, 8rem);
+            font-weight: 200;
+            color: rgba(255, 255, 255, 0.3);
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+        
+        /* Process Steps */
+        .process-step {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            margin: 0.5rem;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            font-weight: 400;
+            backdrop-filter: blur(10px);
+        }
+        
+        /* Four Elements Grid */
+        .four-elements {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+            width: 100%;
+        }
+        
+        .element-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2rem 1.5rem;
+            border-radius: 16px;
+            text-align: center;
+            backdrop-filter: blur(15px);
+            transition: all 0.3s ease;
+        }
+        
+        .element-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+        
+        .element-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .element-card h4 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+        
+        .element-card p {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 300;
+        }
+        
+        /* Timeline */
+        .timeline {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .timeline-item {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1.5rem 1rem;
+            border-radius: 12px;
+            text-align: center;
+            min-width: 150px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .timeline-item .time {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+        
+        .timeline-item .title {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-item .desc {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 300;
+        }
+        
+        /* Navigation */
+        .slide-nav {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            z-index: 1000;
+        }
+        
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 400;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.3);
+            transition: width 0.3s ease;
+            z-index: 1000;
+        }
+        
+        /* Slide Counter */
+        .slide-counter {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            font-weight: 300;
+            z-index: 1000;
+        }
+        
+        /* Special slide types */
+        .quote-slide {
+            text-align: center;
+            font-style: italic;
+        }
+        
+        .quote-slide .quote {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 300;
+            line-height: 1.4;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.95);
+        }
+        
+        /* FAQ Styles */
+        .faq-question {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 500;
+            margin-bottom: 2rem;
+            color: #ffffff;
+        }
+        
+        .faq-answer {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.7;
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .swipe-slide {
+                padding: 2rem 1.5rem;
+            }
+            
+            .four-elements {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .timeline {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .power-phrase::before,
+            .power-phrase::after {
+                display: none;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .slide-content > * {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        .slide-content > *:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+        
+        .slide-content > *:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+        
+        .slide-content > *:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="swipe-container">
+        <div class="swipe-wrapper" id="swipeWrapper">
+            <!-- Slide 1: Title -->
+            <div class="swipe-slide title-slide">
+                <div class="slide-content">
+                    <h1>商業高等学校教員向け<br>生成AI利活用セミナー</h1>
+                    <div class="subtitle">プロンプトエンジニアリングの基礎から実践まで</div>
+                    <div class="metadata">
+                        総時間：90分<br>
+                        対象：商業高校教員（初心者大歓迎）
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2: Core Philosophy -->
+            <div class="swipe-slide quote-slide">
+                <div class="slide-content">
+                    <div class="quote">「技術は手段、教育は目的」</div>
+                    <p>生成AIは教育を変革する強力なツールですが、<br>最も重要なのは教師の専門性と人間的な温かさです</p>
+                </div>
+            </div>
+
+            <!-- Slide 3: Timeline -->
+            <div class="swipe-slide content-slide">
+                <div class="slide-content">
+                    <h3>セミナータイムライン</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="time">0-15分</div>
+                            <div class="title">第1部</div>
+                            <div class="desc">基礎理解</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="time">15-40分</div>
+                            <div class="title">第2部</div>
+                            <div class="desc">基本原則</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="time">40-75分</div>
+                            <div class="title">第3部</div>
+                            <div class="desc">実践活用</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="time">75-85分</div>
+                            <div class="title">第4部</div>
+                            <div class="desc">高度技術</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="time">85-90分</div>
+                            <div class="title">第5部</div>
+                            <div class="desc">まとめ</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4: Part 1 Header -->
+            <div class="swipe-slide section-header">
+                <div class="slide-content">
+                    <div class="part-number">Part 1</div>
+                    <h2>生成AIとプロンプトの<br>基礎理解</h2>
+                    <div class="big-number">15<span style="font-size: 2rem;">分</span></div>
+                </div>
+            </div>
+
+            <!-- Slide 5: AI is not replacement -->
+            <div class="swipe-slide content-slide">
+                <div class="slide-content">
+                    <div class="power-phrase">AIは教師の代替ではなく<br>能力を拡張するツール</div>
+                    <p>生成AIは、テキスト・画像・音声・動画などの<br>新しいコンテンツを人工的に生成する技術です</p>
+                </div>
+            </div>
+
+            <!-- Slide 6: Four Types of AI -->
+            <div class="swipe-slide content-slide">
+                <div class="slide-content">
+                    <h3>4つの生成タイプ</h3>
+                    <div class="four-elements">
+                        <div class="element-card">
+                            <div class="icon">📝</div>
+                            <h4>テキスト生成</h4>
+                            <p>学習指導案<br>練習問題<br>説明文</p>
+                        </div>
+                        <div class="element-card">
+                            <div class="icon">🎨</div>
+                            <h4>画像生成</h4>
+                            <p>教材イラスト<br>説明図<br>プレゼン素材</p>
+                        </div>
+                        <div class="element-card">
+                            <div class="icon">🔊</div>
+                            <h4>音声生成</h4>
+                            <p>聞き取り教材<br>発音練習<br>ナレーション</p>
+                        </div>
+                        <div class="element-card">
+                            <div class="icon">🎬</div>
+                            <h4>動画生成</h4>
+                            <p>説明動画<br>授業録画編集<br>教材動画</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 7: Prompt Definition -->
+            <div class="swipe-slide content-slide">
+                <div class="slide-content">
+                    <div class="power-phrase">プロンプト = AIへの指示書</div>
+                    <p>プロンプトの書き方によって<br>出力の質が大きく変わります</p>
+                </div>
+            </div>
+
+            <!-- Slide 8: Bad vs Good Prompt -->
+            <div class="swipe-slide content-slide">
+                <div class="slide-content">
+                    <h3>プロンプトの品質による違い</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
+                        <div style="background: rgba(220, 53, 69, 0.2); padding: 2rem; border-radius: 12px; border: 1px solid rgba(220, 53, 69, 0.3);">
+                            <h4 style="color: #ff6b6b; margin-bottom: 1rem;">❌ 曖昧なプロンプト</h4>
+                            <p style="font-style: italic; margin-bottom: 1rem;">"簿記について教えて"</p>
+                            <p style="font-size: 0.9rem;">実用性：低</p>
+                        </div>
+                        <div style="background: rgba(40, 167, 69, 0.2); padding: 2rem; border-radius: 12px; border: 1px solid rgba(40, 167, 69, 0.3);">
+                            <h4 style="color: #51cf66; margin-bottom: 1rem;">✅ 具体的なプロンプト</h4>
+                            <p style="font-size: 0.9rem; margin-bottom: 1rem;">「商業高校の簿記担当教師として、高校1年生に「資産・負債・純資産」を身近な例で5分で説明...」</p>
+                            <p style="font-size: 0.9rem;">実用性：高</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 9: Part 2 Header -->
+            <div class="swipe-slide section-header">
+                <div class="slide-content">
+                    <div class="part-number">Part 2</div>
+                    <h2>プロンプト設計の<br>基本原則</h2>
+                    <div class="big-number">25<span style="font-size: 2rem;">分</span></div>
+                </div>
+            </div>
+
+            <!-- Slide 10: Role + 5W1H -->
+            <div class="swipe-slide content-slide">
+                <div class="slide-content">
+                    <div class="power-phrase">Role + 5W1H で<br>指示を明確化</div>
+                    <ul>
+                        <li><span class="highlight">Role</span>：AIに求める専門性・立場</li>
+                        <li><span class="highlight">Who</span>：対象者・読み手</li>
+                        <li><span class="highlight">What</span>：作成する内容</li>
+                        <li><span class="highlight">When/Where/Why/How</span>：詳細条件</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 11: 4 Elements -->
+            <div class="swipe-slide content-slide">
+                <div class="slide-content">
+                    <div class="power-phrase">4つの要素で効果的な<br>プロンプトを設計</div>
+                    <div class="four-elements">
+                        <div class="element-card">
+                            <div class="icon">🎯</div>
+                            <h4>役割設定</h4>
+                            <p>専門的視点の付与</p>
+                        </div>
+                        <div class="element-card">
+                            <div class="icon">📋</div>
+                            <h4>タスク指示</h4>
+                            <p>具体的な動作指示</p>
+                        </div>
+                        <div class="element-card">
+                            <div class="icon">⚙️</div>
+                            <h4>条件・制約</h4>
+                            <p>対象者・時間・分量</p>
+                        </div>
+                        <div class="element-card">
+                            <div class="icon">📄</div>
+                            <h4>出力形式</h4>
+                            <p>文字数・構成指定</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 12: Context Importance -->
+            <div class="swipe-slide content-slide">
+                <div class="slide-content">
+                    <div class="power-phrase">背景情報がより適切な<br>回答を引き出す</div>
+                    <ul>
+                        <li>教育環境・生徒の特性</li>
+                        <li>学習状況・習熟度</li>
+                        <li>制約条件・期待する成果</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 13: Part 3 Header -->
+            <div class="swipe-slide section-header">
+                <div class="slide-content">
+                    <div class="part-number">Part 3</div>
+                    <h2>商業教育での<br>実践的活用</h2>
+                    <div class="big-number">35<span style="font-size: 2rem;">分</span></div>
+                </div>
+            </div>
+
+            <!-- Slide 14: 4 Practice Areas -->
+            <div class="swipe-slide content-slide">
+                <div class="slide-content">
+                    <div class="power-phrase">授業設計・教材作成<br>学生サポート・業務効率化</div>
+                    <div class="four-elements">
+                        <div class="element-card">
+                            <div class="icon">🎓</div>
+                            <h4>授業設計支援</h4>
+                            <p>学習指導案作成<br>評価基準設定</p>
+                        </div>
+                        <div class="element-card">
+                            <div class="icon">📚</div>
+                            <h4>教材作成支援</h4>
+                            <p>練習問題生成<br>事例研究作成</p>
+                        </div>
+                        <div class="element-card">
+                            <div class="icon">👨‍🎓</div>
+                            <h4>学生サポート</h4>
+                            <p>個別フィードバック<br>進路指導資料</p>
+                        </div>
+                        <div class="element-card">
+                            <div class="icon">⚡</div>
+                            <h4>業務効率化</h4>
+                            <p>会議資料作成<br>報告書下書き</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 15: Lesson Plan Support -->
+            <div class="swipe-slide content-slide">
+                <div class="slide-content">
+                    <div class="power-phrase">AI活用で<br>指導案作成を効率化</div>
+                    <div style="display: flex; align-items: center; justify-content: center; margin: 2rem 0;">
+                        <div class="process-step">教師の準備</div>
+                        <span style="margin: 0 1rem; font-size: 1.5rem;">→</span>
+                        <div class="process-step">AI活用</div>
+                        <span style="margin: 0 1rem; font-size: 1.5rem;">→</span>
+                        <div class="process-step">調整・改善</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 16: Material Development -->
+            <div class="swipe-slide content-slide">
+                <div class="slide-content">
+                    <div class="power-phrase">身近な事例から地域企業連携まで<br>多角的にアイデア創出</div>
+                    <ul>
+                        <li>身近な事例収集（コンビニ分析、SNS事例）</li>
+                        <li>時事問題関連付け（経済ニュース活用）</li>
+                        <li>他分野統合学習（数学×簿記計算）</li>
+                        <li>地域企業連携（インターンシップ設計）</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 17: Assessment Support -->
+            <div class="swipe-slide content-slide">
+                <div class="slide-content">
+                    <div class="power-phrase">ルーブリック作成から<br>パフォーマンス評価まで体系的に支援</div>
+                    <div style="display: flex; justify-content: center; align-items: center; margin: 2rem 0;">
+                        <div class="process-step">ルーブリック作成</div>
+                        <span style="margin: 0 1rem; font-size: 1.5rem;">+</span>
+                        <div class="process-step">パフォーマンス評価</div>
+                        <span style="margin: 0 1rem; font-size: 1.5rem;">+</span>
+                        <div class="process-step">自己・相互評価</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 18: Educational Theory -->
+            <div class="swipe-slide content-slide">
+                <div class="slide-content">
+                    <div class="power-phrase">理論的根拠に基づく<br>科学的アプローチで教育の質向上</div>
+                    <ul>
+                        <li>指導選択の根拠明示</li>
+                        <li>エビデンスベース教育の実現</li>
+                        <li>再現可能な指導法の確立</li>
+                        <li>客観的評価基準の設定</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 19: Practice Exercise -->
+            <div class="swipe-slide content-slide">
+                <div class="slide-content">
+                    <div class="power-phrase">実践的な指導案作成で<br>スキルを定着</div>
+                    <div style="background: rgba(255, 255, 255, 0.1); padding: 2rem; border-radius: 12px; margin: 2rem 0;">
+                        <h4 style="color: #ffffff; margin-bottom: 1rem;">演習課題</h4>
+                        <p>「現金・預金」の授業（50分）の<br>指導案作成プロンプトを作成してください</p>
+                        <p style="font-size: 0.9rem; margin-top: 1rem; color: rgba(255, 255, 255, 0.8);">
+                            対象：高校1年生（簿記初学者）<br>
+                            目標：現金出納帳と当座預金出納帳の記入習得
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 20: Part 4 Header -->
+            <div class="swipe-slide section-header">
+                <div class="slide-content">
+                    <div class="part-number">Part 4</div>
+                    <h2>高度なプロンプト技術</h2>
+                    <div class="big-number">10<span style="font-size: 2rem;">分</span></div>
+                </div>
+            </div>
+
+            <!-- Slide 21: Chain of Thought -->
+            <div class="swipe-slide content-slide">
+                <div class="slide-content">
+                    <div class="power-phrase">段階的思考で複雑な問題を<br>論理的に解決</div>
+                    <div style="display: flex; flex-direction: column; align-items: center; margin: 2rem 0;">
+                        <div class="process-step">複雑な問題</div>
+                        <span style="margin: 0.5rem 0; font-size: 1.5rem;">↓</span>
+                        <div class="process-step">現状分析 → 原因特定 → 解決策検討</div>
+                        <span style="margin: 0.5rem 0; font-size: 1.5rem;">↓</span>
+                        <div class="process-step">論理的で体系的な回答</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 22: Role Playing -->
+            <div class="swipe-slide content-slide">
+                <div class="slide-content">
+                    <div class="power-phrase">多角的視点で<br>統合的判断を導出</div>
+                    <div class="four-elements">
+                        <div class="element-card">
+                            <div class="icon">👨‍🏫</div>
+                            <h4>教師視点</h4>
+                            <p>教育効果<br>指導負担</p>
+                        </div>
+                        <div class="element-card">
+                            <div class="icon">🏢</div>
+                            <h4>企業視点</h4>
+                            <p>人材確保<br>指導コスト</p>
+                        </div>
+                        <div class="element-card">
+                            <div class="icon">👨‍🎓</div>
+                            <h4>生徒視点</h4>
+                            <p>学習機会<br>就職準備</p>
+                        </div>
+                        <div class="element-card">
+                            <div class="icon">👪</div>
+                            <h4>保護者視点</h4>
+                            <p>子どもの成長<br>安全性</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 23: Constraints -->
+            <div class="swipe-slide content-slide">
+                <div class="slide-content">
+                    <div class="power-phrase">制約が質の高い<br>回答を生み出す</div>
+                    <ul>
+                        <li><span class="highlight">分量制約</span>：「300文字以内」「A4用紙1枚」</li>
+                        <li><span class="highlight">時間制約</span>：「5分で説明可能」「50分授業用」</li>
+                        <li><span class="highlight">形式制約</span>：「箇条書きで」「表形式で」</li>
+                        <li><span class="highlight">レベル調整</span>：学習段階に応じた内容</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 24: Part 5 Header -->
+            <div class="swipe-slide section-header">
+                <div class="slide-content">
+                    <div class="part-number">Part 5</div>
+                    <h2>実践とまとめ</h2>
+                    <div class="big-number">5<span style="font-size: 2rem;">分</span></div>
+                </div>
+            </div>
+
+            <!-- Slide 25: Continuous Improvement -->
+            <div class="swipe-slide content-slide">
+                <div class="slide-content">
+                    <div class="power-phrase">実践 → 評価 → 改善 → 実践<br>のサイクルで成長</div>
+                    <div style="display: flex; justify-content: center; align-items: center; margin: 2rem 0;">
+                        <div class="process-step">🌱 実践</div>
+                        <span style="margin: 0 1rem; font-size: 1.5rem;">→</span>
+                        <div class="process-step">📈 評価</div>
+                        <span style="margin: 0 1rem; font-size: 1.5rem;">→</span>
+                        <div class="process-step">⚙️ 改善</div>
+                        <span style="margin: 0 1rem; font-size: 1.5rem;">→</span>
+                        <div class="process-step">🌱 実践</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 26: Learning Timeline -->
+            <div class="swipe-slide content-slide">
+                <div class="slide-content">
+                    <div class="power-phrase">段階的な目標設定で<br>確実にスキルアップ</div>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="time">1週間以内</div>
+                            <div class="title">初期実践</div>
+                            <div class="desc">1つのプロンプト作成・試用</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="time">1ヶ月以内</div>
+                            <div class="title">活用拡大</div>
+                            <div class="desc">5つ以上のプロンプト活用</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="time">3ヶ月以内</div>
+                            <div class="title">指導者へ</div>
+                            <div class="desc">他教員への技術指導</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 27: Final Message -->
+            <div class="swipe-slide quote-slide">
+                <div class="slide-content">
+                    <div class="quote">「技術は手段、教育は目的」</div>
+                    <div class="four-elements">
+                        <div class="element-card">
+                            <div class="icon">🔧</div>
+                            <h4>技術は手段</h4>
+                            <p>効率化ツール<br>支援システム</p>
+                        </div>
+                        <div class="element-card">
+                            <div class="icon">🎯</div>
+                            <h4>教育は目的</h4>
+                            <p>生徒の成長<br>学習効果向上</p>
+                        </div>
+                        <div class="element-card">
+                            <div class="icon">🎓</div>
+                            <h4>教師の専門性</h4>
+                            <p>教育経験<br>専門知識</p>
+                        </div>
+                        <div class="element-card">
+                            <div class="icon">❤️</div>
+                            <h4>人間的温かさ</h4>
+                            <p>共感力<br>個別配慮</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 28: Resources -->
+            <div class="swipe-slide content-slide">
+                <div class="slide-content">
+                    <div class="power-phrase">継続学習で<br>更なるスキルアップを</div>
+                    <ul>
+                        <li>プロンプト基本テンプレート集</li>
+                        <li>商業教育分野別プロンプト事例集（40+事例）</li>
+                        <li>評価チェックリスト</li>
+                        <li>継続学習ガイド</li>
+                    </ul>
+                    <p style="margin-top: 2rem; font-size: 1.1rem;">
+                        <span class="highlight">GitHub</span>: nahisaho/CommerceHS-GenAI-toolkit
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide 29: FAQ 1 -->
+            <div class="swipe-slide content-slide">
+                <div class="slide-content">
+                    <div class="faq-question">Q. 生成AIを使うことで、教師の指導力が低下しませんか？</div>
+                    <div class="faq-answer">
+                        生成AIは<span class="highlight">「指導力の代替」ではなく「指導力の拡張」ツール</span>です。
+                        <br><br>
+                        教材作成や事務作業の効率化により、生徒と向き合う時間や教材研究の時間を増やすことができます。
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 30: FAQ 2 -->
+            <div class="swipe-slide content-slide">
+                <div class="slide-content">
+                    <div class="faq-question">Q. AIが作成した内容をそのまま使用しても問題ありませんか？</div>
+                    <div class="faq-answer">
+                        <span class="highlight">AIの出力は必ず確認・修正が必要</span>です。
+                        <br><br>
+                        事実確認、教育的配慮、著作権等の観点から、教師の専門的判断を加えて使用してください。
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 31: Thank You -->
+            <div class="swipe-slide quote-slide">
+                <div class="slide-content">
+                    <div class="quote">ありがとうございました</div>
+                    <p>プロンプト技術を活用して、<br>より質の高い教育を生徒たちに<br>提供していただけることを期待しています</p>
+                    <p style="margin-top: 3rem; font-size: 1.2rem;">
+                        ⭐ <span class="highlight">Star</span> をつけていただけると励みになります！
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="slide-nav">
+        <button class="nav-btn" onclick="prevSlide()">← 前へ</button>
+        <button class="nav-btn" onclick="nextSlide()">次へ →</button>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Slide Counter -->
+    <div class="slide-counter" id="slideCounter">1 / 31</div>
+
+    <script>
+        let currentSlide = 0;
+        const totalSlides = document.querySelectorAll('.swipe-slide').length;
+        const wrapper = document.getElementById('swipeWrapper');
+        const progressBar = document.getElementById('progressBar');
+        const slideCounter = document.getElementById('slideCounter');
+
+        function updateSlide() {
+            const translateX = -currentSlide * 100;
+            wrapper.style.transform = `translateX(${translateX}%)`;
+            
+            // Update progress bar
+            const progress = ((currentSlide + 1) / totalSlides) * 100;
+            progressBar.style.width = `${progress}%`;
+            
+            // Update slide counter
+            slideCounter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateSlide();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlide();
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                prevSlide();
+            }
+        });
+
+        // Touch/swipe navigation
+        let startX = 0;
+        let endX = 0;
+
+        document.addEventListener('touchstart', function(e) {
+            startX = e.touches[0].clientX;
+        });
+
+        document.addEventListener('touchend', function(e) {
+            endX = e.changedTouches[0].clientX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const threshold = 50; // minimum distance for a swipe
+            const diff = startX - endX;
+
+            if (Math.abs(diff) > threshold) {
+                if (diff > 0) {
+                    nextSlide(); // swipe left
+                } else {
+                    prevSlide(); // swipe right
+                }
+            }
+        }
+
+        // Initialize
+        updateSlide();
+    </script>
+</body>
+</html>
