@@ -1,23 +1,8 @@
 ---
+layout: default
 title: 商業高等学校教員向け 生成AI利活用セミナー
 mermaid: true
 ---
-
-<script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
-<script>
-mermaid.initialize({
-  startOnLoad: true,
-  theme: 'default',
-  themeVariables: {
-    primaryColor: '#667eea',
-    primaryTextColor: '#fff',
-    primaryBorderColor: '#764ba2',
-    lineColor: '#667eea',
-    secondaryColor: '#f8f9fa',
-    tertiaryColor: '#e9ecef'
-  }
-});
-</script>
 
 # 商業高等学校教員向け 生成AI利活用セミナー
 ## 詳細講義資料
