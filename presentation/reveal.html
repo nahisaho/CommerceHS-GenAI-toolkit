@@ -3,1057 +3,753 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>商業高等学校教員向け 生成AI利活用セミナー</title>
+    <title>商業高等学校教員向け 生成AI利活用セミナー - Reveal.js版</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/white.min.css" id="theme">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css" id="theme">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/monokai.min.css">
     
+    <!-- Mermaid.js for diagrams -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    
     <style>
-        /* カスタムスタイル */
+        @import url('https://fonts.googleapis.com/css2?family=Yu+Gothic:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap');
+        
         .reveal {
-            font-family: 'Noto Sans JP', sans-serif;
-            font-size: 85%;
-        }
-        
-        .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
-            font-weight: 700;
-            color: #2c3e50;
-        }
-        
-        .reveal h1 {
-            font-size: 2.5em;
-        }
-        
-        .reveal h2 {
-            font-size: 2em;
-            color: #34495e;
+            font-family: 'Yu Gothic', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0078d4 0%, #106ebe 25%, #005a9e 50%, #004578 75%, #003f69 100%);
         }
         
         .reveal .slides section {
+            color: #ffffff;
+            text-align: center;
+        }
+        
+        .reveal h1 {
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+        }
+        
+        .reveal h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            color: #ffffff;
+            text-align: center;
+        }
+        
+        .reveal h3 {
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            color: #ffffff;
+            text-align: center;
+        }
+        
+        .reveal h4 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+        
+        .power-phrase {
+            font-size: 2.5rem;
+            font-weight: 500;
+            margin: 2rem 0;
+            color: #ffffff;
+            line-height: 1.3;
+            text-align: center;
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+        }
+        
+        .metadata {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 300;
+        }
+        
+        .part-number {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 400;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .big-number {
+            font-size: 4rem;
+            font-weight: 200;
+            color: rgba(255, 255, 255, 0.3);
+            margin: 1rem 0;
+        }
+        
+        .quote {
+            font-size: 3rem;
+            font-weight: 300;
+            line-height: 1.4;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.95);
+            font-style: italic;
+        }
+        
+        .reveal p {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1.5rem;
+        }
+        
+        .reveal ul {
+            list-style: none;
+            padding: 0;
             text-align: left;
+            max-width: 800px;
+            margin: 2rem auto;
         }
         
-        .reveal h1, .reveal h2, .reveal h3 {
-            text-align: center;
+        .reveal li {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
         }
         
-        .center {
-            text-align: center;
+        .reveal li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: rgba(255, 255, 255, 0.6);
         }
         
         .highlight {
-            background-color: #fff3cd;
-            padding: 2px 5px;
-            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
-        .good-example {
-            background-color: #d4edda;
-            border-left: 4px solid #28a745;
-            padding: 10px;
-            margin: 10px 0;
+        .four-elements {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem auto;
+            max-width: 700px;
         }
         
-        .bad-example {
-            background-color: #f8d7da;
-            border-left: 4px solid #dc3545;
-            padding: 10px;
-            margin: 10px 0;
+        .element-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
         }
         
-        .exercise {
-            background-color: #e8f4f8;
-            border: 2px solid #0066cc;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 8px;
+        .element-card .icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
         }
         
-        .exercise h4 {
-            color: #0066cc;
-            margin-top: 0;
+        .element-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
         }
         
-        .prompt-box {
-            background-color: #f0f0f0;
-            border: 1px solid #ccc;
-            padding: 15px;
-            margin: 10px 0;
-            font-family: monospace;
-            white-space: pre-wrap;
-            overflow-x: auto;
-            border-radius: 5px;
+        .element-card p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
         }
         
         .timeline {
             display: flex;
-            justify-content: space-between;
-            margin: 20px 0;
             flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
         }
         
         .timeline-item {
-            flex: 1;
-            text-align: center;
-            padding: 10px;
-            background-color: #e3f2fd;
-            margin: 0 5px;
-            border-radius: 5px;
-            min-width: 150px;
-        }
-        
-        .timeline-item.active {
-            background-color: #1976d2;
-            color: white;
-        }
-        
-        table {
-            border-collapse: collapse;
-            margin: 20px auto;
-            width: 100%;
-        }
-        
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px 12px;
-            text-align: left;
-        }
-        
-        th {
-            background-color: #f2f2f2;
-            font-weight: bold;
-        }
-        
-        .reveal pre {
-            box-shadow: none;
-            font-size: 0.75em;
-        }
-        
-        .reveal code {
-            font-family: 'Courier New', monospace;
-        }
-        
-        /* アイコン */
-        .icon {
-            font-size: 3em;
-            margin: 20px;
-        }
-        
-        /* フロー図 */
-        .flow-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 20px 0;
-            flex-wrap: wrap;
-        }
-        
-        .flow-box {
-            background-color: #e3f2fd;
-            padding: 20px;
-            margin: 10px;
-            border-radius: 8px;
-            text-align: center;
-            min-width: 150px;
-        }
-        
-        .flow-arrow {
-            font-size: 2em;
-            color: #666;
-            margin: 0 10px;
-        }
-        
-        /* チェックリスト */
-        .checklist {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        
-        .checklist li:before {
-            content: "☐ ";
-            font-size: 1.2em;
-            margin-right: 10px;
-        }
-        
-        .checklist li.checked:before {
-            content: "☑ ";
-            color: #28a745;
-        }
-        
-        /* 小さい文字 */
-        .small {
-            font-size: 0.8em;
-            color: #666;
-        }
-        
-        /* プログレスバー */
-        .progress-container {
-            width: 100%;
-            background-color: #e0e0e0;
-            border-radius: 10px;
-            overflow: hidden;
-            margin: 20px 0;
-        }
-        
-        .progress-bar {
-            height: 30px;
-            background-color: #4caf50;
-            text-align: center;
-            line-height: 30px;
-            color: white;
-            transition: width 0.5s ease;
-        }
-        
-        /* カード */
-        .card {
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 10px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .card h4 {
-            margin-top: 0;
-            color: #2c3e50;
-        }
-        
-        /* フレックスレイアウト */
-        .flex-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            gap: 20px;
-        }
-        
-        .flex-item {
-            flex: 1 1 45%;
-            min-width: 300px;
-        }
-
-        /* Mermaid図のスタイル */
-        .mermaid {
-            text-align: center;
-            background-color: white;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             padding: 1rem;
             border-radius: 8px;
-            margin: 1rem 0;
-        }
-
-        /* プロセス図のスタイル */
-        .process-step {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
-            margin: 5px;
-            display: inline-block;
-            font-weight: 600;
-        }
-
-        .process-arrow {
-            font-size: 1.5em;
-            color: #667eea;
-            margin: 0 10px;
-        }
-
-        /* 統計グリッド */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            margin: 1rem 0;
-        }
-        
-        .stat-item {
             text-align: center;
-            padding: 1rem;
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            border: 1px solid #ddd;
+            min-width: 100px;
         }
         
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #667eea;
+        .timeline-item .time {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
             margin-bottom: 0.5rem;
         }
         
-        .stat-label {
-            color: #666;
+        .timeline-item .title {
             font-size: 0.9rem;
+            font-weight: 500;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-item .desc {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .comparison-bad {
+            background: rgba(220, 53, 69, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 2px solid rgba(220, 53, 69, 0.6);
+        }
+        
+        .comparison-good {
+            background: rgba(40, 167, 69, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 2px solid rgba(40, 167, 69, 0.6);
+        }
+        
+        .comparison-bad h4 {
+            color: #ffb3ba;
+            margin-bottom: 1rem;
+        }
+        
+        .comparison-good h4 {
+            color: #a3e9a4;
+            margin-bottom: 1rem;
+        }
+        
+        .flowchart-html {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 2rem 0;
+        }
+        
+        .step-item {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #ffffff;
+            text-align: center;
+            min-width: 120px;
+        }
+        
+        .step-item.start {
+            background: rgba(255, 205, 210, 0.3);
+            border-color: rgba(255, 205, 210, 0.6);
+        }
+        
+        .step-item.end {
+            background: rgba(200, 230, 201, 0.3);
+            border-color: rgba(200, 230, 201, 0.6);
+        }
+        
+        .arrow {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: bold;
+        }
+        
+        .process-steps {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .process-step {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .exercise-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem auto;
+            text-align: left;
+            max-width: 600px;
+        }
+        
+        .exercise-box h4 {
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+        
+        .faq-question {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+        }
+        
+        .faq-answer {
+            font-size: 1rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
         }
     </style>
 </head>
 <body>
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
-    <script>
-        mermaid.initialize({
-            startOnLoad: true,
-            theme: 'default',
-            themeVariables: {
-                primaryColor: '#667eea',
-                primaryTextColor: '#fff',
-                primaryBorderColor: '#764ba2',
-                lineColor: '#667eea',
-                secondaryColor: '#f8f9fa',
-                tertiaryColor: '#e9ecef'
-            }
-        });
-    </script>
     <div class="reveal">
         <div class="slides">
-            <!-- タイトルスライド -->
+            
+            <!-- Slide 1: Title -->
             <section>
                 <h1>商業高等学校教員向け<br>生成AI利活用セミナー</h1>
-                <h3>プロンプトエンジニアリングの基礎から実践まで</h3>
-                <p class="center small">総時間：90分</p>
+                <div class="subtitle">プロンプトエンジニアリングの基礎から実践まで</div>
+                <div class="metadata">
+                    総時間：90分<br>
+                    対象：商業高校教員（初心者大歓迎）
+                </div>
             </section>
 
-            <!-- セミナーの目的 -->
+            <!-- Slide 2: Core Philosophy -->
             <section>
-                <h2>セミナーの目的</h2>
-                <h3>生成AIを教育現場で効果的に活用</h3>
-                <ul>
-                    <li><strong>プロンプトエンジニアリング</strong>の基礎習得</li>
-                    <li>日々の教育活動の<strong>効率化</strong></li>
-                    <li>教育の<strong>質向上</strong></li>
-                </ul>
-                
-                <h3>対象者</h3>
-                <ul>
-                    <li>商業高等学校の教員（初心者大歓迎）</li>
-                    <li>簿記、会計、マーケティング、情報処理、ビジネス基礎担当</li>
-                    <li>ICT活用教育に興味のある先生方</li>
-                </ul>
+                <div class="quote">「技術は手段、教育は目的」</div>
+                <p>生成AIは教育を変革する強力なツールですが、<br>最も重要なのは教師の専門性と人間的な温かさです</p>
             </section>
 
-            <!-- アジェンダ -->
+            <!-- Slide 3: Timeline -->
             <section>
-                <h2>セミナータイムライン（90分）</h2>
+                <h3>セミナータイムライン</h3>
                 <div class="timeline">
                     <div class="timeline-item">
-                        <strong>0-15分</strong><br>
-                        第1部：基礎理解<br>
-                        <small>生成AI概要・プロンプト基本概念</small>
+                        <div class="time">0-15分</div>
+                        <div class="title">第1部</div>
+                        <div class="desc">基礎理解</div>
                     </div>
                     <div class="timeline-item">
-                        <strong>15-40分</strong><br>
-                        第2部：基本原則<br>
-                        <small>明確性・構造化・文脈提供</small>
+                        <div class="time">15-40分</div>
+                        <div class="title">第2部</div>
+                        <div class="desc">基本原則</div>
                     </div>
                     <div class="timeline-item">
-                        <strong>40-75分</strong><br>
-                        第3部：実践活用<br>
-                        <small>授業設計・教材作成・学生サポート</small>
+                        <div class="time">40-75分</div>
+                        <div class="title">第3部</div>
+                        <div class="desc">実践活用</div>
                     </div>
                     <div class="timeline-item">
-                        <strong>75-85分</strong><br>
-                        第4部：高度技術<br>
-                        <small>高度プロンプト技術</small>
+                        <div class="time">75-85分</div>
+                        <div class="title">第4部</div>
+                        <div class="desc">高度技術</div>
                     </div>
                     <div class="timeline-item">
-                        <strong>85-90分</strong><br>
-                        第5部：まとめ<br>
-                        <small>実践・まとめ</small>
+                        <div class="time">85-90分</div>
+                        <div class="title">第5部</div>
+                        <div class="desc">まとめ</div>
                     </div>
                 </div>
             </section>
 
-            <!-- 第1部：生成AIとプロンプトの基礎理解 -->
+            <!-- Slide 4: Part 1 Header -->
             <section>
-                <section>
-                    <h1>第1部：生成AIとプロンプトの基礎理解</h1>
-                    <p class="center">（15分）</p>
-                </section>
-
-                <section>
-                    <h3>生成AIとは何か？</h3>
-                    <h4>定義</h4>
-                    <p><strong>生成AI（Generative AI）</strong>とは、テキスト、画像、音声などの新しいコンテンツを人工的に生成する技術</p>
-                    
-                    <h4>主要サービス</h4>
-                    <ul>
-                        <li><strong>Microsoft Copilot</strong> (Microsoft)</li>
-                        <li><strong>ChatGPT</strong> (OpenAI)</li>
-                        <li><strong>Claude</strong> (Anthropic)</li>
-                        <li><strong>Gemini</strong> (Google)</li>
-                    </ul>
-                </section>
-
-                <section>
-                    <h3>生成AIの種類と機能</h3>
-                    <div class="mermaid">
-mindmap
-  root((🤖 生成AI))
-    [📝 テキスト生成]
-      文章作成・編集
-      要約・翻訳
-      質問応答
-      アイデア生成
-    [🎨 画像生成]
-      イラスト・写真
-      図表・グラフ
-      デザイン素材
-    [🔊 音声生成]
-      音声合成
-      音楽生成
-      効果音作成
-    [🎬 動画生成]
-      動画編集
-      アニメーション
-      プレゼン動画
-                    </div>
-                </section>
-
-                <section>
-                    <h3>教育現場での活用例</h3>
-                    <div class="mermaid">
-flowchart LR
-    A[🤖 生成AI<br/>教育現場での活用]
-    
-    A --> B[📝 テキスト生成]
-    A --> C[🎨 画像生成]
-    A --> D[🔊 音声生成]
-    A --> E[🎬 動画生成]
-    
-    B --> B1[学習指導案作成]
-    B --> B2[練習問題生成]
-    B --> B3[説明文作成]
-    B --> B4[レポート添削]
-    
-    C --> C1[教材イラスト]
-    C --> C2[説明図作成]
-    C --> C3[プレゼン素材]
-    C --> C4[掲示物デザイン]
-    
-    D --> D1[聞き取り教材]
-    D --> D2[発音練習]
-    D --> D3[動画ナレーション]
-    D --> D4[BGM作成]
-    
-    E --> E1[説明動画作成]
-    E --> E2[授業録画編集]
-    E --> E3[教材動画]
-    E --> E4[生徒作品支援]
-                    </div>
-                </section>
-
-                <section>
-                    <h3>プロンプトとは？</h3>
-                    <h4>プロンプト = AIへの指示書</h4>
-                    
-                    <div class="bad-example">
-                        <h4>❌ 悪いプロンプト例</h4>
-                        <div class="prompt-box">簿記について教えて</div>
-                    </div>
-                    
-                    <div class="good-example">
-                        <h4>✅ 良いプロンプト例</h4>
-                        <div class="prompt-box">あなたは商業高校の簿記担当教師です。
-高校1年生（簿記初心者）に向けて、
-「資産・負債・純資産」の概念を、
-身近な例を使って分かりやすく5分で説明できる内容を、
-話し言葉で300文字程度で作成してください。</div>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>プロンプトの品質による結果の違い</h3>
-                    <table>
-                        <tr>
-                            <th>プロンプトの種類</th>
-                            <th>入力例</th>
-                            <th>出力の特徴</th>
-                            <th>実用性</th>
-                        </tr>
-                        <tr>
-                            <td>❌ <strong>曖昧なプロンプト</strong></td>
-                            <td>簿記について教えて</td>
-                            <td>基本的な説明のみ<br/>すぐには使えない</td>
-                            <td><strong>低</strong></td>
-                        </tr>
-                        <tr>
-                            <td>✅ <strong>具体的なプロンプト</strong></td>
-                            <td>高校1年生向け<br/>5分で説明可能<br/>身近な例を使用<br/>300文字程度</td>
-                            <td>授業ですぐ使える<br/>具体的な内容<br/>適切な分量</td>
-                            <td><strong>高</strong></td>
-                        </tr>
-                    </table>
-                    <p class="center highlight"><strong>重要</strong>: プロンプトの書き方によって出力の質が大きく変わります</p>
-                </section>
-
-                <section>
-                    <h3>🎯 体験コーナー</h3>
-                    <div class="exercise">
-                        <h4>演習1: 基本的なプロンプト</h4>
-                        <div class="prompt-box">商業高校のマーケティング授業で使える、
-身近な企業の成功事例を1つ教えてください。</div>
-                        
-                        <h4>演習2: 詳細なプロンプト</h4>
-                        <div class="prompt-box">あなたは商業高校のマーケティング教師です。
-高校2年生に「ターゲティング戦略」を教える際に使用する、
-日本の身近な企業（コンビニ、ファーストフード等）の具体的成功事例を、
-以下の構成で800文字程度で作成してください：
-1. 企業名と概要
-2. ターゲティング戦略の内容
-3. 成功要因の分析
-4. 生徒への質問（考察ポイント）</div>
-                    </div>
-                </section>
+                <div class="part-number">Part 1</div>
+                <h2>生成AIとプロンプトの<br>基礎理解</h2>
+                <div class="big-number">15<span style="font-size: 2rem;">分</span></div>
             </section>
 
-            <!-- 第2部：プロンプト設計の基本原則 -->
+            <!-- Slide 5: AI is not replacement -->
             <section>
-                <section>
-                    <h1>第2部：プロンプト設計の基本原則</h1>
-                    <p class="center">（25分）</p>
-                </section>
-
-                <section>
-                    <h3>明確性の原則</h3>
-                    <h4>Role+5W1H を意識した指示</h4>
-                    <table>
-                        <tr>
-                            <th>要素</th>
-                            <th>内容</th>
-                            <th>具体例</th>
-                        </tr>
-                        <tr>
-                            <td><strong>Role</strong>（役割）</td>
-                            <td>AIに求める専門性・立場</td>
-                            <td>簿記教師、キャリアカウンセラー、企業経営者</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Who</strong>（誰が）</td>
-                            <td>対象者・読み手</td>
-                            <td>高校1年生、保護者、同僚教師</td>
-                        </tr>
-                        <tr>
-                            <td><strong>What</strong>（何を）</td>
-                            <td>作成する内容</td>
-                            <td>学習指導案、練習問題、説明資料</td>
-                        </tr>
-                        <tr>
-                            <td><strong>When</strong>（いつ）</td>
-                            <td>時期・タイミング</td>
-                            <td>新学期、中間試験前、進路指導時期</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Where</strong>（どこで）</td>
-                            <td>使用場面・環境</td>
-                            <td>教室、実習室、保護者会</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Why</strong>（なぜ）</td>
-                            <td>目的・理由</td>
-                            <td>理解促進、動機付け、技能習得</td>
-                        </tr>
-                        <tr>
-                            <td><strong>How</strong>（どのように）</td>
-                            <td>方法・形式</td>
-                            <td>講義形式、グループワーク、個別指導</td>
-                        </tr>
-                    </table>
-                </section>
-
-                <section>
-                    <h3>構造化の原則</h3>
-                    <h4>効果的なプロンプトの4つの構造要素</h4>
-                    
-                    <h5>🎯 <strong>1. 役割設定</strong></h5>
-                    <ul>
-                        <li>あなたは○○の専門家です</li>
-                        <li>専門的視点の付与</li>
-                        <li>適切な回答レベル設定</li>
-                    </ul>
-                    
-                    <h5>📋 <strong>2. タスク指示</strong></h5>
-                    <ul>
-                        <li>××について△△してください</li>
-                        <li>具体的な動作指示</li>
-                        <li>明確な成果物の指定</li>
-                    </ul>
-                    
-                    <h5>⚙️ <strong>3. 条件・制約</strong></h5>
-                    <ul>
-                        <li>対象者・レベル</li>
-                        <li>時間・分量制約</li>
-                        <li>使用場面・目的</li>
-                    </ul>
-                    
-                    <h5>📄 <strong>4. 出力形式</strong></h5>
-                    <ul>
-                        <li>文字数・構成</li>
-                        <li>出力フォーマット</li>
-                        <li>必要項目の指定</li>
-                    </ul>
-                </section>
-
-                <section>
-                    <h3>🎯 演習：曖昧な指示を明確にする</h3>
-                    <div class="exercise">
-                        <h4>課題: 次の曖昧なプロンプトを改善してください</h4>
-                        <div class="prompt-box">原価計算について説明してください。</div>
-                        
-                        <h4>改善のポイント</h4>
-                        <ul>
-                            <li><strong>Role</strong>: AIにどの専門家の立場で回答してもらうか？</li>
-                            <li><strong>Who</strong>: 対象者は？（学年、既習レベル）</li>
-                            <li><strong>What</strong>: 原価計算のどの部分？</li>
-                            <li><strong>Why</strong>: なぜ学ぶのか？</li>
-                            <li><strong>How</strong>: どのような形式で？</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>改善例</h3>
-                    <div class="good-example">
-                        <div class="prompt-box">あなたは商業高校の原価計算担当教師です。
-
-高校3年生〈簿記2級を学習済み〉に向けて、オーダーメイド家具製造を例に
-「個別原価計算」の基本的な流れを10分で説明できる原稿を作成してください。
-
-- 話し言葉で約600文字
-- 工程ごとの原価集計 → 仕掛品勘定への振替 → 製品完成までを順序立てて解説
-- 専門用語は平易に補足
-- 終わりに「ここまでで疑問はある？」など理解確認の問いかけを1行入れる</div>
-                    </div>
-                </section>
+                <div class="power-phrase">AIは教師の代替ではなく<br>能力を拡張するツール</div>
+                <p>生成AIは、テキスト・画像・音声・動画などの<br>新しいコンテンツを人工的に生成する技術です</p>
             </section>
 
-            <!-- 第3部：商業教育での実践的活用 -->
+            <!-- Slide 6: Four Types of AI -->
             <section>
-                <section>
-                    <h1>第3部：商業教育での実践的活用</h1>
-                    <p class="center">（35分）</p>
-                </section>
-
-                <section>
-                    <h3>商業教育でのAI活用 - 4つの実践領域</h3>
-                    
-                    <h4>🎓 <strong>授業設計支援</strong></h4>
-                    <ul>
-                        <li>学習指導案作成</li>
-                        <li>評価基準設定</li>
-                        <li>教材開発アイデア</li>
-                    </ul>
-                    
-                    <h4>📚 <strong>教材作成支援</strong></h4>
-                    <ul>
-                        <li>練習問題生成</li>
-                        <li>事例研究作成</li>
-                        <li>説明文作成</li>
-                    </ul>
-                    
-                    <h4>👨‍🎓 <strong>学生サポート</strong></h4>
-                    <ul>
-                        <li>個別フィードバック</li>
-                        <li>進路指導資料</li>
-                        <li>保護者向け資料</li>
-                    </ul>
-                    
-                    <h4>⚡ <strong>業務効率化</strong></h4>
-                    <ul>
-                        <li>会議資料作成</li>
-                        <li>報告書下書き</li>
-                        <li>メール文面作成</li>
-                    </ul>
-                </section>
-
-                <section>
-                    <h3>学習指導案の作成補助</h3>
-                    <h4>学習指導案作成プロセス</h4>
-                    <div class="mermaid">
-flowchart TD
-    A[👨‍🏫 教師の準備作業] --> B{📝 生成AI活用}
-    
-    B --> C[🎯 学習目標設定]
-    B --> D[⏰ 時間配分計画]
-    B --> E[👥 生徒活動設計]
-    B --> F[📊 評価方法設定]
-    
-    C --> G[📋 指導案下書き生成]
-    D --> G
-    E --> G
-    F --> G
-    
-    G --> H[✏️ 教師による調整・改善]
-    H --> I[🎓 授業実施準備完了]
-    
-    I --> J[📚 活用場面]
-    J --> J1[新単元導入指導案]
-    J --> J2[実習授業手順書]
-    J --> J3[グループワーク進行台本]
-    J --> J4[評価活動設計]
+                <div class="power-phrase">4つの生成タイプ</div>
+                <div class="four-elements">
+                    <div class="element-card">
+                        <div class="icon">📝</div>
+                        <h4>テキスト生成</h4>
+                        <p>学習指導案・練習問題・説明文</p>
                     </div>
-                </section>
-
-                <section>
-                    <h3>教材開発のアイデア出し</h3>
-                    <h4>教材開発アイデア創出プロセス</h4>
-                    <div class="mermaid">
-mindmap
-  root((💡 教材開発<br/>アイデア創出))
-    [🌍 身近な事例収集]
-      コンビニ経営分析
-      地元企業見学
-      SNSマーケティング事例
-      キャッシュレス決済普及
-    [📰 時事問題関連付け]
-      経済ニュース活用
-      企業不祥事分析
-      新商品発売事例
-      働き方改革影響
-    [🔗 他分野統合学習]
-      数学×簿記計算
-      英語×国際ビジネス
-      情報×データ分析
-      社会×企業社会責任
-    [🏢 地域企業連携]
-      インターンシップ設計
-      ゲストスピーカー招聘
-      職場見学企画
-      産学連携プロジェクト
+                    <div class="element-card">
+                        <div class="icon">🎨</div>
+                        <h4>画像生成</h4>
+                        <p>教材イラスト・説明図・プレゼン素材</p>
                     </div>
-                </section>
-
-                <section>
-                    <h3>評価基準の設定支援</h3>
-                    <h4>評価基準設定プロセス</h4>
-                    <div class="mermaid">
-flowchart TD
-    A[📋 評価が必要な活動・課題] --> B{🤖 生成AI活用}
-    
-    B --> C[📝 ルーブリック作成]
-    B --> D[🎯 パフォーマンス評価設計]
-    B --> E[👥 自己・相互評価項目]
-    
-    C --> C1[評価観点の整理]
-    C --> C2[レベル別基準設定]
-    C --> C3[記述子の具体化]
-    
-    D --> D1[行動目標の明確化]
-    D --> D2[観察ポイント設定]
-    D --> D3[評価方法の選定]
-    
-    E --> E1[自己省察項目]
-    E --> E2[相互フィードバック観点]
-    E --> E3[成長目標設定]
-    
-    C3 --> F[✅ 教師による調整・確認]
-    D3 --> F
-    E3 --> F
-    
-    F --> G[📊 実用的評価基準完成]
+                    <div class="element-card">
+                        <div class="icon">🔊</div>
+                        <h4>音声生成</h4>
+                        <p>聞き取り教材・発音練習・ナレーション</p>
                     </div>
-                </section>
-
-                <section>
-                    <h3>教育理論との融合のメリット</h3>
-                    <div class="mermaid">
-mindmap
-  root((🎓 教育理論との融合))
-    [📚 理論的根拠の明確化]
-      なぜその指導方法なのか
-        指導選択の根拠明示
-        教育哲学の具現化
-      教育効果の予測可能性
-        学習成果の事前予測
-        指導計画の精度向上
-      同僚への説明責任
-        専門性の証明
-        協働的実践の促進
-    [🔬 科学的アプローチ]
-      経験則からの脱却
-        直感的判断の客観化
-        個人差の標準化
-      エビデンスベース教育
-        研究知見の活用
-        実証的指導法導入
-      再現可能な指導法
-        標準化された手法
-        品質の安定化
-    [🎯 効果的指導法選択]
-      生徒特性に応じた選択
-        学習スタイル対応
-        発達段階考慮
-      学習内容に最適化
-        教科特性活用
-        目標達成の効率化
-      複数理論の統合活用
-        相乗効果の創出
-        柔軟な適用
-    [📊 客観的評価基準]
-      学習成果の測定
-        定量的評価実現
-        進歩の可視化
-      指導改善の指針
-        課題の明確化
-        改善方向の特定
-      研究的実践の促進
-        実践研究の基盤
-        知見の蓄積・共有
+                    <div class="element-card">
+                        <div class="icon">🎬</div>
+                        <h4>動画生成</h4>
+                        <p>説明動画・授業録画編集・教材動画</p>
                     </div>
-                </section>
-
-                <section>
-                    <h3>🎯 演習：簿記授業の指導案作成</h3>
-                    <div class="exercise">
-                        <h4>課題</h4>
-                        <p>「現金・預金」の授業（50分）の指導案作成プロンプトを作成してください</p>
-                        
-                        <h4>条件設定</h4>
-                        <ul>
-                            <li><strong>対象</strong>: 高校1年生（簿記初学者）</li>
-                            <li><strong>単元</strong>: 3級簿記「現金・預金の記帳」</li>
-                            <li><strong>目標</strong>: 現金出納帳と当座預金出納帳の記入ができる</li>
-                            <li><strong>使用教材</strong>: 検定試験の過去問題を活用</li>
-                        </ul>
-                        
-                        <h4>プロンプト作成のヒント</h4>
-                        <ol>
-                            <li>役割設定：商業高校の簿記担当教師</li>
-                            <li>具体的指示：50分授業の指導案作成</li>
-                            <li>条件・制約：初学者対象、実習中心、評価場面含む</li>
-                            <li>出力形式：時間配分表、指導のポイント、準備物</li>
-                        </ol>
-                    </div>
-                </section>
+                </div>
             </section>
 
-            <!-- 第4部：高度なプロンプト技術 -->
+            <!-- Slide 7: Prompt Definition -->
             <section>
-                <section>
-                    <h1>第4部：高度なプロンプト技術</h1>
-                    <p class="center">（10分）</p>
-                </section>
-
-                <section>
-                    <h3>チェーン・オブ・ソート（思考の連鎖）</h3>
-                    <h4>段階的思考を促す技術</h4>
-                    <div class="center">
-                        <span class="process-step">🔴 複雑な問題</span>
-                        <span class="process-arrow">⬇️</span>
-                        <span class="process-step">🔷 ステップ1: 現状分析</span>
-                        <span class="process-arrow">⬇️</span>
-                        <span class="process-step">🔷 ステップ2: 原因特定</span>
-                        <span class="process-arrow">⬇️</span>
-                        <span class="process-step">🔷 ステップ3: 解決策検討</span>
-                        <span class="process-arrow">⬇️</span>
-                        <span class="process-step">🔷 ステップ4: 最適解選択</span>
-                        <span class="process-arrow">⬇️</span>
-                        <span class="process-step">🔷 ステップ5: 実行計画</span>
-                        <span class="process-arrow">⬇️</span>
-                        <span class="process-step">🟢 論理的で体系的な回答</span>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>ロールプレイング技術</h3>
-                    <h4>多角的視点の例</h4>
-                    <h5>🎯 <strong>課題</strong>: インターンシップ導入</h5>
-                    
-                    <table>
-                        <tr>
-                            <th>立場</th>
-                            <th>視点</th>
-                            <th>主な関心事</th>
-                        </tr>
-                        <tr>
-                            <td>👨‍🏫 <strong>教師</strong></td>
-                            <td>教育効果<br/>指導負担<br/>安全管理</td>
-                            <td>具体的な教育成果を上げられるか</td>
-                        </tr>
-                        <tr>
-                            <td>🏢 <strong>企業</strong></td>
-                            <td>人材確保<br/>指導コスト<br/>企業責任</td>
-                            <td>将来の採用につながるか</td>
-                        </tr>
-                        <tr>
-                            <td>👨‍🎓 <strong>生徒</strong></td>
-                            <td>学習機会<br/>就職準備<br/>負担感</td>
-                            <td>実際の仕事体験ができるか</td>
-                        </tr>
-                        <tr>
-                            <td>👪 <strong>保護者</strong></td>
-                            <td>子どもの成長<br/>安全性<br/>進路への影響</td>
-                            <td>子どもにとってプラスになるか</td>
-                        </tr>
-                    </table>
-                    
-                    <p class="center highlight"><strong>🔄 結果</strong>: 統合的判断でバランスの取れた解決策を導出</p>
-                </section>
-
-                <section>
-                    <h3>制約条件の活用</h3>
-                    <h4>文字数制限、形式指定</h4>
-                    
-                    <p><strong>制約の種類</strong>:</p>
-                    <ul>
-                        <li><strong>分量制約</strong>: 「300文字以内」「A4用紙1枚」</li>
-                        <li><strong>時間制約</strong>: 「5分で説明可能」「50分授業用」</li>
-                        <li><strong>形式制約</strong>: 「箇条書きで」「表形式で」「会話形式で」</li>
-                    </ul>
-                    
-                    <h4>対象者レベルの調整</h4>
-                    <ul>
-                        <li>「中学生でも理解できるレベルで」</li>
-                        <li>「検定2級レベルの知識を前提として」</li>
-                        <li>「大学進学希望者向けの発展的内容で」</li>
-                    </ul>
-                </section>
+                <div class="power-phrase">プロンプト = AIへの指示書</div>
+                <p>プロンプトの書き方によって<br>出力の質が大きく変わります</p>
             </section>
 
-            <!-- 第5部：実践とまとめ -->
+            <!-- Slide 8: Bad vs Good Prompt -->
             <section>
-                <section>
-                    <h1>第5部：実践とまとめ</h1>
-                    <p class="center">（5分）</p>
-                </section>
-
-                <section>
-                    <h3>継続的改善のサイクル</h3>
-                    <h4>🔄 <strong>実践 → 評価 → 改善 → 実践</strong></h4>
-                    
-                    <table>
-                        <tr>
-                            <th>フェーズ</th>
-                            <th>具体的なアクション</th>
-                            <th>ポイント</th>
-                        </tr>
-                        <tr>
-                            <td>🌱 <strong>実践</strong></td>
-                            <td>プロンプト使用<br/>結果確認</td>
-                            <td>日常的な活用で経験を積む</td>
-                        </tr>
-                        <tr>
-                            <td>📈 <strong>評価</strong></td>
-                            <td>効果測定<br/>課題特定</td>
-                            <td>何がうまくいき、何が改善が必要かを分析</td>
-                        </tr>
-                        <tr>
-                            <td>⚙️ <strong>改善</strong></td>
-                            <td>プロンプト修正<br/>新技術導入</td>
-                            <td>学んだことを次の実践に活かす</td>
-                        </tr>
-                    </table>
-                    
-                    <h4>📚 <strong>サポートリソース</strong></h4>
-                    <ul>
-                        <li><strong>プロンプトライブラリ</strong>: 効果的なプロンプトを積む</li>
-                        <li><strong>最新技術情報</strong>: AIの進化に対応する</li>
-                    </ul>
-                </section>
-
-                <section>
-                    <h3>今後の学習指針</h3>
-                    
-                    <h4>即座に取り組めること（今日から1週間）</h4>
-                    <ul class="checklist">
-                        <li>自分の担当科目で1つのプロンプトを作成・試用</li>
-                        <li>配布されたプロンプト集から3つを実践</li>
-                        <li>同僚1名と今日の学習内容を共有</li>
-                    </ul>
-                    
-                    <h4>1ヶ月以内の目標</h4>
-                    <ul class="checklist">
-                        <li>5つ以上のプロンプトを授業で活用</li>
-                        <li>効果的だったプロンプトを記録・整理</li>
-                        <li>教科内でプロンプト活用事例を共有</li>
-                    </ul>
-                    
-                    <h4>3ヶ月以内の目標</h4>
-                    <ul class="checklist">
-                        <li>オリジナルプロンプト集（10個以上）を作成</li>
-                        <li>他の教員にプロンプト技術を指導</li>
-                        <li>学校全体でのAI活用推進に貢献</li>
-                    </ul>
-                </section>
-
-                <section>
-                    <h2>核心理念</h2>
-                    <div class="center">
-                        <h3>🛠️ <strong>技術は手段</strong> ➕ 🎓 <strong>教育は目的</strong> = 🌱 <strong>より良い教育</strong> → 🎆 <strong>生徒の成長と成功</strong></h3>
+                <h3>プロンプトの品質による違い</h3>
+                <div class="comparison-grid">
+                    <div class="comparison-bad">
+                        <h4>❌ 曖昧なプロンプト</h4>
+                        <p style="font-style: italic; margin-bottom: 1rem; color: rgba(255, 255, 255, 0.95);">"簿記について教えて"</p>
+                        <p style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.9); font-weight: 500;">実用性：低</p>
                     </div>
-                    
-                    <h3>教育のAI活用 - 4つの核心要素</h3>
-                    
-                    <div class="flex-container">
-                        <div class="card flex-item">
-                            <h4>🔧 <strong>技術は手段</strong></h4>
-                            <ul>
-                                <li>効率化ツール</li>
-                                <li>アイデア生成支援</li>
-                                <li>作業負担軽減</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="card flex-item">
-                            <h4>🎯 <strong>教育は目的</strong></h4>
-                            <ul>
-                                <li>生徒の成長</li>
-                                <li>学習効果向上</li>
-                                <li>人間性の育成</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="card flex-item">
-                            <h4>🎓 <strong>教師の専門性</strong></h4>
-                            <ul>
-                                <li>教育経験</li>
-                                <li>教科専門知識</li>
-                                <li>生徒理解力</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="card flex-item">
-                            <h4>❤️ <strong>人間的温かさ</strong></h4>
-                            <ul>
-                                <li>共感力</li>
-                                <li>コミュニケーション力</li>
-                                <li>個別配慮</li>
-                            </ul>
-                        </div>
+                    <div class="comparison-good">
+                        <h4>✅ 具体的なプロンプト</h4>
+                        <p style="font-size: 0.9rem; margin-bottom: 1rem; color: rgba(255, 255, 255, 0.95);">「商業高校の簿記担当教師として、高校1年生に「資産・負債・純資産」を身近な例で5分で説明...」</p>
+                        <p style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.9); font-weight: 500;">実用性：高</p>
                     </div>
-                </section>
+                </div>
+            </section>
 
-                <section>
-                    <h2>「技術は手段、教育は目的」</h2>
-                    <div class="center">
-                        <p style="font-size: 1.2em; margin: 2em 0;">
-                            生成AIは教育を変革する強力なツールですが、最も重要なのは「教師の専門性と人間的な温かさ」です
-                        </p>
-                        <p style="font-size: 1.1em;">
-                            今日学んだプロンプト技術を活用して、より質の高い教育を生徒たちに提供していただけることを期待しています。
-                        </p>
-                    </div>
-                </section>
+            <!-- Slide 9: Part 2 Header -->
+            <section>
+                <div class="part-number">Part 2</div>
+                <h2>プロンプト設計の<br>基本原則</h2>
+                <div class="big-number">25<span style="font-size: 2rem;">分</span></div>
+            </section>
 
-                <section>
-                    <h2>配布資料</h2>
-                    <div class="card">
-                        <h4>📚 配布資料</h4>
-                        <ul>
-                            <li>プロンプト基本テンプレート集</li>
-                            <li>商業教育分野別プロンプト事例集（40+事例）</li>
-                            <li>評価チェックリスト</li>
-                            <li>継続学習ガイド</li>
-                        </ul>
-                        
-                        <h4>🔗 GitHub リポジトリ</h4>
-                        <p><strong>https://github.com/nahisaho/CommerceHS-GenAI-toolkit</strong></p>
-                        
-                        <h4>📝 フィードバック</h4>
-                        <p><strong>セミナー終了後のアンケート</strong>にもご協力をお願いいたします</p>
-                        
-                        <p class="center">⭐ Star をつけていただけると励みになります！</p>
+            <!-- Slide 10: Role + 5W1H -->
+            <section>
+                <div class="power-phrase">Role + 5W1H で<br>指示を明確化</div>
+                <ul>
+                    <li><span class="highlight">Role</span>：AIに求める専門性・立場</li>
+                    <li><span class="highlight">Who</span>：対象者・読み手</li>
+                    <li><span class="highlight">What</span>：作成する内容</li>
+                    <li><span class="highlight">When/Where/Why/How</span>：詳細条件</li>
+                </ul>
+            </section>
+
+            <!-- Slide 11: 4 Elements -->
+            <section>
+                <div class="power-phrase">4つの要素で効果的な<br>プロンプトを設計</div>
+                <div class="four-elements">
+                    <div class="element-card">
+                        <div class="icon">🎯</div>
+                        <h4>役割設定</h4>
+                        <p>専門的視点の付与</p>
                     </div>
-                </section>
+                    <div class="element-card">
+                        <div class="icon">📋</div>
+                        <h4>タスク指示</h4>
+                        <p>具体的な動作指示</p>
+                    </div>
+                    <div class="element-card">
+                        <div class="icon">⚙️</div>
+                        <h4>条件・制約</h4>
+                        <p>対象者・時間・分量</p>
+                    </div>
+                    <div class="element-card">
+                        <div class="icon">📄</div>
+                        <h4>出力形式</h4>
+                        <p>文字数・構成指定</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 12: Context Importance -->
+            <section>
+                <div class="power-phrase">背景情報がより適切な<br>回答を引き出す</div>
+                <ul>
+                    <li>教育環境・生徒の特性</li>
+                    <li>学習状況・習熟度</li>
+                    <li>制約条件・期待する成果</li>
+                </ul>
+            </section>
+
+            <!-- Slide 13: Part 3 Header -->
+            <section>
+                <div class="part-number">Part 3</div>
+                <h2>商業教育での<br>実践的活用</h2>
+                <div class="big-number">35<span style="font-size: 2rem;">分</span></div>
+            </section>
+
+            <!-- Slide 14: 4 Practice Areas -->
+            <section>
+                <div class="power-phrase">授業設計・教材作成<br>学生サポート・業務効率化</div>
+                <div class="four-elements">
+                    <div class="element-card">
+                        <div class="icon">🎓</div>
+                        <h4>授業設計支援</h4>
+                        <p>学習指導案作成<br>評価基準設定</p>
+                    </div>
+                    <div class="element-card">
+                        <div class="icon">📚</div>
+                        <h4>教材作成支援</h4>
+                        <p>練習問題生成<br>事例研究作成</p>
+                    </div>
+                    <div class="element-card">
+                        <div class="icon">👨‍🎓</div>
+                        <h4>学生サポート</h4>
+                        <p>個別フィードバック<br>進路指導資料</p>
+                    </div>
+                    <div class="element-card">
+                        <div class="icon">⚡</div>
+                        <h4>業務効率化</h4>
+                        <p>会議資料作成<br>報告書下書き</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 15: Lesson Plan Support -->
+            <section>
+                <h3>指導案作成支援フロー</h3>
+                <div class="power-phrase">AI活用で指導案作成を効率化</div>
+                <p>👨‍🏫 教師の準備作業 → 📝 生成AI活用 → 🎯 学習目標設定 → ⏰ 時間配分計画 → 👥 生徒活動設計 → 📊 評価方法設定 → 📋 指導案下書き生成 → ✏️ 教師による調整・改善 → 🎓 授業実施準備完了</p>
+            </section>
+
+            <!-- Slide 16: Material Development -->
+            <section>
+                <div class="power-phrase">身近な事例から地域企業連携まで<br>多角的にアイデア創出</div>
+                <ul>
+                    <li>身近な事例収集（コンビニ分析、SNS事例）</li>
+                    <li>時事問題関連付け（経済ニュース活用）</li>
+                    <li>他分野統合学習（数学×簿記計算）</li>
+                    <li>地域企業連携（インターンシップ設計）</li>
+                </ul>
+            </section>
+
+            <!-- Slide 17: Assessment Support -->
+            <section>
+                <div class="power-phrase">ルーブリック作成から<br>パフォーマンス評価まで体系的に支援</div>
+                <div class="process-steps">
+                    <div class="process-step">ルーブリック作成</div>
+                    <span style="font-size: 1.5rem;">+</span>
+                    <div class="process-step">パフォーマンス評価</div>
+                    <span style="font-size: 1.5rem;">+</span>
+                    <div class="process-step">自己・相互評価</div>
+                </div>
+            </section>
+
+            <!-- Slide 18: Educational Theory -->
+            <section>
+                <div class="power-phrase">理論的根拠に基づく<br>科学的アプローチで教育の質向上</div>
+                <ul>
+                    <li>指導選択の根拠明示</li>
+                    <li>エビデンスベース教育の実現</li>
+                    <li>再現可能な指導法の確立</li>
+                    <li>客観的評価基準の設定</li>
+                </ul>
+            </section>
+
+            <!-- Slide 19: Practice Exercise -->
+            <section>
+                <div class="power-phrase">実践的な指導案作成で<br>スキルを定着</div>
+                <div class="exercise-box">
+                    <h4>演習課題</h4>
+                    <p>「現金・預金」の授業（50分）の<br>指導案作成プロンプトを作成してください</p>
+                    <p style="font-size: 0.9rem; margin-top: 1rem; color: rgba(255, 255, 255, 0.8);">
+                        対象：高校1年生（簿記初学者）<br>
+                        目標：現金出納帳と当座預金出納帳の記入習得
+                    </p>
+                </div>
+            </section>
+
+            <!-- Slide 20: Part 4 Header -->
+            <section>
+                <div class="part-number">Part 4</div>
+                <h2>高度なプロンプト技術</h2>
+                <div class="big-number">10<span style="font-size: 2rem;">分</span></div>
+            </section>
+
+            <!-- Slide 21: Chain of Thought -->
+            <section>
+                <div class="power-phrase">段階的思考で複雑な問題を<br>論理的に解決</div>
+                <div class="flowchart-html">
+                    <div class="step-item start">複雑な問題</div>
+                    <div class="arrow">→</div>
+                    <div class="step-item">ステップ1: 現状分析</div>
+                    <div class="arrow">→</div>
+                    <div class="step-item">ステップ2: 原因特定</div>
+                    <div class="arrow">→</div>
+                    <div class="step-item">ステップ3: 解決策検討</div>
+                    <div class="arrow">→</div>
+                    <div class="step-item">ステップ4: 最適解選択</div>
+                    <div class="arrow">→</div>
+                    <div class="step-item">ステップ5: 実行計画</div>
+                    <div class="arrow">→</div>
+                    <div class="step-item end">論理的で体系的な回答</div>
+                </div>
+            </section>
+
+            <!-- Slide 22: Role Playing -->
+            <section>
+                <div class="power-phrase">多角的視点で<br>統合的判断を導出</div>
+                <div class="four-elements">
+                    <div class="element-card">
+                        <div class="icon">👨‍🏫</div>
+                        <h4>教師視点</h4>
+                        <p>教育効果<br>指導負担</p>
+                    </div>
+                    <div class="element-card">
+                        <div class="icon">🏢</div>
+                        <h4>企業視点</h4>
+                        <p>人材確保<br>指導コスト</p>
+                    </div>
+                    <div class="element-card">
+                        <div class="icon">👨‍🎓</div>
+                        <h4>生徒視点</h4>
+                        <p>学習機会<br>就職準備</p>
+                    </div>
+                    <div class="element-card">
+                        <div class="icon">👪</div>
+                        <h4>保護者視点</h4>
+                        <p>子どもの成長<br>安全性</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 23: Constraints -->
+            <section>
+                <div class="power-phrase">制約が質の高い<br>回答を生み出す</div>
+                <ul>
+                    <li><span class="highlight">分量制約</span>：「300文字以内」「A4用紙1枚」</li>
+                    <li><span class="highlight">時間制約</span>：「5分で説明可能」「50分授業用」</li>
+                    <li><span class="highlight">形式制約</span>：「箇条書きで」「表形式で」</li>
+                    <li><span class="highlight">レベル調整</span>：学習段階に応じた内容</li>
+                </ul>
+            </section>
+
+            <!-- Slide 24: Part 5 Header -->
+            <section>
+                <div class="part-number">Part 5</div>
+                <h2>実践とまとめ</h2>
+                <div class="big-number">5<span style="font-size: 2rem;">分</span></div>
+            </section>
+
+            <!-- Slide 25: Continuous Improvement -->
+            <section>
+                <div class="power-phrase">実践 → 評価 → 改善 → 実践のサイクルで成長</div>
+                <p>🌱 実践 → 📈 評価 → ⚙️ 改善 → 🌱 実践</p>
+                <p>プロンプトライブラリの構築と継続的な改善サイクル</p>
+            </section>
+
+            <!-- Slide 26: Learning Timeline -->
+            <section>
+                <div class="power-phrase">段階的な目標設定で<br>確実にスキルアップ</div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="time">1週間以内</div>
+                        <div class="title">初期実践</div>
+                        <div class="desc">1つのプロンプト作成・試用</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">1ヶ月以内</div>
+                        <div class="title">活用拡大</div>
+                        <div class="desc">5つ以上のプロンプト活用</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">3ヶ月以内</div>
+                        <div class="title">指導者へ</div>
+                        <div class="desc">他教員への技術指導</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 27: Final Message -->
+            <section>
+                <div class="quote">「技術は手段、教育は目的」</div>
+                <div class="four-elements">
+                    <div class="element-card">
+                        <div class="icon">🔧</div>
+                        <h4>技術は手段</h4>
+                        <p>効率化ツール<br>支援システム</p>
+                    </div>
+                    <div class="element-card">
+                        <div class="icon">🎯</div>
+                        <h4>教育は目的</h4>
+                        <p>生徒の成長<br>学習効果向上</p>
+                    </div>
+                    <div class="element-card">
+                        <div class="icon">🎓</div>
+                        <h4>教師の専門性</h4>
+                        <p>教育経験<br>専門知識</p>
+                    </div>
+                    <div class="element-card">
+                        <div class="icon">❤️</div>
+                        <h4>人間的温かさ</h4>
+                        <p>共感力<br>個別配慮</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 28: Resources -->
+            <section>
+                <div class="power-phrase">継続学習で<br>更なるスキルアップを</div>
+                <ul>
+                    <li>プロンプト基本テンプレート集</li>
+                    <li>商業教育分野別プロンプト事例集（40+事例）</li>
+                    <li>評価チェックリスト</li>
+                    <li>継続学習ガイド</li>
+                </ul>
+                <p style="margin-top: 2rem; font-size: 1.1rem;">
+                    <span class="highlight">GitHub</span>: nahisaho/CommerceHS-GenAI-toolkit
+                </p>
+            </section>
+
+            <!-- Slide 29: FAQ 1 -->
+            <section>
+                <div class="faq-question">Q. 生成AIを使うことで、教師の指導力が低下しませんか？</div>
+                <div class="faq-answer">
+                    生成AIは<span class="highlight">「指導力の代替」ではなく「指導力の拡張」ツール</span>です。
+                    <br><br>
+                    教材作成や事務作業の効率化により、生徒と向き合う時間や教材研究の時間を増やすことができます。
+                </div>
+            </section>
+
+            <!-- Slide 30: FAQ 2 -->
+            <section>
+                <div class="faq-question">Q. AIが作成した内容をそのまま使用しても問題ありませんか？</div>
+                <div class="faq-answer">
+                    <span class="highlight">AIの出力は必ず確認・修正が必要</span>です。
+                    <br><br>
+                    事実確認、教育的配慮、著作権等の観点から、教師の専門的判断を加えて使用してください。
+                </div>
+            </section>
+
+            <!-- Slide 31: Thank You -->
+            <section>
+                <div class="quote">ありがとうございました</div>
+                <p>プロンプト技術を活用して、<br>より質の高い教育を生徒たちに<br>提供していただけることを期待しています</p>
+                <p style="margin-top: 3rem; font-size: 1.2rem;">
+                    ⭐ <span class="highlight">Star</span> をつけていただけると励みになります！
+                </p>
             </section>
 
         </div>
@@ -1061,21 +757,31 @@ mindmap
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/notes/notes.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/markdown/markdown.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/search/search.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/zoom/zoom.min.js"></script>
+    
     <script>
-        // Reveal.jsの初期化
         Reveal.initialize({
             hash: true,
             controls: true,
             progress: true,
-            center: false,
+            center: true,
             transition: 'slide',
-            width: 1200,
-            height: 700,
-            margin: 0.1,
-            minScale: 0.2,
-            maxScale: 1.5,
-            plugins: [ RevealHighlight, RevealNotes ]
+            plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealSearch, RevealZoom ]
+        });
+        
+        // Initialize Mermaid
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'dark',
+            themeVariables: {
+                primaryColor: '#0078d4',
+                primaryTextColor: '#ffffff',
+                primaryBorderColor: '#005a9e',
+                lineColor: '#106ebe'
+            }
         });
     </script>
 </body>

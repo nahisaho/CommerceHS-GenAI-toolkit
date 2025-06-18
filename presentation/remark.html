@@ -1,298 +1,368 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-    <title>商業高等学校教員向け 生成AI利活用セミナー</title>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商業高等学校教員向け 生成AI利活用セミナー - Remark.js版</title>
+    
+    <!-- Remark.js -->
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+    
+    <!-- Mermaid.js for diagrams -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    
     <style>
-        @import url(https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700);
-        
-        body {
-            font-family: 'Noto Sans JP', sans-serif;
-        }
-        
-        h1, h2, h3 {
-            font-weight: 700;
-            color: #2c3e50;
-        }
-        
-        h1 {
-            margin-bottom: 0.5em;
-        }
-        
-        h2 {
-            color: #34495e;
-        }
-        
-        .remark-code, .remark-inline-code {
-            font-family: 'Courier New', monospace;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Yu+Gothic:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap');
         
         .remark-slide-content {
-            font-size: 1.3em;
-            padding: 1em 2em;
+            background: linear-gradient(135deg, #0078d4 0%, #106ebe 25%, #005a9e 50%, #004578 75%, #003f69 100%);
+            color: #ffffff;
+            font-family: 'Yu Gothic', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 20px;
+            padding: 2rem;
+            text-align: center;
         }
         
         .remark-slide-content h1 {
-            font-size: 2.5em;
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .remark-slide-content h2 {
-            font-size: 2em;
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            color: #ffffff;
         }
         
         .remark-slide-content h3 {
-            font-size: 1.5em;
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            color: #ffffff;
         }
         
-        /* カスタムクラス */
-        .center-title {
-            text-align: center;
-            vertical-align: middle;
-            padding-top: 20%;
+        .power-phrase {
+            font-size: 2.5rem;
+            font-weight: 500;
+            margin: 2rem 0;
+            color: #ffffff;
+            line-height: 1.3;
         }
         
-        .agenda {
-            display: flex;
-            justify-content: space-around;
-            text-align: center;
-            margin: 2em 0;
-            flex-wrap: wrap;
+        .subtitle {
+            font-size: 1.4rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
         }
         
-        .agenda-item {
-            flex: 1;
-            padding: 1em;
-            background-color: #e3f2fd;
-            margin: 0 5px;
-            border-radius: 8px;
-            min-width: 150px;
+        .metadata {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 300;
         }
         
-        .good-example {
-            background-color: #d4edda;
-            border-left: 4px solid #28a745;
-            padding: 10px;
-            margin: 10px 0;
+        .part-number {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 400;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
         }
         
-        .bad-example {
-            background-color: #f8d7da;
-            border-left: 4px solid #dc3545;
-            padding: 10px;
-            margin: 10px 0;
+        .big-number {
+            font-size: 4rem;
+            font-weight: 200;
+            color: rgba(255, 255, 255, 0.3);
+            margin: 1rem 0;
         }
         
-        .exercise {
-            background-color: #e8f4f8;
-            border: 2px solid #0066cc;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 8px;
+        .quote {
+            font-size: 3rem;
+            font-weight: 300;
+            line-height: 1.4;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.95);
+            font-style: italic;
         }
         
-        .exercise h4 {
-            color: #0066cc;
-            margin-top: 0;
+        .remark-slide-content p {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1.5rem;
         }
         
-        .prompt-box {
-            background-color: #f0f0f0;
-            border: 1px solid #ccc;
-            padding: 15px;
-            margin: 10px 0;
-            font-family: monospace;
-            white-space: pre-wrap;
-            font-size: 0.9em;
-            border-radius: 5px;
+        .remark-slide-content ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+        
+        .remark-slide-content li {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+        
+        .remark-slide-content li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: rgba(255, 255, 255, 0.6);
         }
         
         .highlight {
-            background-color: #fff3cd;
-            padding: 2px 5px;
-            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
-        table {
-            border-collapse: collapse;
-            margin: 20px auto;
-            font-size: 0.9em;
-            width: 100%;
-        }
-        
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px 12px;
-            text-align: left;
-        }
-        
-        th {
-            background-color: #f2f2f2;
-            font-weight: bold;
-        }
-        
-        .flex-container {
-            display: flex;
-            justify-content: space-around;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        
-        .card {
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            flex: 1;
-            min-width: 250px;
-        }
-        
-        .small {
-            font-size: 0.8em;
-            color: #666;
-        }
-        
-        /* 2カラムレイアウト */
-        .left-column {
-            width: 48%;
-            float: left;
-        }
-        
-        .right-column {
-            width: 48%;
-            float: right;
-        }
-        
-        /* フッター */
-        .remark-slide-number {
-            font-size: 0.8em;
-            color: #666;
-        }
-
-        /* Mermaid図のスタイル */
-        .mermaid {
-            text-align: center;
-            background-color: white;
-            padding: 1rem;
-            border-radius: 8px;
-            margin: 1rem 0;
-        }
-
-        /* 統計グリッド */
-        .stats-grid {
+        .four-elements {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            margin: 1rem 0;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem auto;
+            max-width: 700px;
         }
         
-        .stat-item {
+        .element-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1.5rem;
+            border-radius: 12px;
             text-align: center;
-            padding: 1rem;
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            border: 1px solid #ddd;
         }
         
-        .stat-number {
+        .element-card .icon {
             font-size: 2rem;
-            font-weight: 700;
-            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        .element-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+        
+        .element-card p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .timeline {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .timeline-item {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            min-width: 100px;
+        }
+        
+        .timeline-item .time {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
             margin-bottom: 0.5rem;
         }
         
-        .stat-label {
-            color: #666;
+        .timeline-item .title {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-item .desc {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .comparison-bad {
+            background: rgba(220, 53, 69, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 2px solid rgba(220, 53, 69, 0.6);
+        }
+        
+        .comparison-good {
+            background: rgba(40, 167, 69, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 2px solid rgba(40, 167, 69, 0.6);
+        }
+        
+        .comparison-bad h4 {
+            color: #ffb3ba;
+            margin-bottom: 1rem;
+        }
+        
+        .comparison-good h4 {
+            color: #a3e9a4;
+            margin-bottom: 1rem;
+        }
+        
+        .flowchart-html {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 2rem 0;
+        }
+        
+        .step-item {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #ffffff;
+            text-align: center;
+            min-width: 120px;
+        }
+        
+        .step-item.start {
+            background: rgba(255, 205, 210, 0.3);
+            border-color: rgba(255, 205, 210, 0.6);
+        }
+        
+        .step-item.end {
+            background: rgba(200, 230, 201, 0.3);
+            border-color: rgba(200, 230, 201, 0.6);
+        }
+        
+        .arrow {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: bold;
+        }
+        
+        .process-steps {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .process-step {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1rem;
+            border-radius: 8px;
             font-size: 0.9rem;
         }
-
-        /* プロセス図のスタイル */
-        .process-step {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
-            margin: 5px;
-            display: inline-block;
-            font-weight: 600;
+        
+        .exercise-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem auto;
+            text-align: left;
+            max-width: 600px;
         }
-
-        .process-arrow {
-            font-size: 1.5em;
-            color: #667eea;
-            margin: 0 10px;
+        
+        .exercise-box h4 {
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+        
+        .faq-question {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+        }
+        
+        .faq-answer {
+            font-size: 1rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
         }
     </style>
 </head>
 <body>
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
-    <script>
-        mermaid.initialize({
-            startOnLoad: true,
-            theme: 'default',
-            themeVariables: {
-                primaryColor: '#667eea',
-                primaryTextColor: '#fff',
-                primaryBorderColor: '#764ba2',
-                lineColor: '#667eea',
-                secondaryColor: '#f8f9fa',
-                tertiaryColor: '#e9ecef'
-            }
-        });
-    </script>
     <textarea id="source">
 
 class: center, middle
 
-# 商業高等学校教員向け
-# 生成AI利活用セミナー
-## プロンプトエンジニアリングの基礎から実践まで
+# 商業高等学校教員向け<br>生成AI利活用セミナー
 
-.small[総時間：90分]
+.subtitle[プロンプトエンジニアリングの基礎から実践まで]
+
+.metadata[
+総時間：90分<br>
+対象：商業高校教員（初心者大歓迎）
+]
 
 ---
 
-# セミナーの目的
+class: center, middle
 
-### 生成AIを教育現場で効果的に活用
-- **プロンプトエンジニアリング**の基礎習得
-- 日々の教育活動の**効率化**
-- 教育の**質向上**
+.quote[「技術は手段、教育は目的」]
 
-### 対象者
-- 商業高等学校の教員（初心者大歓迎）
-- 簿記、会計、マーケティング、情報処理、ビジネス基礎担当
-- ICT活用教育に興味のある先生方
+生成AIは教育を変革する強力なツールですが、<br>最も重要なのは教師の専門性と人間的な温かさです
 
 ---
 
-# セミナータイムライン（90分）
+class: center, middle
 
-.agenda[
-.agenda-item[
-**0-15分**  
-第1部：基礎理解  
-.small[生成AI概要・プロンプト基本概念]
+### セミナータイムライン
+
+.timeline[
+.timeline-item[
+.time[0-15分]
+.title[第1部]
+.desc[基礎理解]
 ]
-.agenda-item[
-**15-40分**  
-第2部：基本原則  
-.small[明確性・構造化・文脈提供]
+.timeline-item[
+.time[15-40分]
+.title[第2部]
+.desc[基本原則]
 ]
-.agenda-item[
-**40-75分**  
-第3部：実践活用  
-.small[授業設計・教材作成・学生サポート]
+.timeline-item[
+.time[40-75分]
+.title[第3部]
+.desc[実践活用]
 ]
-.agenda-item[
-**75-85分**  
-第4部：高度技術  
-.small[高度プロンプト技術]
+.timeline-item[
+.time[75-85分]
+.title[第4部]
+.desc[高度技術]
 ]
-.agenda-item[
-**85-90分**  
-第5部：まとめ  
-.small[実践・まとめ]
+.timeline-item[
+.time[85-90分]
+.title[第5部]
+.desc[まとめ]
 ]
 ]
 
@@ -300,588 +370,450 @@ class: center, middle
 
 class: center, middle
 
-# 第1部：生成AIとプロンプトの基礎理解
-## （15分）
+.part-number[Part 1]
+
+## 生成AIとプロンプトの<br>基礎理解
+
+.big-number[15分]
 
 ---
 
-# 生成AIとは何か？
+class: center, middle
 
-### 定義
-**生成AI（Generative AI）**とは、テキスト、画像、音声などの新しいコンテンツを人工的に生成する技術
+.power-phrase[AIは教師の代替ではなく<br>能力を拡張するツール]
 
-### 主要サービス
-- **Microsoft Copilot** (Microsoft)
-- **ChatGPT** (OpenAI)
-- **Claude** (Anthropic) 
-- **Gemini** (Google)
+生成AIは、テキスト・画像・音声・動画などの<br>新しいコンテンツを人工的に生成する技術です
 
 ---
 
-# 生成AIの種類と機能
+class: center, middle
 
-<div class="mermaid">
-mindmap
-  root((🤖 生成AI))
-    [📝 テキスト生成]
-      文章作成・編集
-      要約・翻訳
-      質問応答
-      アイデア生成
-    [🎨 画像生成]
-      イラスト・写真
-      図表・グラフ
-      デザイン素材
-    [🔊 音声生成]
-      音声合成
-      音楽生成
-      効果音作成
-    [🎬 動画生成]
-      動画編集
-      アニメーション
-      プレゼン動画
-</div>
+.power-phrase[4つの生成タイプ]
 
----
-
-# 教育現場での活用例
-
-<div class="mermaid">
-flowchart LR
-    A[🤖 生成AI<br/>教育現場での活用]
-    
-    A --> B[📝 テキスト生成]
-    A --> C[🎨 画像生成]
-    A --> D[🔊 音声生成]
-    A --> E[🎬 動画生成]
-    
-    B --> B1[学習指導案作成]
-    B --> B2[練習問題生成]
-    B --> B3[説明文作成]
-    B --> B4[レポート添削]
-    
-    C --> C1[教材イラスト]
-    C --> C2[説明図作成]
-    C --> C3[プレゼン素材]
-    C --> C4[掲示物デザイン]
-    
-    D --> D1[聞き取り教材]
-    D --> D2[発音練習]
-    D --> D3[動画ナレーション]
-    D --> D4[BGM作成]
-    
-    E --> E1[説明動画作成]
-    E --> E2[授業録画編集]
-    E --> E3[教材動画]
-    E --> E4[生徒作品支援]
-</div>
-
----
-
-# プロンプトとは？
-
-### プロンプト = AIへの指示書
-
-.bad-example[
-### ❌ 悪いプロンプト例
-.prompt-box[簿記について教えて]
+.four-elements[
+.element-card[
+.icon[📝]
+#### テキスト生成
+学習指導案・練習問題・説明文
 ]
-
-.good-example[
-### ✅ 良いプロンプト例
-.prompt-box[あなたは商業高校の簿記担当教師です。
-高校1年生（簿記初心者）に向けて、
-「資産・負債・純資産」の概念を、
-身近な例を使って分かりやすく5分で説明できる内容を、
-話し言葉で300文字程度で作成してください。]
+.element-card[
+.icon[🎨]
+#### 画像生成
+教材イラスト・説明図・プレゼン素材
 ]
-
----
-
-# プロンプトの品質による結果の違い
-
-| プロンプトの種類 | 入力例 | 出力の特徴 | 実用性 |
-|-----------------|--------|------------|--------|
-| ❌ **曖昧なプロンプト** | 簿記について教えて | 基本的な説明のみ<br/>すぐには使えない | **低** |
-| ✅ **具体的なプロンプト** | 高校1年生向け<br/>5分で説明可能<br/>身近な例を使用<br/>300文字程度 | 授業ですぐ使える<br/>具体的な内容<br/>適切な分量 | **高** |
-
-**重要**: プロンプトの書き方によって出力の質が大きく変わります
-
----
-
-# 🎯 体験コーナー
-
-.exercise[
-### 演習1: 基本的なプロンプト
-.prompt-box[商業高校のマーケティング授業で使える、
-身近な企業の成功事例を1つ教えてください。]
-
-### 演習2: 詳細なプロンプト
-.prompt-box[あなたは商業高校のマーケティング教師です。
-高校2年生に「ターゲティング戦略」を教える際に使用する、
-日本の身近な企業（コンビニ、ファーストフード等）の具体的成功事例を、
-以下の構成で800文字程度で作成してください：
-1. 企業名と概要
-2. ターゲティング戦略の内容
-3. 成功要因の分析
-4. 生徒への質問（考察ポイント）]
+.element-card[
+.icon[🔊]
+#### 音声生成
+聞き取り教材・発音練習・ナレーション
+]
+.element-card[
+.icon[🎬]
+#### 動画生成
+説明動画・授業録画編集・教材動画
+]
 ]
 
 ---
 
 class: center, middle
 
-# 第2部：プロンプト設計の基本原則
-## （25分）
+.power-phrase[プロンプト = AIへの指示書]
+
+プロンプトの書き方によって<br>出力の質が大きく変わります
 
 ---
 
-# 明確性の原則
+class: center, middle
 
-### Role+5W1H を意識した指示
+### プロンプトの品質による違い
 
-| 要素 | 内容 | 具体例 |
-|------|------|--------|
-| **Role**（役割） | AIに求める専門性・立場 | 簿記教師、キャリアカウンセラー、企業経営者 |
-| **Who**（誰が） | 対象者・読み手 | 高校1年生、保護者、同僚教師 |
-| **What**（何を） | 作成する内容 | 学習指導案、練習問題、説明資料 |
-| **When**（いつ） | 時期・タイミング | 新学期、中間試験前、進路指導時期 |
-| **Where**（どこで） | 使用場面・環境 | 教室、実習室、保護者会 |
-| **Why**（なぜ） | 目的・理由 | 理解促進、動機付け、技能習得 |
-| **How**（どのように） | 方法・形式 | 講義形式、グループワーク、個別指導 |
+.comparison-grid[
+.comparison-bad[
+#### ❌ 曖昧なプロンプト
+"簿記について教えて"
 
----
-
-# 構造化の原則
-
-### 効果的なプロンプトの4つの構造要素
-
-#### 🎯 **1. 役割設定**
-- あなたは○○の専門家です
-- 専門的視点の付与
-- 適切な回答レベル設定
-
-#### 📋 **2. タスク指示**
-- ××について△△してください
-- 具体的な動作指示
-- 明確な成果物の指定
-
-#### ⚙️ **3. 条件・制約**
-- 対象者・レベル
-- 時間・分量制約
-- 使用場面・目的
-
-#### 📄 **4. 出力形式**
-- 文字数・構成
-- 出力フォーマット
-- 必要項目の指定
-
----
-
-# 🎯 演習：曖昧な指示を明確にする
-
-.exercise[
-### 課題: 次の曖昧なプロンプトを改善してください
-.prompt-box[原価計算について説明してください。]
-
-### 改善のポイント
-- **Role**: AIにどの専門家の立場で回答してもらうか？
-- **Who**: 対象者は？（学年、既習レベル）
-- **What**: 原価計算のどの部分？
-- **Why**: なぜ学ぶのか？
-- **How**: どのような形式で？
+実用性：低
 ]
+.comparison-good[
+#### ✅ 具体的なプロンプト
+「商業高校の簿記担当教師として、高校1年生に「資産・負債・純資産」を身近な例で5分で説明...」
 
----
-
-# 改善例
-
-.good-example[
-.prompt-box[あなたは商業高校の原価計算担当教師です。
-
-高校3年生〈簿記2級を学習済み〉に向けて、オーダーメイド家具製造を例に
-「個別原価計算」の基本的な流れを10分で説明できる原稿を作成してください。
-
-- 話し言葉で約600文字
-- 工程ごとの原価集計 → 仕掛品勘定への振替 → 製品完成までを順序立てて解説
-- 専門用語は平易に補足
-- 終わりに「ここまでで疑問はある？」など理解確認の問いかけを1行入れる]
+実用性：高
+]
 ]
 
 ---
 
 class: center, middle
 
-# 第3部：商業教育での実践的活用
-## （35分）
+.part-number[Part 2]
+
+## プロンプト設計の<br>基本原則
+
+.big-number[25分]
 
 ---
 
-# 商業教育でのAI活用 - 4つの実践領域
+class: center, middle
 
-## 🎓 **授業設計支援**
-- 学習指導案作成
-- 評価基準設定
-- 教材開発アイデア
+.power-phrase[Role + 5W1H で<br>指示を明確化]
 
-## 📚 **教材作成支援**
-- 練習問題生成
-- 事例研究作成
-- 説明文作成
-
-## 👨‍🎓 **学生サポート**
-- 個別フィードバック
-- 進路指導資料
-- 保護者向け資料
-
-## ⚡ **業務効率化**
-- 会議資料作成
-- 報告書下書き
-- メール文面作成
+- .highlight[Role]：AIに求める専門性・立場
+- .highlight[Who]：対象者・読み手
+- .highlight[What]：作成する内容
+- .highlight[When/Where/Why/How]：詳細条件
 
 ---
 
-# 学習指導案の作成補助
+class: center, middle
 
-### 学習指導案作成プロセス
+.power-phrase[4つの要素で効果的な<br>プロンプトを設計]
 
-<div class="mermaid">
-flowchart TD
-    A[👨‍🏫 教師の準備作業] --> B{📝 生成AI活用}
-    
-    B --> C[🎯 学習目標設定]
-    B --> D[⏰ 時間配分計画]
-    B --> E[👥 生徒活動設計]
-    B --> F[📊 評価方法設定]
-    
-    C --> G[📋 指導案下書き生成]
-    D --> G
-    E --> G
-    F --> G
-    
-    G --> H[✏️ 教師による調整・改善]
-    H --> I[🎓 授業実施準備完了]
-    
-    I --> J[📚 活用場面]
-    J --> J1[新単元導入指導案]
-    J --> J2[実習授業手順書]
-    J --> J3[グループワーク進行台本]
-    J --> J4[評価活動設計]
-</div>
-
----
-
-# 教材開発のアイデア出し
-
-### 教材開発アイデア創出プロセス
-
-<div class="mermaid">
-mindmap
-  root((💡 教材開発<br/>アイデア創出))
-    [🌍 身近な事例収集]
-      コンビニ経営分析
-      地元企業見学
-      SNSマーケティング事例
-      キャッシュレス決済普及
-    [📰 時事問題関連付け]
-      経済ニュース活用
-      企業不祥事分析
-      新商品発売事例
-      働き方改革影響
-    [🔗 他分野統合学習]
-      数学×簿記計算
-      英語×国際ビジネス
-      情報×データ分析
-      社会×企業社会責任
-    [🏢 地域企業連携]
-      インターンシップ設計
-      ゲストスピーカー招聘
-      職場見学企画
-      産学連携プロジェクト
-</div>
-
----
-
-# 教材開発の効率化効果
-
-### 🌍 身近な事例の収集
-「コンビニの売上向上策」について質問すると、立地戦略、商品陳列、顧客分析、デジタル活用など多角的な事例が提示される
-
-### 📰 時事問題との関連付け
-働き方改革の影響を簿記や経営分析の授業に取り入れる方法など、時事性のある実践的な学習機会を創出
-
-### 🔗 他分野との統合的学習
-数学の統計と商業のマーケティングデータ分析を組み合わせた授業設計など、教科横断的な深い学びを実現
-
-### 🏢 地域企業との連携方法
-地元企業の協力を得たプロジェクト学習の企画から、インターンシップの教育的効果を最大化する指導方法まで
-
----
-
-# 評価基準の設定支援
-
-### 評価基準設定プロセス
-
-<div class="mermaid">
-flowchart TD
-    A[📋 評価が必要な活動・課題] --> B{🤖 生成AI活用}
-    
-    B --> C[📝 ルーブリック作成]
-    B --> D[🎯 パフォーマンス評価設計]
-    B --> E[👥 自己・相互評価項目]
-    
-    C --> C1[評価観点の整理]
-    C --> C2[レベル別基準設定]
-    C --> C3[記述子の具体化]
-    
-    D --> D1[行動目標の明確化]
-    D --> D2[観察ポイント設定]
-    D --> D3[評価方法の選定]
-    
-    E --> E1[自己省察項目]
-    E --> E2[相互フィードバック観点]
-    E --> E3[成長目標設定]
-    
-    C3 --> F[✅ 教師による調整・確認]
-    D3 --> F
-    E3 --> F
-    
-    F --> G[📊 実用的評価基準完成]
-</div>
-
----
-
-# 教育理論との融合のメリット
-
-<div class="mermaid">
-mindmap
-  root((🎓 教育理論との融合))
-    [📚 理論的根拠の明確化]
-      なぜその指導方法なのか
-        指導選択の根拠明示
-        教育哲学の具現化
-      教育効果の予測可能性
-        学習成果の事前予測
-        指導計画の精度向上
-      同僚への説明責任
-        専門性の証明
-        協働的実践の促進
-    [🔬 科学的アプローチ]
-      経験則からの脱却
-        直感的判断の客観化
-        個人差の標準化
-      エビデンスベース教育
-        研究知見の活用
-        実証的指導法導入
-      再現可能な指導法
-        標準化された手法
-        品質の安定化
-    [🎯 効果的指導法選択]
-      生徒特性に応じた選択
-        学習スタイル対応
-        発達段階考慮
-      学習内容に最適化
-        教科特性活用
-        目標達成の効率化
-      複数理論の統合活用
-        相乗効果の創出
-        柔軟な適用
-    [📊 客観的評価基準]
-      学習成果の測定
-        定量的評価実現
-        進歩の可視化
-      指導改善の指針
-        課題の明確化
-        改善方向の特定
-      研究的実践の促進
-        実践研究の基盤
-        知見の蓄積・共有
-</div>
-
----
-
-# 🎯 演習：簿記授業の指導案作成
-
-.exercise[
-### 課題
-「現金・預金」の授業（50分）の指導案作成プロンプトを作成してください
-
-### 条件設定
-- **対象**: 高校1年生（簿記初学者）
-- **単元**: 3級簿記「現金・預金の記帳」
-- **目標**: 現金出納帳と当座預金出納帳の記入ができる
-- **使用教材**: 検定試験の過去問題を活用
-
-### プロンプト作成のヒント
-1. 役割設定：商業高校の簿記担当教師
-2. 具体的指示：50分授業の指導案作成
-3. 条件・制約：初学者対象、実習中心、評価場面含む
-4. 出力形式：時間配分表、指導のポイント、準備物
+.four-elements[
+.element-card[
+.icon[🎯]
+#### 役割設定
+専門的視点の付与
+]
+.element-card[
+.icon[📋]
+#### タスク指示
+具体的な動作指示
+]
+.element-card[
+.icon[⚙️]
+#### 条件・制約
+対象者・時間・分量
+]
+.element-card[
+.icon[📄]
+#### 出力形式
+文字数・構成指定
+]
 ]
 
 ---
 
 class: center, middle
 
-# 第4部：高度なプロンプト技術
-## （10分）
+.power-phrase[背景情報がより適切な<br>回答を引き出す]
 
----
-
-# チェーン・オブ・ソート（思考の連鎖）
-
-### 段階的思考を促す技術
-
-.process-step[🔴 複雑な問題] .process-arrow[⬇️]
-.process-step[🔷 ステップ1: 現状分析] .process-arrow[⬇️]
-.process-step[🔷 ステップ2: 原因特定] .process-arrow[⬇️]
-.process-step[🔷 ステップ3: 解決策検討] .process-arrow[⬇️]
-.process-step[🔷 ステップ4: 最適解選択] .process-arrow[⬇️]
-.process-step[🔷 ステップ5: 実行計画] .process-arrow[⬇️]
-.process-step[🟢 論理的で体系的な回答]
-
----
-
-# ロールプレイング技術
-
-### 多角的視点の例
-
-#### 🎯 **課題**: インターンシップ導入
-
-| 立場 | 視点 | 主な関心事 |
-|------|------|----------|
-| 👨‍🏫 **教師** | 教育効果<br/>指導負担<br/>安全管理 | 具体的な教育成果を上げられるか |
-| 🏢 **企業** | 人材確保<br/>指導コスト<br/>企業責任 | 将来の採用につながるか |
-| 👨‍🎓 **生徒** | 学習機会<br/>就職準備<br/>負担感 | 実際の仕事体験ができるか |
-| 👪 **保護者** | 子どもの成長<br/>安全性<br/>進路への影響 | 子どもにとってプラスになるか |
-
-**🔄 結果**: 統合的判断でバランスの取れた解決策を導出
-
----
-
-# 制約条件の活用
-
-### 文字数制限、形式指定
-
-**制約の種類**:
-- **分量制約**: 「300文字以内」「A4用紙1枚」
-- **時間制約**: 「5分で説明可能」「50分授業用」
-- **形式制約**: 「箇条書きで」「表形式で」「会話形式で」
-
-### 対象者レベルの調整
-- 「中学生でも理解できるレベルで」
-- 「検定2級レベルの知識を前提として」
-- 「大学進学希望者向けの発展的内容で」
+- 教育環境・生徒の特性
+- 学習状況・習熟度
+- 制約条件・期待する成果
 
 ---
 
 class: center, middle
 
-# 第5部：実践とまとめ
-## （5分）
+.part-number[Part 3]
 
----
+## 商業教育での<br>実践的活用
 
-# 継続的改善のサイクル
-
-### 🔄 **実践 → 評価 → 改善 → 実践**
-
-| フェーズ | 具体的なアクション | ポイント |
-|------------|-------------------|--------|
-| 🌱 **実践** | プロンプト使用<br/>結果確認 | 日常的な活用で経験を積む |
-| 📈 **評価** | 効果測定<br/>課題特定 | 何がうまくいき、何が改善が必要かを分析 |
-| ⚙️ **改善** | プロンプト修正<br/>新技術導入 | 学んだことを次の実践に活かす |
-
-### 📚 **サポートリソース**
-- **プロンプトライブラリ**: 効果的なプロンプトを積む
-- **最新技術情報**: AIの進化に対応する
-
----
-
-# 今後の学習指針
-
-### 即座に取り組めること（今日から1週間）
-- [ ] 自分の担当科目で1つのプロンプトを作成・試用
-- [ ] 配布されたプロンプト集から3つを実践
-- [ ] 同僚1名と今日の学習内容を共有
-
-### 1ヶ月以内の目標
-- [ ] 5つ以上のプロンプトを授業で活用
-- [ ] 効果的だったプロンプトを記録・整理
-- [ ] 教科内でプロンプト活用事例を共有
-
-### 3ヶ月以内の目標
-- [ ] オリジナルプロンプト集（10個以上）を作成
-- [ ] 他の教員にプロンプト技術を指導
-- [ ] 学校全体でのAI活用推進に貢献
+.big-number[35分]
 
 ---
 
 class: center, middle
 
-# 核心理念
+.power-phrase[授業設計・教材作成<br>学生サポート・業務効率化]
 
-### 🛠️ **技術は手段** ➕ 🎓 **教育は目的** = 🌱 **より良い教育** → 🎆 **生徒の成長と成功**
-
-## 教育のAI活用 - 4つの核心要素
-
-### 🔧 **技術は手段**
-- 効率化ツール
-- アイデア生成支援
-- 作業負担軽減
-
-### 🎯 **教育は目的**
-- 生徒の成長
-- 学習効果向上
-- 人間性の育成
-
-### 🎓 **教師の専門性**
-- 教育経験
-- 教科専門知識
-- 生徒理解力
-
-### ❤️ **人間的温かさ**
-- 共感力
-- コミュニケーション力
-- 個別配慮
+.four-elements[
+.element-card[
+.icon[🎓]
+#### 授業設計支援
+学習指導案作成<br>評価基準設定
+]
+.element-card[
+.icon[📚]
+#### 教材作成支援
+練習問題生成<br>事例研究作成
+]
+.element-card[
+.icon[👨‍🎓]
+#### 学生サポート
+個別フィードバック<br>進路指導資料
+]
+.element-card[
+.icon[⚡]
+#### 業務効率化
+会議資料作成<br>報告書下書き
+]
+]
 
 ---
 
 class: center, middle
 
-# **「技術は手段、教育は目的」**
+### 指導案作成支援フロー
 
-### 生成AIは教育を変革する強力なツールですが、最も重要なのは「教師の専門性と人間的な温かさ」です
+.power-phrase[AI活用で指導案作成を効率化]
 
-今日学んだプロンプト技術を活用して、より質の高い教育を生徒たちに提供していただけることを期待しています。
+👨‍🏫 教師の準備作業 → 📝 生成AI活用 → 🎯 学習目標設定 → ⏰ 時間配分計画 → 👥 生徒活動設計 → 📊 評価方法設定 → 📋 指導案下書き生成 → ✏️ 教師による調整・改善 → 🎓 授業実施準備完了
 
 ---
 
-# 配布資料
+class: center, middle
 
-### 📚 配布資料
+.power-phrase[身近な事例から地域企業連携まで<br>多角的にアイデア創出]
+
+- 身近な事例収集（コンビニ分析、SNS事例）
+- 時事問題関連付け（経済ニュース活用）
+- 他分野統合学習（数学×簿記計算）
+- 地域企業連携（インターンシップ設計）
+
+---
+
+class: center, middle
+
+.power-phrase[ルーブリック作成から<br>パフォーマンス評価まで体系的に支援]
+
+.process-steps[
+.process-step[ルーブリック作成]
+<span style="font-size: 1.5rem;">+</span>
+.process-step[パフォーマンス評価]
+<span style="font-size: 1.5rem;">+</span>
+.process-step[自己・相互評価]
+]
+
+---
+
+class: center, middle
+
+.power-phrase[理論的根拠に基づく<br>科学的アプローチで教育の質向上]
+
+- 指導選択の根拠明示
+- エビデンスベース教育の実現
+- 再現可能な指導法の確立
+- 客観的評価基準の設定
+
+---
+
+class: center, middle
+
+.power-phrase[実践的な指導案作成で<br>スキルを定着]
+
+.exercise-box[
+#### 演習課題
+
+「現金・預金」の授業（50分）の<br>指導案作成プロンプトを作成してください
+
+対象：高校1年生（簿記初学者）<br>
+目標：現金出納帳と当座預金出納帳の記入習得
+]
+
+---
+
+class: center, middle
+
+.part-number[Part 4]
+
+## 高度なプロンプト技術
+
+.big-number[10分]
+
+---
+
+class: center, middle
+
+.power-phrase[段階的思考で複雑な問題を<br>論理的に解決]
+
+.flowchart-html[
+.step-item.start[複雑な問題]
+.arrow[→]
+.step-item[ステップ1: 現状分析]
+.arrow[→]
+.step-item[ステップ2: 原因特定]
+.arrow[→]
+.step-item[ステップ3: 解決策検討]
+.arrow[→]
+.step-item[ステップ4: 最適解選択]
+<br>
+.arrow[→]
+.step-item[ステップ5: 実行計画]
+.arrow[→]
+.step-item.end[論理的で体系的な回答]
+]
+
+---
+
+class: center, middle
+
+.power-phrase[多角的視点で<br>統合的判断を導出]
+
+.four-elements[
+.element-card[
+.icon[👨‍🏫]
+#### 教師視点
+教育効果<br>指導負担
+]
+.element-card[
+.icon[🏢]
+#### 企業視点
+人材確保<br>指導コスト
+]
+.element-card[
+.icon[👨‍🎓]
+#### 生徒視点
+学習機会<br>就職準備
+]
+.element-card[
+.icon[👪]
+#### 保護者視点
+子どもの成長<br>安全性
+]
+]
+
+---
+
+class: center, middle
+
+.power-phrase[制約が質の高い<br>回答を生み出す]
+
+- .highlight[分量制約]：「300文字以内」「A4用紙1枚」
+- .highlight[時間制約]：「5分で説明可能」「50分授業用」
+- .highlight[形式制約]：「箇条書きで」「表形式で」
+- .highlight[レベル調整]：学習段階に応じた内容
+
+---
+
+class: center, middle
+
+.part-number[Part 5]
+
+## 実践とまとめ
+
+.big-number[5分]
+
+---
+
+class: center, middle
+
+.power-phrase[実践 → 評価 → 改善 → 実践のサイクルで成長]
+
+🌱 実践 → 📈 評価 → ⚙️ 改善 → 🌱 実践
+
+プロンプトライブラリの構築と継続的な改善サイクル
+
+---
+
+class: center, middle
+
+.power-phrase[段階的な目標設定で<br>確実にスキルアップ]
+
+.timeline[
+.timeline-item[
+.time[1週間以内]
+.title[初期実践]
+.desc[1つのプロンプト作成・試用]
+]
+.timeline-item[
+.time[1ヶ月以内]
+.title[活用拡大]
+.desc[5つ以上のプロンプト活用]
+]
+.timeline-item[
+.time[3ヶ月以内]
+.title[指導者へ]
+.desc[他教員への技術指導]
+]
+]
+
+---
+
+class: center, middle
+
+.quote[「技術は手段、教育は目的」]
+
+.four-elements[
+.element-card[
+.icon[🔧]
+#### 技術は手段
+効率化ツール<br>支援システム
+]
+.element-card[
+.icon[🎯]
+#### 教育は目的
+生徒の成長<br>学習効果向上
+]
+.element-card[
+.icon[🎓]
+#### 教師の専門性
+教育経験<br>専門知識
+]
+.element-card[
+.icon[❤️]
+#### 人間的温かさ
+共感力<br>個別配慮
+]
+]
+
+---
+
+class: center, middle
+
+.power-phrase[継続学習で<br>更なるスキルアップを]
+
 - プロンプト基本テンプレート集
 - 商業教育分野別プロンプト事例集（40+事例）
 - 評価チェックリスト
 - 継続学習ガイド
 
-### 🔗 GitHub リポジトリ
-**https://github.com/nahisaho/CommerceHS-GenAI-toolkit**
+.highlight[GitHub]: nahisaho/CommerceHS-GenAI-toolkit
 
-### 📝 フィードバック
-**セミナー終了後のアンケート**にもご協力をお願いいたします
+---
 
-⭐ Star をつけていただけると励みになります！
+class: center, middle
+
+.faq-question[Q. 生成AIを使うことで、教師の指導力が低下しませんか？]
+
+.faq-answer[
+生成AIは.highlight[「指導力の代替」ではなく「指導力の拡張」ツール]です。
+
+教材作成や事務作業の効率化により、生徒と向き合う時間や教材研究の時間を増やすことができます。
+]
+
+---
+
+class: center, middle
+
+.faq-question[Q. AIが作成した内容をそのまま使用しても問題ありませんか？]
+
+.faq-answer[
+.highlight[AIの出力は必ず確認・修正が必要]です。
+
+事実確認、教育的配慮、著作権等の観点から、教師の専門的判断を加えて使用してください。
+]
+
+---
+
+class: center, middle
+
+.quote[ありがとうございました]
+
+プロンプト技術を活用して、<br>より質の高い教育を生徒たちに<br>提供していただけることを期待しています
+
+⭐ .highlight[Star] をつけていただけると励みになります！
 
     </textarea>
-    <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
     <script>
         var slideshow = remark.create({
-            ratio: '16:9',
-            highlightStyle: 'monokai',
-            highlightLanguage: 'remark',
+            highlightStyle: 'github',
             highlightLines: true,
-            countIncrementalSlides: false
+            countIncrementalSlides: false,
+            ratio: '16:9'
+        });
+        
+        // Initialize Mermaid
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'dark',
+            themeVariables: {
+                primaryColor: '#0078d4',
+                primaryTextColor: '#ffffff',
+                primaryBorderColor: '#005a9e',
+                lineColor: '#106ebe'
+            }
         });
     </script>
 </body>

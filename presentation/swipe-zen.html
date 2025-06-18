@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>商業高等学校教員向け 生成AI利活用セミナー</title>
     
+    <!-- Mermaid.js for diagrams -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Yu+Gothic:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap');
         
@@ -20,8 +23,12 @@
             background: linear-gradient(135deg, #0078d4 0%, #106ebe 25%, #005a9e 50%, #004578 75%, #003f69 100%);
             color: #ffffff;
             font-weight: 300;
-            font-size: 16px;
+            font-size: 18px;
             line-height: 1.6;
+            width: 1800px;
+            height: 900px;
+            margin: 0;
+            padding: 0;
         }
         
         /* Fluent Design System - Acrylic Material */
@@ -44,14 +51,14 @@
         
         .swipe-slide {
             flex-shrink: 0;
-            width: 100%;
-            height: 100%;
+            width: 1800px;
+            height: 900px;
             position: relative;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 4rem 3rem;
+            padding: 5rem 4rem;
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -59,7 +66,7 @@
         
         /* Typography - Presentation Zen inspired */
         .slide-content {
-            max-width: 900px;
+            max-width: 1300px;
             width: 100%;
             text-align: center;
             display: flex;
@@ -71,7 +78,7 @@
         
         /* Title Slide */
         .title-slide h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-size: 3.8rem;
             font-weight: 300;
             letter-spacing: -0.02em;
             line-height: 1.1;
@@ -83,10 +90,10 @@
         }
         
         .title-slide .subtitle {
-            font-size: clamp(1.2rem, 3vw, 2rem);
+            font-size: 1.8rem;
             font-weight: 300;
             color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
             letter-spacing: 0.01em;
         }
         
@@ -98,11 +105,11 @@
         
         /* Section Headers */
         .section-header h2 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-size: 4rem;
             font-weight: 300;
             letter-spacing: -0.01em;
             line-height: 1.2;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             background: linear-gradient(135deg, #ffffff 0%, #e6f3ff 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -120,11 +127,11 @@
         
         /* Power Phrase */
         .power-phrase {
-            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-size: 3rem;
             font-weight: 500;
             text-align: center;
             color: #ffffff;
-            margin: 2rem 0;
+            margin: 2.5rem 0;
             line-height: 1.3;
             letter-spacing: -0.01em;
             position: relative;
@@ -151,19 +158,20 @@
         
         /* Content Typography */
         .content-slide h3 {
-            font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+            font-size: 2.8rem;
             font-weight: 400;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             color: #ffffff;
             letter-spacing: -0.01em;
         }
         
         .content-slide p {
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            font-size: 1.4rem;
             line-height: 1.7;
             color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             font-weight: 300;
+            max-width: 1000px;
         }
         
         .content-slide ul {
@@ -226,6 +234,7 @@
             gap: 2rem;
             margin: 2rem 0;
             width: 100%;
+            max-width: 900px;
         }
         
         .element-card {
@@ -249,9 +258,9 @@
         }
         
         .element-card h4 {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 500;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             color: #ffffff;
         }
         
@@ -358,11 +367,20 @@
         }
         
         .quote-slide .quote {
-            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-size: 4rem;
             font-weight: 300;
             line-height: 1.4;
             margin-bottom: 2rem;
             color: rgba(255, 255, 255, 0.95);
+        }
+        
+        .quote-slide p {
+            font-size: 1.8rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            max-width: 900px;
         }
         
         /* FAQ Styles */
@@ -429,6 +447,178 @@
         .slide-content > *:nth-child(4) {
             animation-delay: 0.3s;
         }
+        
+        /* Mermaid diagram styling */
+        .mermaid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0;
+            max-width: 100%;
+            overflow: visible;
+            transform: scale(0.9);
+        }
+        
+        .mermaid svg {
+            max-width: 900px;
+            max-height: 500px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        .diagram-slide {
+            padding: 3rem 2rem;
+        }
+        
+        .diagram-slide .slide-content {
+            max-width: 1400px;
+        }
+        
+        /* Slide Page Numbers */
+        .slide-number {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Larger text for specific slides */
+        .large-text h3 {
+            font-size: 3.2rem !important;
+        }
+        
+        .large-text .power-phrase {
+            font-size: 3.4rem !important;
+        }
+        
+        .large-text p {
+            font-size: 1.6rem !important;
+        }
+        
+        .large-text li {
+            font-size: 1.4rem !important;
+        }
+        
+        .large-text .faq-question {
+            font-size: 2rem !important;
+        }
+        
+        .large-text .faq-answer {
+            font-size: 1.5rem !important;
+        }
+        
+        .large-text .timeline-item .title {
+            font-size: 1.2rem !important;
+        }
+        
+        .large-text .timeline-item .desc {
+            font-size: 1rem !important;
+        }
+        
+        .large-text .element-card h4 {
+            font-size: 1.5rem !important;
+        }
+        
+        .large-text .element-card p {
+            font-size: 1.1rem !important;
+        }
+        
+        /* Extra large text specifically for slide 3 */
+        .extra-large-text h3 {
+            font-size: 3.6rem !important;
+        }
+        
+        .extra-large-text .timeline-item .title {
+            font-size: 1.4rem !important;
+        }
+        
+        .extra-large-text .timeline-item .desc {
+            font-size: 1.2rem !important;
+        }
+        
+        .extra-large-text .timeline-item .time {
+            font-size: 1.1rem !important;
+        }
+        
+        /* Mermaid diagram scaling */
+        .mermaid-2x .mermaid {
+            transform: scale(3.0) !important;
+        }
+        
+        .mermaid-1-5x .mermaid {
+            transform: scale(2.5) !important;
+        }
+        
+        .mermaid-2x-slide25 .mermaid {
+            transform: scale(2.0) !important;
+        }
+        
+        .mermaid-3x-slide21 .mermaid {
+            transform: scale(3.0) !important;
+        }
+        
+        /* HTML Flowchart for Slide 21 */
+        .flowchart-html {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0;
+            padding: 2rem;
+        }
+        
+        .step-item {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #ffffff;
+            text-align: center;
+            min-width: 180px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .step-item.start {
+            background: rgba(255, 205, 210, 0.3);
+            border-color: rgba(255, 205, 210, 0.6);
+        }
+        
+        .step-item.end {
+            background: rgba(200, 230, 201, 0.3);
+            border-color: rgba(200, 230, 201, 0.6);
+        }
+        
+        .step-item:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-3px);
+        }
+        
+        .arrow {
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: bold;
+            margin: 0 0.5rem;
+        }
+        
+        /* Slide 25 title positioning */
+        .slide-25-title {
+            margin-top: -1rem !important;
+            margin-bottom: 1rem !important;
+        }
     </style>
 </head>
 <body>
@@ -444,6 +634,7 @@
                         対象：商業高校教員（初心者大歓迎）
                     </div>
                 </div>
+                <div class="slide-number">1</div>
             </div>
 
             <!-- Slide 2: Core Philosophy -->
@@ -452,10 +643,11 @@
                     <div class="quote">「技術は手段、教育は目的」</div>
                     <p>生成AIは教育を変革する強力なツールですが、<br>最も重要なのは教師の専門性と人間的な温かさです</p>
                 </div>
+                <div class="slide-number">2</div>
             </div>
 
             <!-- Slide 3: Timeline -->
-            <div class="swipe-slide content-slide">
+            <div class="swipe-slide content-slide slide-3-enlarged large-text extra-large-text">
                 <div class="slide-content">
                     <h3>セミナータイムライン</h3>
                     <div class="timeline">
@@ -486,6 +678,7 @@
                         </div>
                     </div>
                 </div>
+                <div class="slide-number">3</div>
             </div>
 
             <!-- Slide 4: Part 1 Header -->
@@ -495,70 +688,92 @@
                     <h2>生成AIとプロンプトの<br>基礎理解</h2>
                     <div class="big-number">15<span style="font-size: 2rem;">分</span></div>
                 </div>
+                <div class="slide-number">4</div>
             </div>
 
             <!-- Slide 5: AI is not replacement -->
-            <div class="swipe-slide content-slide">
+            <div class="swipe-slide content-slide large-text">
                 <div class="slide-content">
                     <div class="power-phrase">AIは教師の代替ではなく<br>能力を拡張するツール</div>
                     <p>生成AIは、テキスト・画像・音声・動画などの<br>新しいコンテンツを人工的に生成する技術です</p>
                 </div>
+                <div class="slide-number">5</div>
             </div>
 
-            <!-- Slide 6: Four Types of AI -->
-            <div class="swipe-slide content-slide">
+            <!-- Slide 6: Four Types of AI (with Mermaid) -->
+            <div class="swipe-slide diagram-slide mermaid-2x">
                 <div class="slide-content">
-                    <h3>4つの生成タイプ</h3>
-                    <div class="four-elements">
-                        <div class="element-card">
-                            <div class="icon">📝</div>
-                            <h4>テキスト生成</h4>
-                            <p>学習指導案<br>練習問題<br>説明文</p>
-                        </div>
-                        <div class="element-card">
-                            <div class="icon">🎨</div>
-                            <h4>画像生成</h4>
-                            <p>教材イラスト<br>説明図<br>プレゼン素材</p>
-                        </div>
-                        <div class="element-card">
-                            <div class="icon">🔊</div>
-                            <h4>音声生成</h4>
-                            <p>聞き取り教材<br>発音練習<br>ナレーション</p>
-                        </div>
-                        <div class="element-card">
-                            <div class="icon">🎬</div>
-                            <h4>動画生成</h4>
-                            <p>説明動画<br>授業録画編集<br>教材動画</p>
-                        </div>
+                    <div class="power-phrase">4つの生成タイプ</div>
+                    <div class="mermaid">
+mindmap
+  root((🤖 生成AI))
+    [📝 テキスト生成]
+      学習指導案
+      練習問題
+      説明文
+    [🎨 画像生成]
+      教材イラスト
+      説明図
+      プレゼン素材
+    [🔊 音声生成]
+      聞き取り教材
+      発音練習
+      ナレーション
+    [🎬 動画生成]
+      説明動画
+      授業録画編集
+      教材動画
+
+%%{init: {
+  'theme': 'base',
+  'themeVariables': {
+    'primaryColor': '#0078d4',
+    'primaryTextColor': '#ffffff',
+    'primaryBorderColor': '#005a9e',
+    'lineColor': '#106ebe',
+    'c0': '#0078d4',
+    'c1': '#00bcf2',
+    'c2': '#40e0d0',
+    'c3': '#7b68ee',
+    'c4': '#ff6b6b',
+    'pi1': '#4285f4',
+    'pi2': '#34a853',
+    'pi3': '#fbbc04',
+    'pi4': '#ea4335'
+  }
+}}%%
                     </div>
                 </div>
+                <div class="slide-number">6</div>
             </div>
 
             <!-- Slide 7: Prompt Definition -->
-            <div class="swipe-slide content-slide">
+            <div class="swipe-slide content-slide large-text">
                 <div class="slide-content">
                     <div class="power-phrase">プロンプト = AIへの指示書</div>
                     <p>プロンプトの書き方によって<br>出力の質が大きく変わります</p>
                 </div>
+                <div class="slide-number">7</div>
             </div>
 
             <!-- Slide 8: Bad vs Good Prompt -->
-            <div class="swipe-slide content-slide">
+            <div class="swipe-slide content-slide large-text">
                 <div class="slide-content">
                     <h3>プロンプトの品質による違い</h3>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
-                        <div style="background: rgba(220, 53, 69, 0.2); padding: 2rem; border-radius: 12px; border: 1px solid rgba(220, 53, 69, 0.3);">
-                            <h4 style="color: #ff6b6b; margin-bottom: 1rem;">❌ 曖昧なプロンプト</h4>
-                            <p style="font-style: italic; margin-bottom: 1rem;">"簿記について教えて"</p>
-                            <p style="font-size: 0.9rem;">実用性：低</p>
+                        <div style="background: rgba(220, 53, 69, 0.3); padding: 2rem; border-radius: 12px; border: 2px solid rgba(220, 53, 69, 0.6); backdrop-filter: blur(10px);">
+                            <h4 style="color: #ffb3ba; margin-bottom: 1rem; font-weight: 600;">❌ 曖昧なプロンプト</h4>
+                            <p style="font-style: italic; margin-bottom: 1rem; color: rgba(255, 255, 255, 0.95);">"簿記について教えて"</p>
+                            <p style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.9); font-weight: 500;">実用性：低</p>
                         </div>
-                        <div style="background: rgba(40, 167, 69, 0.2); padding: 2rem; border-radius: 12px; border: 1px solid rgba(40, 167, 69, 0.3);">
-                            <h4 style="color: #51cf66; margin-bottom: 1rem;">✅ 具体的なプロンプト</h4>
-                            <p style="font-size: 0.9rem; margin-bottom: 1rem;">「商業高校の簿記担当教師として、高校1年生に「資産・負債・純資産」を身近な例で5分で説明...」</p>
-                            <p style="font-size: 0.9rem;">実用性：高</p>
+                        <div style="background: rgba(40, 167, 69, 0.3); padding: 2rem; border-radius: 12px; border: 2px solid rgba(40, 167, 69, 0.6); backdrop-filter: blur(10px);">
+                            <h4 style="color: #a3e9a4; margin-bottom: 1rem; font-weight: 600;">✅ 具体的なプロンプト</h4>
+                            <p style="font-size: 0.9rem; margin-bottom: 1rem; color: rgba(255, 255, 255, 0.95);">「商業高校の簿記担当教師として、高校1年生に「資産・負債・純資産」を身近な例で5分で説明...」</p>
+                            <p style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.9); font-weight: 500;">実用性：高</p>
                         </div>
                     </div>
                 </div>
+                <div class="slide-number">8</div>
             </div>
 
             <!-- Slide 9: Part 2 Header -->
@@ -568,10 +783,11 @@
                     <h2>プロンプト設計の<br>基本原則</h2>
                     <div class="big-number">25<span style="font-size: 2rem;">分</span></div>
                 </div>
+                <div class="slide-number">9</div>
             </div>
 
             <!-- Slide 10: Role + 5W1H -->
-            <div class="swipe-slide content-slide">
+            <div class="swipe-slide content-slide large-text">
                 <div class="slide-content">
                     <div class="power-phrase">Role + 5W1H で<br>指示を明確化</div>
                     <ul>
@@ -581,6 +797,7 @@
                         <li><span class="highlight">When/Where/Why/How</span>：詳細条件</li>
                     </ul>
                 </div>
+                <div class="slide-number">10</div>
             </div>
 
             <!-- Slide 11: 4 Elements -->
@@ -610,10 +827,11 @@
                         </div>
                     </div>
                 </div>
+                <div class="slide-number">11</div>
             </div>
 
             <!-- Slide 12: Context Importance -->
-            <div class="swipe-slide content-slide">
+            <div class="swipe-slide content-slide large-text">
                 <div class="slide-content">
                     <div class="power-phrase">背景情報がより適切な<br>回答を引き出す</div>
                     <ul>
@@ -622,6 +840,7 @@
                         <li>制約条件・期待する成果</li>
                     </ul>
                 </div>
+                <div class="slide-number">12</div>
             </div>
 
             <!-- Slide 13: Part 3 Header -->
@@ -631,6 +850,7 @@
                     <h2>商業教育での<br>実践的活用</h2>
                     <div class="big-number">35<span style="font-size: 2rem;">分</span></div>
                 </div>
+                <div class="slide-number">13</div>
             </div>
 
             <!-- Slide 14: 4 Practice Areas -->
@@ -660,24 +880,43 @@
                         </div>
                     </div>
                 </div>
+                <div class="slide-number">14</div>
             </div>
 
-            <!-- Slide 15: Lesson Plan Support -->
-            <div class="swipe-slide content-slide">
+            <!-- Slide 15: Lesson Plan Support (with Mermaid) -->
+            <div class="swipe-slide diagram-slide mermaid-1-5x">
                 <div class="slide-content">
+                    <h3>指導案作成支援フロー</h3>
                     <div class="power-phrase">AI活用で<br>指導案作成を効率化</div>
-                    <div style="display: flex; align-items: center; justify-content: center; margin: 2rem 0;">
-                        <div class="process-step">教師の準備</div>
-                        <span style="margin: 0 1rem; font-size: 1.5rem;">→</span>
-                        <div class="process-step">AI活用</div>
-                        <span style="margin: 0 1rem; font-size: 1.5rem;">→</span>
-                        <div class="process-step">調整・改善</div>
+                    <div class="mermaid">
+flowchart TD
+    A[👨‍🏫 教師の準備作業] --> B{📝 生成AI活用}
+    
+    B --> C[🎯 学習目標設定]
+    B --> D[⏰ 時間配分計画]
+    B --> E[👥 生徒活動設計]
+    B --> F[📊 評価方法設定]
+    
+    C --> G[📋 指導案下書き生成]
+    D --> G
+    E --> G
+    F --> G
+    
+    G --> H[✏️ 教師による調整・改善]
+    H --> I[🎓 授業実施準備完了]
+    
+    style A fill:#e8f5e8,stroke:#28a745,stroke-width:2px
+    style B fill:#667eea,stroke:#764ba2,stroke-width:3px,color:#fff
+    style G fill:#fff3cd,stroke:#ffc107,stroke-width:2px
+    style H fill:#f8d7da,stroke:#dc3545,stroke-width:2px
+    style I fill:#d1ecf1,stroke:#17a2b8,stroke-width:2px
                     </div>
                 </div>
+                <div class="slide-number">15</div>
             </div>
 
             <!-- Slide 16: Material Development -->
-            <div class="swipe-slide content-slide">
+            <div class="swipe-slide content-slide large-text">
                 <div class="slide-content">
                     <div class="power-phrase">身近な事例から地域企業連携まで<br>多角的にアイデア創出</div>
                     <ul>
@@ -687,10 +926,11 @@
                         <li>地域企業連携（インターンシップ設計）</li>
                     </ul>
                 </div>
+                <div class="slide-number">16</div>
             </div>
 
             <!-- Slide 17: Assessment Support -->
-            <div class="swipe-slide content-slide">
+            <div class="swipe-slide content-slide large-text">
                 <div class="slide-content">
                     <div class="power-phrase">ルーブリック作成から<br>パフォーマンス評価まで体系的に支援</div>
                     <div style="display: flex; justify-content: center; align-items: center; margin: 2rem 0;">
@@ -701,10 +941,11 @@
                         <div class="process-step">自己・相互評価</div>
                     </div>
                 </div>
+                <div class="slide-number">17</div>
             </div>
 
             <!-- Slide 18: Educational Theory -->
-            <div class="swipe-slide content-slide">
+            <div class="swipe-slide content-slide large-text">
                 <div class="slide-content">
                     <div class="power-phrase">理論的根拠に基づく<br>科学的アプローチで教育の質向上</div>
                     <ul>
@@ -714,10 +955,11 @@
                         <li>客観的評価基準の設定</li>
                     </ul>
                 </div>
+                <div class="slide-number">18</div>
             </div>
 
             <!-- Slide 19: Practice Exercise -->
-            <div class="swipe-slide content-slide">
+            <div class="swipe-slide content-slide large-text">
                 <div class="slide-content">
                     <div class="power-phrase">実践的な指導案作成で<br>スキルを定着</div>
                     <div style="background: rgba(255, 255, 255, 0.1); padding: 2rem; border-radius: 12px; margin: 2rem 0;">
@@ -729,6 +971,7 @@
                         </p>
                     </div>
                 </div>
+                <div class="slide-number">19</div>
             </div>
 
             <!-- Slide 20: Part 4 Header -->
@@ -738,20 +981,30 @@
                     <h2>高度なプロンプト技術</h2>
                     <div class="big-number">10<span style="font-size: 2rem;">分</span></div>
                 </div>
+                <div class="slide-number">20</div>
             </div>
 
-            <!-- Slide 21: Chain of Thought -->
-            <div class="swipe-slide content-slide">
+            <!-- Slide 21: Chain of Thought (with Mermaid) -->
+            <div class="swipe-slide diagram-slide mermaid-3x-slide21">
                 <div class="slide-content">
                     <div class="power-phrase">段階的思考で複雑な問題を<br>論理的に解決</div>
-                    <div style="display: flex; flex-direction: column; align-items: center; margin: 2rem 0;">
-                        <div class="process-step">複雑な問題</div>
-                        <span style="margin: 0.5rem 0; font-size: 1.5rem;">↓</span>
-                        <div class="process-step">現状分析 → 原因特定 → 解決策検討</div>
-                        <span style="margin: 0.5rem 0; font-size: 1.5rem;">↓</span>
-                        <div class="process-step">論理的で体系的な回答</div>
+                    <div class="flowchart-html">
+                        <div class="step-item start">複雑な問題</div>
+                        <div class="arrow">→</div>
+                        <div class="step-item">ステップ1: 現状分析</div>
+                        <div class="arrow">→</div>
+                        <div class="step-item">ステップ2: 原因特定</div>
+                        <div class="arrow">→</div>
+                        <div class="step-item">ステップ3: 解決策検討</div>
+                        <div class="arrow">→</div>
+                        <div class="step-item">ステップ4: 最適解選択</div>
+                        <div class="arrow">→</div>
+                        <div class="step-item">ステップ5: 実行計画</div>
+                        <div class="arrow">→</div>
+                        <div class="step-item end">論理的で体系的な回答</div>
                     </div>
                 </div>
+                <div class="slide-number">21</div>
             </div>
 
             <!-- Slide 22: Role Playing -->
@@ -781,10 +1034,11 @@
                         </div>
                     </div>
                 </div>
+                <div class="slide-number">22</div>
             </div>
 
             <!-- Slide 23: Constraints -->
-            <div class="swipe-slide content-slide">
+            <div class="swipe-slide content-slide large-text">
                 <div class="slide-content">
                     <div class="power-phrase">制約が質の高い<br>回答を生み出す</div>
                     <ul>
@@ -794,6 +1048,7 @@
                         <li><span class="highlight">レベル調整</span>：学習段階に応じた内容</li>
                     </ul>
                 </div>
+                <div class="slide-number">23</div>
             </div>
 
             <!-- Slide 24: Part 5 Header -->
@@ -803,26 +1058,44 @@
                     <h2>実践とまとめ</h2>
                     <div class="big-number">5<span style="font-size: 2rem;">分</span></div>
                 </div>
+                <div class="slide-number">24</div>
             </div>
 
-            <!-- Slide 25: Continuous Improvement -->
-            <div class="swipe-slide content-slide">
+            <!-- Slide 25: Continuous Improvement (with Mermaid) -->
+            <div class="swipe-slide diagram-slide mermaid-2x-slide25">
                 <div class="slide-content">
-                    <div class="power-phrase">実践 → 評価 → 改善 → 実践<br>のサイクルで成長</div>
-                    <div style="display: flex; justify-content: center; align-items: center; margin: 2rem 0;">
-                        <div class="process-step">🌱 実践</div>
-                        <span style="margin: 0 1rem; font-size: 1.5rem;">→</span>
-                        <div class="process-step">📈 評価</div>
-                        <span style="margin: 0 1rem; font-size: 1.5rem;">→</span>
-                        <div class="process-step">⚙️ 改善</div>
-                        <span style="margin: 0 1rem; font-size: 1.5rem;">→</span>
-                        <div class="process-step">🌱 実践</div>
+                    <div class="power-phrase slide-25-title">実践 → 評価 → 改善 → 実践のサイクルで成長</div>
+                    <div class="mermaid">
+flowchart LR
+    A[🌱 実践] --> B[📈 評価]
+    B --> C[⚙️ 改善]
+    C --> A
+    
+    A --> A1[プロンプト使用]
+    A --> A2[結果確認]
+    
+    B --> B1[効果測定]
+    B --> B2[課題特定]
+    
+    C --> C1[プロンプト修正]
+    C --> C2[新技術導入]
+    
+    D[📚 プロンプトライブラリ] --> A
+    C --> D
+    
+    E[💡 最新技術情報] --> C
+    
+    style A fill:#e8f5e8
+    style B fill:#fff3e0
+    style C fill:#e3f2fd
+    style D fill:#f3e5f5
                     </div>
                 </div>
+                <div class="slide-number">25</div>
             </div>
 
             <!-- Slide 26: Learning Timeline -->
-            <div class="swipe-slide content-slide">
+            <div class="swipe-slide content-slide large-text extra-large-text">
                 <div class="slide-content">
                     <div class="power-phrase">段階的な目標設定で<br>確実にスキルアップ</div>
                     <div class="timeline">
@@ -843,6 +1116,7 @@
                         </div>
                     </div>
                 </div>
+                <div class="slide-number">26</div>
             </div>
 
             <!-- Slide 27: Final Message -->
@@ -872,10 +1146,11 @@
                         </div>
                     </div>
                 </div>
+                <div class="slide-number">27</div>
             </div>
 
             <!-- Slide 28: Resources -->
-            <div class="swipe-slide content-slide">
+            <div class="swipe-slide content-slide large-text">
                 <div class="slide-content">
                     <div class="power-phrase">継続学習で<br>更なるスキルアップを</div>
                     <ul>
@@ -888,10 +1163,11 @@
                         <span class="highlight">GitHub</span>: nahisaho/CommerceHS-GenAI-toolkit
                     </p>
                 </div>
+                <div class="slide-number">28</div>
             </div>
 
             <!-- Slide 29: FAQ 1 -->
-            <div class="swipe-slide content-slide">
+            <div class="swipe-slide content-slide large-text extra-large-text">
                 <div class="slide-content">
                     <div class="faq-question">Q. 生成AIを使うことで、教師の指導力が低下しませんか？</div>
                     <div class="faq-answer">
@@ -900,10 +1176,11 @@
                         教材作成や事務作業の効率化により、生徒と向き合う時間や教材研究の時間を増やすことができます。
                     </div>
                 </div>
+                <div class="slide-number">29</div>
             </div>
 
             <!-- Slide 30: FAQ 2 -->
-            <div class="swipe-slide content-slide">
+            <div class="swipe-slide content-slide large-text extra-large-text">
                 <div class="slide-content">
                     <div class="faq-question">Q. AIが作成した内容をそのまま使用しても問題ありませんか？</div>
                     <div class="faq-answer">
@@ -912,10 +1189,11 @@
                         事実確認、教育的配慮、著作権等の観点から、教師の専門的判断を加えて使用してください。
                     </div>
                 </div>
+                <div class="slide-number">30</div>
             </div>
 
             <!-- Slide 31: Thank You -->
-            <div class="swipe-slide quote-slide">
+            <div class="swipe-slide quote-slide large-text">
                 <div class="slide-content">
                     <div class="quote">ありがとうございました</div>
                     <p>プロンプト技術を活用して、<br>より質の高い教育を生徒たちに<br>提供していただけることを期待しています</p>
@@ -923,6 +1201,7 @@
                         ⭐ <span class="highlight">Star</span> をつけていただけると励みになります！
                     </p>
                 </div>
+                <div class="slide-number">31</div>
             </div>
         </div>
     </div>
@@ -1011,6 +1290,32 @@
 
         // Initialize
         updateSlide();
+        
+        // Initialize Mermaid
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#0078d4',
+                primaryTextColor: '#323130',
+                primaryBorderColor: '#005a9e',
+                lineColor: '#106ebe',
+                secondaryColor: '#f3f2f1',
+                tertiaryColor: '#edebe9',
+                background: '#ffffff',
+                mainBkg: '#ffffff',
+                secondBkg: '#f8f9fa',
+                tertiaryBkg: '#e9ecef'
+            },
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            },
+            mindmap: {
+                useMaxWidth: true
+            }
+        });
     </script>
 </body>
 </html>
