@@ -57,7 +57,8 @@
 セミナー講師や研修担当者の方は、以下のプレゼンテーション資料をご活用ください：
 
 #### 📱 オンライン版（推奨）
-GitHub Pagesで公開中：[https://nahisaho.github.io/CommerceHS-GenAI-toolkit/presentation/](https://nahisaho.github.io/CommerceHS-GenAI-toolkit/presentation/)
+- **メインページ**: [https://nahisaho.github.io/CommerceHS-GenAI-toolkit/presentation/](https://nahisaho.github.io/CommerceHS-GenAI-toolkit/presentation/)
+- **Reveal.js版（直接）**: [https://nahisaho.github.io/CommerceHS-GenAI-toolkit/presentation/reveal.html](https://nahisaho.github.io/CommerceHS-GenAI-toolkit/presentation/reveal.html)
 
 #### 💻 ローカル使用
 1. [`presentation/index.html`](./presentation/index.html) をブラウザで開く
